@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { AboutComponent } from './components/about/about.component';
@@ -15,6 +15,8 @@ import { TestimonialComponent } from './components/testimonial/testimonial.compo
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet,
+    RouterLink,
+    RouterLinkActive,
     NavbarComponent,
     CarouselComponent,
     AboutComponent,
