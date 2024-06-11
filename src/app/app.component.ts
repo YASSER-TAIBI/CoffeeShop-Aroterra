@@ -10,6 +10,7 @@ import { ReservationComponent } from './components/reservation/reservation.compo
 import { ContactComponent } from './components/contact/contact.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { TestimonialComponent } from './components/testimonial/testimonial.component';
+import { NotfoundComponent} from "./components/notfound/notfound.component";
 
 @Component({
   selector: 'app-root',
@@ -26,7 +27,8 @@ import { TestimonialComponent } from './components/testimonial/testimonial.compo
     ReservationComponent,
     ContactComponent,
     FooterComponent,
-    TestimonialComponent
+    TestimonialComponent,
+    NotfoundComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
