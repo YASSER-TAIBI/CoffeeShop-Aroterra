@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { AboutComponent } from './components/about/about.component';
@@ -18,6 +20,7 @@ import { NotfoundComponent} from "./components/notfound/notfound.component";
   imports: [RouterOutlet,
     RouterLink,
     RouterLinkActive,
+    NgbModule,
     NavbarComponent,
     CarouselComponent,
     AboutComponent,

@@ -1,5 +1,6 @@
 <!-- Page Header Start -->
-<div *ngIf="showPageHeader" class="container-fluid page-header mb-5 position-relative overlay-bottom">
+@if(showPageHeader){
+<div class="container-fluid page-header mb-5 position-relative overlay-bottom">
   <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
     <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase">Réservation en ligne</h1>
     <div class="d-inline-flex mb-lg-5">
@@ -9,6 +10,7 @@
     </div>
   </div>
 </div>
+}
 <!-- Page Header End -->
 
 <!-- Reservation Start -->
@@ -33,35 +35,32 @@
         <div class="col-lg-6">
           <div class="text-center p-5" style="background: rgba(51, 33, 29, .8);">
             <h1 class="text-white mb-4 mt-5">Réservez votre table</h1>
-            <form action="#" class="mb-5">
+            <form (ngSubmit)="onSubmit()" #reservationForm="ngForm" class="mb-5">
               <div class="form-group">
-                <input type="text" name="" id="name" class="form-control bg-transparent border-primary p-4" placeholder="Nom"
-                       required="required" />
+                <input type="text" name="name" [(ngModel)]="formData.name" class="form-control bg-transparent border-primary p-4" placeholder="Nom" required />
               </div>
               <div class="form-group">
-                <input type="email" name="" id="email" class="form-control bg-transparent border-primary p-4" placeholder="Email"
-                       required="required" />
+                <input type="email" name="email" [(ngModel)]="formData.email" class="form-control bg-transparent border-primary p-4" placeholder="Email" required />
               </div>
               <div class="form-group">
                 <div class="date" id="date" data-target-input="nearest">
-                  <input type="text" name="" placeholder="Date" data-target="#date" class="form-control bg-transparent border-primary p-4 datetimepicker-input" data-toggle="datetimepicker"/>
+                  <input type="text" name="date" [(ngModel)]="formData.date" placeholder="Date" class="form-control bg-transparent border-primary p-4 datetimepicker-input" data-toggle="datetimepicker"/>
                 </div>
               </div>
               <div class="form-group">
                 <div class="time" id="time" data-target-input="nearest">
-                  <input type="text" class="form-control bg-transparent border-primary p-4 datetimepicker-input" placeholder="Heure" data-target="#time" data-toggle="datetimepicker"/>
+                  <input type="text" name="time" [(ngModel)]="formData.time" placeholder="Heure" class="form-control bg-transparent border-primary p-4 datetimepicker-input" data-toggle="datetimepicker"/>
                 </div>
               </div>
               <div class="form-group">
-                <select class="custom-select bg-transparent border-primary px-4" style="height: 49px;">
-                  <option selected>Personne</option>
+                <select name="people" [(ngModel)]="formData.people" class="custom-select bg-transparent border-primary px-4" style="height: 49px;">
+                  <option value="" selected disabled>Personne</option>
                   <option value="1">1 Personne</option>
                   <option value="2">2 Personnes</option>
                   <option value="3">3 Personnes</option>
                   <option value="4">4 Personnes</option>
                 </select>
               </div>
-
               <div>
                 <button class="btn btn-primary btn-block font-weight-bold py-3" type="submit">Réserver maintenant</button>
               </div>

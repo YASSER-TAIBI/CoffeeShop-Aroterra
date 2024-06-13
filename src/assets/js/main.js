@@ -1,5 +1,5 @@
 
-    document.addEventListener('DOMContentLoaded', function() {
+   /* document.addEventListener('DOMContentLoaded', function() {
     const selectElement = document.querySelector('.custom-select');
 
     selectElement.addEventListener('change', function() {
@@ -14,18 +14,18 @@
     initialOptions.forEach(option => {
     option.style.color = option.selected ? 'white' : 'black';
 });
-});
+}); */
 
 (function ($) {
     "use strict";
 
     // Date and time picker
-    $('.date').datetimepicker({
+   /* $('.date').datetimepicker({
         format: 'L'
     });
     $('.time').datetimepicker({
         format: 'LT'
-    });
+    }); */
 
     // Testimonials carousel
     $(".testimonial-carousel").owlCarousel({
@@ -65,9 +65,9 @@
     });
 
     // Menu tabs
-    $(function() {
+  /*  $(function() {
         $("#tabs").tabs();
-    });
+    });*/
 
 
 })(window.jQuery);

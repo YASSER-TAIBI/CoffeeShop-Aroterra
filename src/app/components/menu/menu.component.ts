@@ -20,24 +20,6 @@ export class MenuComponent {
     urlCurrent:"Menu",
     description: "Tarifs Compétitifs",
 
-    groupTaps:[
-      { id:1,
-        href:"#tabs-1",
-        image: "tab-icon-01.png",
-        titre:"Boissons Chaudes",
-      },
-      { id:2,
-        href:"#tabs-2",
-        image: "tab-icon-02.png",
-        titre:"Boissons froides",
-      },
-      { id:3,
-        href:"#tabs-3",
-        image: "tab-icon-03.png",
-        titre:"Petit-déjeuner",
-      }
-    ],
-
     groupMenuLeftTaps01: [
       { id:1,
         image:"menu-1.jpg",

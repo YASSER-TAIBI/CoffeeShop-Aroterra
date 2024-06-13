@@ -1,5 +1,6 @@
 <!-- Page Header Start -->
-<div *ngIf="showPageHeader" class="container-fluid page-header mb-5 position-relative overlay-bottom">
+@if (showPageHeader){
+<div class="container-fluid page-header mb-5 position-relative overlay-bottom">
   <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
     <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase">{{menu.title}}</h1>
     <div class="d-inline-flex mb-lg-5">
@@ -9,6 +10,7 @@
     </div>
   </div>
 </div>
+}
 <!-- Page Header End -->
 
 <!-- Menu Start -->
@@ -34,283 +36,150 @@
                     </li>
                     }
                   </ul>
-
-<!--                  <div class="tab-buttons">-->
-<!--                    @for (tab of tabs; track tab){-->
-<!--                    <button (click)="selectTab(tab.id)" [class.active]="selectedTab === tab.id" class="tab-button">-->
-<!--                      <img src="tab.icon" alt="">{{ tab.name }}-->
-<!--                    </button>-->
-<!--                    }-->
                 </div>
               </div>
             </div>
           </div>
           <div class="col-lg-12">
             <section class='tabs-content'>
-              <article *ngIf="selectedTab === 'tabs-1'" id='tabs-1'>
+              @if (selectedTab === 'tabs-1'){
+              <article id='tabs-1'>
                 <div class="row">
                   <div class="col-lg-6">
                     <div class="row">
                       <div class="left-list">
+                        @for (grpMenuLeftTaps01 of menu.groupMenuLeftTaps01; track grpMenuLeftTaps01){
                         <div class="col-lg-12">
                           <div class="row align-items-center mb-5">
                             <div class="col-4 col-sm-3">
-                              <img class="w-100 rounded-circle mb-3 mb-sm-0" src="./assets/img/menu-1.jpg" alt="">
-                              <h5 class="menu-price">5€</h5>
+                              <img class="w-100 rounded-circle mb-3 mb-sm-0" src="./assets/img/{{grpMenuLeftTaps01.image}}" alt="">
+                              <h5 class="menu-price">{{ grpMenuLeftTaps01.price }}</h5>
                             </div>
                             <div class="col-8 col-sm-9">
-                              <h4>Café Noir</h4>
-                              <p class="m-0">Profitez d'un café noir riche et intense, parfait pour commencer votre journée avec énergie.</p>
+                              <h4>{{ grpMenuLeftTaps01.titre }}</h4>
+                              <p class="m-0">{{ grpMenuLeftTaps01.texte }}</p>
                             </div>
                           </div>
                         </div>
-                        <div class="col-lg-12">
-                          <div class="row align-items-center mb-5">
-                            <div class="col-4 col-sm-3">
-                              <img class="w-100 rounded-circle mb-3 mb-sm-0" src="./assets/img/menu-2.jpg" alt="">
-                              <h5 class="menu-price">7€</h5>
-                            </div>
-                            <div class="col-8 col-sm-9">
-                              <h4>Café au Chocolat</h4>
-                              <p class="m-0">Savourez la combinaison parfaite de café et de chocolat pour une expérience gourmande et réconfortante.</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-lg-12">
-                          <div class="row align-items-center mb-5">
-                            <div class="col-4 col-sm-3">
-                              <img class="w-100 rounded-circle mb-3 mb-sm-0" src="./assets/img/menu-3.jpg" alt="">
-                              <h5 class="menu-price">9€</h5>
-                            </div>
-                            <div class="col-8 col-sm-9">
-                              <h4>Café au Lait</h4>
-                              <p class="m-0">Un café crémeux et doux, parfait pour ceux qui aiment leur café avec une touche de lait.</p>
-                            </div>
-                          </div>
-                        </div>
+                        }
                       </div>
                     </div>
                   </div>
                   <div class="col-lg-6">
                     <div class="row">
                       <div class="right-list">
+                        @for (grpMenuRightTaps01 of menu.groupMenuRightTaps01; track grpMenuRightTaps01){
                         <div class="col-lg-12">
                           <div class="row align-items-center mb-5">
                             <div class="col-4 col-sm-3">
-                              <img class="w-100 rounded-circle mb-3 mb-sm-0" src="./assets/img/menu-2.jpg" alt="">
-                              <h5 class="menu-price">7€</h5>
+                              <img class="w-100 rounded-circle mb-3 mb-sm-0" src="./assets/img/{{ grpMenuRightTaps01.image }}" alt="">
+                              <h5 class="menu-price">{{ grpMenuRightTaps01.price }}</h5>
                             </div>
                             <div class="col-8 col-sm-9">
-                              <h4>Café au Chocolat</h4>
-                              <p class="m-0">Le mélange parfait de café et de chocolat, servi froid pour une pause gourmande et rafraîchissante.</p>
+                              <h4>{{ grpMenuRightTaps01.titre }}</h4>
+                              <p class="m-0">{{ grpMenuRightTaps01.texte }}</p>
                             </div>
                           </div>
                         </div>
-                        <div class="col-lg-12">
-                          <div class="row align-items-center mb-5">
-                            <div class="col-4 col-sm-3">
-                              <img class="w-100 rounded-circle mb-3 mb-sm-0" src="./assets/img/menu-3.jpg" alt="">
-                              <h5 class="menu-price">9€</h5>
-                            </div>
-                            <div class="col-8 col-sm-9">
-                              <h4>Café au Lait</h4>
-                              <p class="m-0">Un café froid crémeux, idéal pour les amateurs de café au lait qui souhaitent une boisson rafraîchissante.</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-lg-12">
-                          <div class="row align-items-center mb-5">
-                            <div class="col-4 col-sm-3">
-                              <img class="w-100 rounded-circle mb-3 mb-sm-0" src="./assets/img/menu-1.jpg" alt="">
-                              <h5 class="menu-price">5€</h5>
-                            </div>
-                            <div class="col-8 col-sm-9">
-                              <h4>Café Noir</h4>
-                              <p class="m-0">Un café noir rafraîchissant, parfait pour se désaltérer tout en profitant d'une saveur intense.</p>
-                            </div>
-                          </div>
-                        </div>
+                        }
                       </div>
                     </div>
                   </div>
                 </div>
               </article>
-              <article *ngIf="selectedTab === 'tabs-2'" id='tabs-2'>
+              }
+              @if (selectedTab === 'tabs-2'){
+              <article id='tabs-2'>
                 <div class="row">
                   <div class="col-lg-6">
                     <div class="row">
                       <div class="left-list">
+                        @for (grpMenuLeftTaps02 of menu.groupMenuLeftTaps02; track grpMenuLeftTaps02){
                         <div class="col-lg-12">
                           <div class="row align-items-center mb-5">
                             <div class="col-4 col-sm-3">
-                              <img class="w-100 rounded-circle mb-3 mb-sm-0" src="./assets/img/menu-3.jpg" alt="">
-                              <h5 class="menu-price">9€</h5>
+                              <img class="w-100 rounded-circle mb-3 mb-sm-0" src="./assets/img/{{grpMenuLeftTaps02.image}}" alt="">
+                              <h5 class="menu-price">{{grpMenuLeftTaps02.price}}</h5>
                             </div>
                             <div class="col-8 col-sm-9">
-                              <h4>Café au Lait</h4>
-                              <p class="m-0">Un café froid crémeux, idéal pour les amateurs de café au lait qui souhaitent une boisson rafraîchissante.</p>
+                              <h4>{{grpMenuLeftTaps02.titre}}</h4>
+                              <p class="m-0">{{grpMenuLeftTaps02.texte}}</p>
                             </div>
                           </div>
                         </div>
-                        <div class="col-lg-12">
-                          <div class="row align-items-center mb-5">
-                            <div class="col-4 col-sm-3">
-                              <img class="w-100 rounded-circle mb-3 mb-sm-0" src="./assets/img/menu-1.jpg" alt="">
-                              <h5 class="menu-price">5€</h5>
-                            </div>
-                            <div class="col-8 col-sm-9">
-                              <h4>Café Noir</h4>
-                              <p class="m-0">Un café noir rafraîchissant, parfait pour se désaltérer tout en profitant d'une saveur intense.</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-lg-12">
-                          <div class="row align-items-center mb-5">
-                            <div class="col-4 col-sm-3">
-                              <img class="w-100 rounded-circle mb-3 mb-sm-0" src="./assets/img/menu-2.jpg" alt="">
-                              <h5 class="menu-price">7€</h5>
-                            </div>
-                            <div class="col-8 col-sm-9">
-                              <h4>Café au Chocolat</h4>
-                              <p class="m-0">Le mélange parfait de café et de chocolat, servi froid pour une pause gourmande et rafraîchissante.</p>
-                            </div>
-                          </div>
-                        </div>
+                        }
                       </div>
                     </div>
                   </div>
                   <div class="col-lg-6">
                     <div class="row">
                       <div class="right-list">
+                        @for (grpMenuRightTaps02 of menu.groupMenuRightTaps02; track grpMenuRightTaps02){
                         <div class="col-lg-12">
                           <div class="row align-items-center mb-5">
                             <div class="col-4 col-sm-3">
-                              <img class="w-100 rounded-circle mb-3 mb-sm-0" src="./assets/img/menu-1.jpg" alt="">
-                              <h5 class="menu-price">5€</h5>
+                              <img class="w-100 rounded-circle mb-3 mb-sm-0" src="./assets/img/{{grpMenuRightTaps02.image}}" alt="">
+                              <h5 class="menu-price">{{grpMenuRightTaps02.price}}</h5>
                             </div>
                             <div class="col-8 col-sm-9">
-                              <h4>Café Noir</h4>
-                              <p class="m-0">Un café noir rafraîchissant, parfait pour se désaltérer tout en profitant d'une saveur intense.</p>
+                              <h4>{{grpMenuRightTaps02.titre}}</h4>
+                              <p class="m-0">{{grpMenuRightTaps02.texte}}</p>
                             </div>
                           </div>
                         </div>
-                        <div class="col-lg-12">
-                          <div class="row align-items-center mb-5">
-                            <div class="col-4 col-sm-3">
-                              <img class="w-100 rounded-circle mb-3 mb-sm-0" src="./assets/img/menu-3.jpg" alt="">
-                              <h5 class="menu-price">9€</h5>
-                            </div>
-                            <div class="col-8 col-sm-9">
-                              <h4>Café au Lait</h4>
-                              <p class="m-0">Un café froid crémeux, idéal pour les amateurs de café au lait qui souhaitent une boisson rafraîchissante.</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-lg-12">
-                          <div class="row align-items-center mb-5">
-                            <div class="col-4 col-sm-3">
-                              <img class="w-100 rounded-circle mb-3 mb-sm-0" src="./assets/img/menu-2.jpg" alt="">
-                              <h5 class="menu-price">7€</h5>
-                            </div>
-                            <div class="col-8 col-sm-9">
-                              <h4>Café au Chocolat</h4>
-                              <p class="m-0">Le mélange parfait de café et de chocolat, servi froid pour une pause gourmande et rafraîchissante.</p>
-                            </div>
-                          </div>
-                        </div>
+                        }
                       </div>
                     </div>
                   </div>
                 </div>
               </article>
-              <article *ngIf="selectedTab === 'tabs-3'" id='tabs-3'>
+              }
+              @if (selectedTab === 'tabs-3'){
+              <article id='tabs-3'>
                 <div class="row">
                   <div class="col-lg-6">
                     <div class="row">
                       <div class="left-list">
+                        @for (grpMenuLeftTaps03 of menu.groupMenuLeftTaps03; track grpMenuLeftTaps03){
                         <div class="col-lg-12">
                           <div class="row align-items-center mb-5">
                             <div class="col-4 col-sm-3">
-                              <img class="w-100 rounded-circle mb-3 mb-sm-0" src="./assets/img/menu-2.jpg" alt="">
-                              <h5 class="menu-price">7€</h5>
+                              <img class="w-100 rounded-circle mb-3 mb-sm-0" src="./assets/img/{{grpMenuLeftTaps03.image}}" alt="">
+                              <h5 class="menu-price">{{grpMenuLeftTaps03.price}}</h5>
                             </div>
                             <div class="col-8 col-sm-9">
-                              <h4>Café au Chocolat</h4>
-                              <p class="m-0">Le mélange parfait de café et de chocolat, servi froid pour une pause gourmande et rafraîchissante.</p>
+                              <h4>{{grpMenuLeftTaps03.titre}}</h4>
+                              <p class="m-0">{{grpMenuLeftTaps03.texte}}</p>
                             </div>
                           </div>
                         </div>
-                        <div class="col-lg-12">
-                          <div class="row align-items-center mb-5">
-                            <div class="col-4 col-sm-3">
-                              <img class="w-100 rounded-circle mb-3 mb-sm-0" src="./assets/img/menu-3.jpg" alt="">
-                              <h5 class="menu-price">9€</h5>
-                            </div>
-                            <div class="col-8 col-sm-9">
-                              <h4>Café au Lait</h4>
-                              <p class="m-0">Un café froid crémeux, idéal pour les amateurs de café au lait qui souhaitent une boisson rafraîchissante.</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-lg-12">
-                          <div class="row align-items-center mb-5">
-                            <div class="col-4 col-sm-3">
-                              <img class="w-100 rounded-circle mb-3 mb-sm-0" src="./assets/img/menu-1.jpg" alt="">
-                              <h5 class="menu-price">5€</h5>
-                            </div>
-                            <div class="col-8 col-sm-9">
-                              <h4>Café Noir</h4>
-                              <p class="m-0">Un café noir rafraîchissant, parfait pour se désaltérer tout en profitant d'une saveur intense.</p>
-                            </div>
-                          </div>
-                        </div>
+                        }
                       </div>
                     </div>
                   </div>
                   <div class="col-lg-6">
                     <div class="row">
                       <div class="right-list">
+                        @for (grpMenuRightTaps03 of menu.groupMenuRightTaps03; track grpMenuRightTaps03){
                         <div class="col-lg-12">
                           <div class="row align-items-center mb-5">
                             <div class="col-4 col-sm-3">
-                              <img class="w-100 rounded-circle mb-3 mb-sm-0" src="./assets/img/menu-2.jpg" alt="">
-                              <h5 class="menu-price">7€</h5>
+                              <img class="w-100 rounded-circle mb-3 mb-sm-0" src="./assets/img/{{grpMenuRightTaps03.image}}" alt="">
+                              <h5 class="menu-price">{{grpMenuRightTaps03.price}}</h5>
                             </div>
                             <div class="col-8 col-sm-9">
-                              <h4>Café au Chocolat</h4>
-                              <p class="m-0">Le mélange parfait de café et de chocolat, servi froid pour une pause gourmande et rafraîchissante.</p>
+                              <h4>{{grpMenuRightTaps03.titre}}</h4>
+                              <p class="m-0">{{grpMenuRightTaps03.texte}}</p>
                             </div>
                           </div>
                         </div>
-                        <div class="col-lg-12">
-                          <div class="row align-items-center mb-5">
-                            <div class="col-4 col-sm-3">
-                              <img class="w-100 rounded-circle mb-3 mb-sm-0" src="./assets/img/menu-1.jpg" alt="">
-                              <h5 class="menu-price">5€</h5>
-                            </div>
-                            <div class="col-8 col-sm-9">
-                              <h4>Café Noir</h4>
-                              <p class="m-0">Un café noir rafraîchissant, parfait pour se désaltérer tout en profitant d'une saveur intense.</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-lg-12">
-                          <div class="row align-items-center mb-5">
-                            <div class="col-4 col-sm-3">
-                              <img class="w-100 rounded-circle mb-3 mb-sm-0" src="./assets/img/menu-3.jpg" alt="">
-                              <h5 class="menu-price">9€</h5>
-                            </div>
-                            <div class="col-8 col-sm-9">
-                              <h4>Café au Lait</h4>
-                              <p class="m-0">Un café froid crémeux, idéal pour les amateurs de café au lait qui souhaitent une boisson rafraîchissante.</p>
-                            </div>
-                          </div>
-                        </div>
+                        }
                       </div>
                     </div>
                   </div>
                 </div>
               </article>
+              }
             </section>
           </div>
         </div>
