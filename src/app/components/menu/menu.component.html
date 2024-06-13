@@ -1,22 +1,22 @@
 <!-- Page Header Start -->
 <div *ngIf="showPageHeader" class="container-fluid page-header mb-5 position-relative overlay-bottom">
   <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
-    <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase">Menu & Tarifs</h1>
+    <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase">{{menu.title}}</h1>
     <div class="d-inline-flex mb-lg-5">
-      <p class="m-0 text-white"><a class="text-white" href="">Accueil</a></p>
+      <p class="m-0 text-white"><a class="text-white" href="">{{menu.urlPrevious}}</a></p>
       <p class="m-0 text-white px-2">/</p>
-      <p class="m-0 text-white">Menu & Tarifs</p>
+      <p class="m-0 text-white">{{menu.urlCurrent}}</p>
     </div>
   </div>
 </div>
 <!-- Page Header End -->
 
 <!-- Menu Start -->
-<div class="container-fluid pt-5" id="menu">
+<div class="container-fluid pt-5">
   <div class="container">
     <div class="section-title">
-      <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">Menu & Tarifs</h4>
-      <h1 class="display-4">Tarifs Compétitifs</h1>
+      <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">{{menu.title}}</h4>
+      <h1 class="display-4">{{menu.description}}</h1>
     </div>
     <div class="row">
       <div class="col-lg-12">
@@ -26,17 +26,28 @@
               <div class="row">
                 <div class="col-lg-6 offset-lg-3">
                   <ul>
-                    <li><a href='#tabs-1'><img src="./assets/img/tab-icon-01.png" alt="">Boissons Chaudes</a></li>
-                    <li><a href='#tabs-2'><img src="./assets/img/tab-icon-02.png" alt="">Boissons froides</a></li>
-                    <li><a href='#tabs-3'><img src="./assets/img/tab-icon-03.png" alt="">Petit-déjeuner</a></li>
+                    @for (tab of tabs; track tab){
+                    <li (click)="selectTab(tab.id)" [class.active]="selectedTab === tab.id">
+                      <a href="javascript:void(0)">
+                        <img [src]="tab.icon" alt="">{{ tab.name }}
+                      </a>
+                    </li>
+                    }
                   </ul>
+
+<!--                  <div class="tab-buttons">-->
+<!--                    @for (tab of tabs; track tab){-->
+<!--                    <button (click)="selectTab(tab.id)" [class.active]="selectedTab === tab.id" class="tab-button">-->
+<!--                      <img src="tab.icon" alt="">{{ tab.name }}-->
+<!--                    </button>-->
+<!--                    }-->
                 </div>
               </div>
             </div>
           </div>
           <div class="col-lg-12">
             <section class='tabs-content'>
-              <article id='tabs-1'>
+              <article *ngIf="selectedTab === 'tabs-1'" id='tabs-1'>
                 <div class="row">
                   <div class="col-lg-6">
                     <div class="row">
@@ -124,7 +135,7 @@
                   </div>
                 </div>
               </article>
-              <article id='tabs-2'>
+              <article *ngIf="selectedTab === 'tabs-2'" id='tabs-2'>
                 <div class="row">
                   <div class="col-lg-6">
                     <div class="row">
@@ -212,7 +223,7 @@
                   </div>
                 </div>
               </article>
-              <article id='tabs-3'>
+              <article *ngIf="selectedTab === 'tabs-3'" id='tabs-3'>
                 <div class="row">
                   <div class="col-lg-6">
                     <div class="row">
