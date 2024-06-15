@@ -2,11 +2,11 @@
 @if(showPageHeader){
 <div class="container-fluid page-header mb-5 position-relative overlay-bottom">
   <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
-    <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase">Réservation en ligne</h1>
+    <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase">{{reservation.title}}</h1>
     <div class="d-inline-flex mb-lg-5">
-      <p class="m-0 text-white"><a class="text-white" href="">Accueil</a></p>
+      <p class="m-0 text-white"><a class="text-white" href="">{{ reservation.urlPrevious }}</a></p>
       <p class="m-0 text-white px-2">/</p>
-      <p class="m-0 text-white">Réservation en ligne</p>
+      <p class="m-0 text-white">{{reservation.urlCurrent}}</p>
     </div>
   </div>
 </div>
@@ -21,44 +21,44 @@
         <div class="col-lg-6 my-5 my-lg-0">
           <div class="p-5">
             <div class="mb-4">
-              <h1 class="display-3 text-primary">30% DE RÉDUCTION</h1>
-              <h1 class="text-white">Pour les réservations en ligne</h1>
+              <h1 class="display-3 text-primary">{{reservation.reductionTitre}}</h1>
+              <h1 class="text-white">{{reservation.reductionDetail}}</h1>
             </div>
-            <p class="text-white">Profitez de notre offre exclusive pour les réservations en ligne. Réservez dès maintenant et bénéficiez de 30% de réduction sur votre table.</p>
+            <p class="text-white">{{reservation.reductionTexte}}</p>
             <ul class="list-inline text-white m-0">
-              <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Réduction exclusive</li>
-              <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Réservation facile et rapide</li>
-              <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Confort garanti</li>
+              @for (reducPoint of reservation.reductionPoint; track reducPoint){
+              <li class="py-2"><i class="fa {{reducPoint.icon}} text-primary mr-3"></i>{{reducPoint.point}}</li>
+              }
             </ul>
           </div>
         </div>
         <div class="col-lg-6">
           <div class="text-center p-5" style="background: rgba(51, 33, 29, .8);">
-            <h1 class="text-white mb-4 mt-5">Réservez votre table</h1>
+            <h1 class="text-white mb-4 mt-5">{{reservation.titreForm}}</h1>
             <form (ngSubmit)="onSubmit()" #reservationForm="ngForm" class="mb-5">
               <div class="form-group">
-                <input type="text" name="name" [(ngModel)]="formData.name" class="form-control bg-transparent border-primary p-4" placeholder="Nom" required />
+                <input type="text" name="name" [(ngModel)]="formData.name" class="form-control bg-transparent border-primary p-4" placeholder="{{reservation.nomForm}}" required />
               </div>
               <div class="form-group">
-                <input type="email" name="email" [(ngModel)]="formData.email" class="form-control bg-transparent border-primary p-4" placeholder="Email" required />
+                <input type="email" name="email" [(ngModel)]="formData.email" class="form-control bg-transparent border-primary p-4" placeholder="{{reservation.emailForm}}" required />
               </div>
               <div class="form-group">
                 <div class="date" id="date" data-target-input="nearest">
-                  <input type="text" name="date" [(ngModel)]="formData.date" placeholder="Date" class="form-control bg-transparent border-primary p-4 datetimepicker-input" data-toggle="datetimepicker"/>
+                  <input type="text" name="date" [(ngModel)]="model" placeholder="{{reservation.dateForm}}" class="form-control bg-transparent border-primary p-4" ngbDatepicker #d="ngbDatepicker"/>
+                  <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()" type="button"></button>
                 </div>
               </div>
               <div class="form-group">
                 <div class="time" id="time" data-target-input="nearest">
-                  <input type="text" name="time" [(ngModel)]="formData.time" placeholder="Heure" class="form-control bg-transparent border-primary p-4 datetimepicker-input" data-toggle="datetimepicker"/>
+                  <input type="text" name="time" [(ngModel)]="formData.time" placeholder="{{reservation.heureForm}}" class="form-control bg-transparent border-primary p-4 datetimepicker-input" data-toggle="datetimepicker"/>
                 </div>
               </div>
               <div class="form-group">
                 <select name="people" [(ngModel)]="formData.people" class="custom-select bg-transparent border-primary px-4" style="height: 49px;">
-                  <option value="" selected disabled>Personne</option>
-                  <option value="1">1 Personne</option>
-                  <option value="2">2 Personnes</option>
-                  <option value="3">3 Personnes</option>
-                  <option value="4">4 Personnes</option>
+                  <option value="" selected disabled>{{reservation.personneForm}}</option>
+                  @for (persOption of reservation.personneOption; track persOption){
+                  <option value="{{persOption.id}}">{{ persOption.texte }}</option>
+                  }
                 </select>
               </div>
               <div>
