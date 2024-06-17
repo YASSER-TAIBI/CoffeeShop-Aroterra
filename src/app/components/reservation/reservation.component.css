@@ -1,0 +1,17 @@
+.ngb-tp-input {
+  border-color: #DA9F5B !important;
+  background-color: transparent !important;
+}
+ngb-timepicker {
+  font-size: 3rem  !important;
+}
+
+.ngb-tp {
+  height: 90px;
+  justify-content: center;
+}
+
+.ngb-tp-spacer {
+  font-size: x-large;
+  color: #fff;
+}

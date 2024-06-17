@@ -1,7 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, ViewEncapsulation } from '@angular/core';
 import {NgIf} from "@angular/common";
 import {FormsModule} from "@angular/forms";
-import { NgbDatepickerModule, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDatepickerModule, NgbDateStruct, NgbTimepickerModule, NgbTimeStruct } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-reservation',
@@ -9,10 +9,12 @@ import { NgbDatepickerModule, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     NgIf,
     FormsModule,
-    NgbDatepickerModule
+    NgbDatepickerModule,
+    NgbTimepickerModule
   ],
   templateUrl: './reservation.component.html',
-  styleUrl: './reservation.component.css'
+  styleUrl: './reservation.component.css',
+  encapsulation: ViewEncapsulation.None
 })
 export class ReservationComponent {
 
@@ -44,13 +46,12 @@ export class ReservationComponent {
     ]
 
   }
-model: NgbDateStruct | undefined;
 
   formData = {
     name: '',
     email: '',
-    date:  '',
-    time: '',
+    date: null as NgbDateStruct | null,
+    time: { hour: 13, minute: 30 },
     people: ''
   };
 

@@ -44,13 +44,12 @@
               </div>
               <div class="form-group">
                 <div class="date" id="date" data-target-input="nearest">
-                  <input type="text" name="date" [(ngModel)]="model" placeholder="{{reservation.dateForm}}" class="form-control bg-transparent border-primary p-4" ngbDatepicker #d="ngbDatepicker"/>
-                  <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()" type="button"></button>
+                  <input type="text" name="date" [(ngModel)]="formData.date" placeholder="{{reservation.dateForm}}" (click)="d.toggle()" class="form-control bg-transparent border-primary p-4" ngbDatepicker #d="ngbDatepicker"/>
                 </div>
               </div>
               <div class="form-group">
                 <div class="time" id="time" data-target-input="nearest">
-                  <input type="text" name="time" [(ngModel)]="formData.time" placeholder="{{reservation.heureForm}}" class="form-control bg-transparent border-primary p-4 datetimepicker-input" data-toggle="datetimepicker"/>
+                  <ngb-timepicker [(ngModel)]="formData.time" name="time" class="form-control-timepicker"/>
                 </div>
               </div>
               <div class="form-group">
