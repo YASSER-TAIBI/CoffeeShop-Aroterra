@@ -2,11 +2,11 @@
 @if (showPageHeader){
 <div class="container-fluid page-header mb-5 position-relative overlay-bottom">
   <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
-    <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase">Nous Contacter</h1>
+    <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase">{{ contact.title }}</h1>
     <div class="d-inline-flex mb-lg-5">
-      <p class="m-0 text-white"><a class="text-white" href="">Accueil</a></p>
+      <p class="m-0 text-white"><a class="text-white" href="">{{ contact.urlPrevious }}</a></p>
       <p class="m-0 text-white px-2">/</p>
-      <p class="m-0 text-white">Nous Contacter</p>
+      <p class="m-0 text-white">{{ contact.urlCurrent }}</p>
     </div>
   </div>
 </div>
@@ -17,24 +17,24 @@
 <div class="container-fluid pt-5" id="contact">
   <div class="container">
     <div class="section-title">
-      <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">Nous Contacter</h4>
-      <h1 class="display-4">N'hésitez pas à nous contacter</h1>
+      <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">{{ contact.title }}</h4>
+      <h1 class="display-4">{{ contact.description }}</h1>
     </div>
     <div class="row px-3 pb-2">
       <div class="col-sm-4 text-center mb-3">
         <i class="fa fa-2x fa-map-marker-alt mb-3 text-primary"></i>
-        <h4 class="font-weight-bold">Adresse</h4>
-        <p>131 Rue Antoine Charial, 69003 Lyon</p>
+        <h4 class="font-weight-bold">{{ contact.titleAdresse }}</h4>
+        <p>{{ contact.detailAdresse }}</p>
       </div>
       <div class="col-sm-4 text-center mb-3">
         <i class="fa fa-2x fa-phone-alt mb-3 text-primary"></i>
-        <h4 class="font-weight-bold">Téléphone</h4>
-        <p>+33 768 13 20 16</p>
+        <h4 class="font-weight-bold">{{ contact.titleTel }}</h4>
+        <p>{{ contact.detailTel }}</p>
       </div>
       <div class="col-sm-4 text-center mb-3">
         <i class="far fa-2x fa-envelope mb-3 text-primary"></i>
-        <h4 class="font-weight-bold">Email</h4>
-        <p>yasser.taibi.19&#64;gmail.com</p>
+        <h4 class="font-weight-bold">{{ contact.titleEmail }}</h4>
+        <p>{{ contact.detailEmail }}</p>
       </div>
     </div>
     <div class="row">
@@ -44,31 +44,29 @@
       <div class="col-md-6 pb-5">
         <div class="contact-form">
           <div id="success"></div>
-          <form name="sentMessage" id="contactForm" novalidate="novalidate">
+          <form (ngSubmit)="onSubmit()" #contactForm="ngForm" name="sentMessage" novalidate="novalidate">
             <div class="control-group">
-              <input type="text" class="form-control bg-transparent p-4" id="c-name" placeholder="Votre Nom"
+              <input type="text" name="name" [(ngModel)]="formData.name" #name="ngModel" class="form-control bg-transparent p-4" placeholder="{{contact.nomForm}}"
                      required="required" data-validation-required-message="Veuillez entrer votre nom" />
               <p class="help-block text-danger"></p>
             </div>
             <div class="control-group">
-              <input type="email" class="form-control bg-transparent p-4" id="c-email" placeholder="Votre Email"
+              <input type="email" name="email" [(ngModel)]="formData.email" #email="ngModel" class="form-control bg-transparent p-4" placeholder="{{contact.emailForm}}"
                      required="required" data-validation-required-message="Veuillez entrer votre email" />
               <p class="help-block text-danger"></p>
             </div>
             <div class="control-group">
-              <input type="text" class="form-control bg-transparent p-4" id="c-subject" placeholder="Sujet"
+              <input type="text" name="email" [(ngModel)]="formData.subject" #subject="ngModel" class="form-control bg-transparent p-4"  placeholder="{{contact.subjectForm}}"
                      required="required" data-validation-required-message="Veuillez entrer un sujet" />
               <p class="help-block text-danger"></p>
             </div>
             <div class="control-group">
-                                <textarea class="form-control bg-transparent py-3 px-4" rows="5" id="c-message" placeholder="Message"
-                                          required="required"
-                                          data-validation-required-message="Veuillez entrer votre message"></textarea>
+              <textarea name="email" [(ngModel)]="formData.message"  #message="ngModel" class="form-control bg-transparent py-3 px-4" rows="5" placeholder="{{contact.messageForm}}"
+                        required="required" data-validation-required-message="Veuillez entrer votre message"></textarea>
               <p class="help-block text-danger"></p>
             </div>
             <div>
-              <button class="btn btn-primary font-weight-bold py-3 px-5" type="submit" id="sendMessageButton">Envoyer
-                le Message</button>
+              <button class="btn btn-primary font-weight-bold py-3 px-5" type="submit" >Envoyer le Message</button>
             </div>
           </form>
         </div>

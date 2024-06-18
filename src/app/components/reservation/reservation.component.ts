@@ -57,6 +57,5 @@ export class ReservationComponent {
 
   onSubmit(): void {
     console.log('Form Submitted', this.formData);
-    // Vous pouvez ajouter ici le code pour envoyer les données au serveur
   }
 }
