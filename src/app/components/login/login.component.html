@@ -1,0 +1,42 @@
+<!-- Page Header Start -->
+@if (showPageHeader){
+  <div class="container-fluid page-header mb-5 position-relative overlay-bottom">
+    <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
+      <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase">{{ login.title }}</h1>
+      <div class="d-inline-flex mb-lg-5">
+        <p class="m-0 text-white"><a class="text-white" href="">{{ login.urlPrevious }}</a></p>
+        <p class="m-0 text-white px-2">/</p>
+        <p class="m-0 text-white">{{ login.urlCurrent }}</p>
+      </div>
+    </div>
+  </div>
+}
+<!-- Page Header End -->
+
+<div class="container-fluid pt-5" id="contact">
+  <div class="container">
+    <div class="section-title">
+      <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">{{ login.title }}</h4>
+      <h1 class="display-4">{{ login.description }}</h1>
+    </div>
+<div class="parent">
+  <div class="login-container">
+    <div class="login-box">
+      <form action="#">
+        <div class="input-box">
+          <input type="email" [(ngModel)]="loginObj.EmailId" name="EmailId" required>
+          <label>Email</label>
+        </div>
+        <div class="input-box">
+          <input type="password" [(ngModel)]="loginObj.Password" name="Password" required>
+          <label>Password</label>
+        </div>
+
+        <button type="button" class="btn" (click)="onLogin()" >Login</button>
+
+      </form>
+    </div>
+  </div>
+</div>
+  </div>
+</div>

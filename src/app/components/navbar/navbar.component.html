@@ -4,7 +4,7 @@
     <a routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page" class="navbar-brand px-lg-4 m-0">
       <img src="./assets/img/logo.png" alt="ARÔTERRA Logo" class="img-fluid logo">
     </a>
-    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse" >
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
@@ -16,12 +16,12 @@
         <a routerLink="/reservation" routerLinkActive="active" ariaCurrentWhenActive="page" class="nav-item nav-link">Réservation</a>
 <!--        <a routerLink="/testimonial" routerLinkActive="active" ariaCurrentWhenActive="page" class="nav-item nav-link">Témoignages</a>-->
         <a routerLink="/contact" routerLinkActive="active" ariaCurrentWhenActive="page" class="nav-item nav-link">Contact</a>
-      </div>
-    </div>
-      <div class="navbar-nav m1-auto p-4">
-          <a href="#"><span class="user_icon"><i class="fa fa-user" aria-hidden="true"></i></span>Login</a>
-      </div>
-  </nav>
-</div>
+        <a routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page" class="nav-item nav-link login-nav-link" >
+          <span class="user_icon"><i class="fa fa-user" aria-hidden="true"></i></span>Login
+        </a>
+         </div>
+       </div>
+     </nav>
+   </div>
 
-<!-- Navbar End -->
+   <!-- Navbar End -->

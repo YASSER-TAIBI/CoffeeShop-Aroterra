@@ -15,3 +15,11 @@ ngb-timepicker {
   font-size: x-large;
   color: #fff;
 }
+
+.ngb-tp-input-container{
+  button{
+    .visually-hidden{
+      display: none;
+    }
+  }
+}
