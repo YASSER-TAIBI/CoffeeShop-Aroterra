@@ -22,17 +22,17 @@
 <div class="parent">
   <div class="login-container">
     <div class="login-box">
-      <form action="#">
+      <form (submit)="onLogin()">
         <div class="input-box">
-          <input type="email" [(ngModel)]="loginObj.EmailId" name="EmailId" required>
-          <label>Email</label>
+          <input type="email" id="username" [(ngModel)]="username" name="username" required>
+          <label for="username">Email</label>
         </div>
         <div class="input-box">
-          <input type="password" [(ngModel)]="loginObj.Password" name="Password" required>
-          <label>Password</label>
+          <input type="password"  id="password" [(ngModel)]="password" name="password" required>
+          <label for="password">Password</label>
         </div>
 
-        <button type="button" class="btn" (click)="onLogin()" >Login</button>
+        <button type="submit" class="btn" >Login</button>
 
       </form>
     </div>
