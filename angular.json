@@ -25,14 +25,12 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/assets/lib/owlcarousel/assets/owl.carousel.min.css",
               "src/assets/css/style.min.css",
               "src/assets/css/style.css",
               "src/styles.css"
             ],
             "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
               "src/assets/lib/owlcarousel/owl.carousel.min.js",
               "src/assets/js/main.js"
             ]

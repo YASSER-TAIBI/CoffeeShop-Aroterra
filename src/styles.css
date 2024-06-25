@@ -89,15 +89,18 @@ h4,
   z-index: 9;
 }
 
-@media (max-width: 993px) {
+@media (max-width: 992px) {
   .container-fluid.nav-bar,
   .nav-bar.container-sm,
   .nav-bar.container-md,
   .nav-bar.container-1g,
-  .nav-bar.container-x1
-  {
+  .nav-bar.container-x1 {
     position: relative;
     background: #33211D;
+
+    .login-nav-link {
+      padding-left: 12px !important;
+    }
   }
 }
 
@@ -106,17 +109,35 @@ h4,
   padding-top: 0.5rem !important;
 }
 
+.p-4{
+  padding: 0.5rem !important;
+}
+
 .navbar-dark .navbar-nav .nav-link {
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 12px;
+  padding-right: 12px;
   font-weight: bold;
   letter-spacing: 1px;
   color: #FFFBF2;
+  font-size: 16px !important;
 }
 
 .navbar-dark .navbar-nav .nav-link:hover,
 .navbar-dark .navbar-nav .nav-link:active {
   color: #DA9F5B;
+}
+
+.login-nav-link {
+  color: #DA9F5B !important;
+  padding-left: 40px !important;
+
+  .user_icon{
+    padding-right: 10px;
+  }
+}
+
+.login-nav-link:hover {
+  color: #FFFFFF; /* Couleur rouge foncé au survol */
 }
 
 .overlay-top::before,
