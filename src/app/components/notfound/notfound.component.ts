@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
+import {FooterComponent} from "../footer/footer.component";
+import {NavbarComponent} from "../navbar/navbar.component";
 
 @Component({
   selector: 'app-notfound',
@@ -7,7 +9,9 @@ import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
   imports: [
     RouterLink,
     RouterLinkActive,
-    RouterOutlet
+    RouterOutlet,
+    FooterComponent,
+    NavbarComponent
   ],
   templateUrl: './notfound.component.html',
   styleUrl: './notfound.component.css'

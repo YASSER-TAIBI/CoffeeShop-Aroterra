@@ -2,6 +2,8 @@ import {Component, Input, ViewEncapsulation } from '@angular/core';
 import {NgIf} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import { NgbDatepickerModule, NgbDateStruct, NgbTimepickerModule, NgbTimeStruct } from '@ng-bootstrap/ng-bootstrap';
+import {NavbarComponent} from "../navbar/navbar.component";
+import {FooterComponent} from "../footer/footer.component";
 
 @Component({
   selector: 'app-reservation',
@@ -10,7 +12,9 @@ import { NgbDatepickerModule, NgbDateStruct, NgbTimepickerModule, NgbTimeStruct 
     NgIf,
     FormsModule,
     NgbDatepickerModule,
-    NgbTimepickerModule
+    NgbTimepickerModule,
+    NavbarComponent,
+    FooterComponent
   ],
   templateUrl: './reservation.component.html',
   styleUrl: './reservation.component.css',

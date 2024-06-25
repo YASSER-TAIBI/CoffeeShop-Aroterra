@@ -10,10 +10,8 @@ export class AuthService {
   constructor(private router: Router) { }
 
   login(username: string, password: string): boolean {
-    // Implémentez votre logique de connexion ici
     if (username === 'admin@admin.com' && password === 'admin') {
       this.isAuthenticated = true;
-     // this.router.navigate(['/dashboard']);
       return true;
     }
     return false;

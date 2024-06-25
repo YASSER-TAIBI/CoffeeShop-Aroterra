@@ -2,13 +2,17 @@ import {Component, Input, ViewChild } from '@angular/core';
 import {NgIf} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import { NgForm } from '@angular/forms';
+import {NavbarComponent} from "../navbar/navbar.component";
+import {FooterComponent} from "../footer/footer.component";
 
 @Component({
   selector: 'app-contact',
   standalone: true,
   imports: [
     NgIf,
-    FormsModule
+    FormsModule,
+    NavbarComponent,
+    FooterComponent
   ],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css'

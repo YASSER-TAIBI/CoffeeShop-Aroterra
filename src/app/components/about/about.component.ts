@@ -1,11 +1,15 @@
 import { Component, Input } from '@angular/core';
 import {NgIf} from "@angular/common";
+import {NavbarComponent} from "../navbar/navbar.component";
+import {FooterComponent} from "../footer/footer.component";
 
 @Component({
   selector: 'app-about',
   standalone: true,
   imports: [
-    NgIf
+    NgIf,
+    NavbarComponent,
+    FooterComponent
   ],
   templateUrl: './about.component.html',
   styleUrl: './about.component.css'

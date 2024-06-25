@@ -6,6 +6,8 @@ import {ReservationComponent} from "../reservation/reservation.component";
 import {MenuComponent} from "../menu/menu.component";
 import {OfferComponent} from "../offer/offer.component";
 import {ServiceComponent} from "../service/service.component";
+import {FooterComponent} from "../footer/footer.component";
+import {NavbarComponent} from "../navbar/navbar.component";
 
 @Component({
   selector: 'app-carousel',
@@ -17,7 +19,9 @@ import {ServiceComponent} from "../service/service.component";
     ReservationComponent,
     MenuComponent,
     OfferComponent,
-    ServiceComponent
+    ServiceComponent,
+    FooterComponent,
+    NavbarComponent
   ],
   templateUrl: './carousel.component.html',
   styleUrl: './carousel.component.css'
