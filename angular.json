@@ -28,7 +28,8 @@
               "src/assets/lib/owlcarousel/assets/owl.carousel.min.css",
               "src/assets/css/style.min.css",
               "src/assets/css/style.css",
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/css/admin-styles.css"
             ],
             "scripts": [
               "src/assets/lib/owlcarousel/owl.carousel.min.js",

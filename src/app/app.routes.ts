@@ -9,7 +9,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { TestimonialComponent } from './components/testimonial/testimonial.component';
 import {NotfoundComponent} from "./components/notfound/notfound.component";
 import {LoginComponent} from "./components/login/login.component";
-import { AuthGuard } from './auth/auth.guard';
+import {AuthGuard} from './auth/auth.guard';
 import {ComponentsAdminComponent} from "./components-admin/components-admin.component";
 import {FULL_ROUTES} from "./routes/full-layout.routes";
 

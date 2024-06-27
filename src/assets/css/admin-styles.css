@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  --grey: #F1F0F6;
+  --dark-grey: #8D8D8D;
+  --light: #fff;
+  --dark: #000;
+  --green: #81D43A;
+  --light-green: #E3FFCB;
+  --blue: #1775F1;
+  --light-blue: #D0E4FF;
+  --dark-blue: #0C5FCD;
+  --red: #FC3B56;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+
+/* CONTENT */
+#content {
+  position: relative;
+  width: calc(100% - 260px);
+  left: 260px;
+  transition: all .3s ease;
+}
+#sidebar.hide + #content {
+  width: calc(100% - 60px);
+  left: 60px;
+}
+/* CONTENT */
+
+
+
+
+
+
+@media screen and (max-width: 768px) {
+  #content {
+    position: relative;
+    width: calc(100% - 60px);
+    transition: all .3s ease;
+  }
+  nav .nav-link,
+  nav .divider {
+    display: none;
+  }
+}
