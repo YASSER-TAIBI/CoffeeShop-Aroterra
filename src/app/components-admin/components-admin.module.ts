@@ -24,12 +24,4 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     DashboardComponent
   ],
 })
-export class ComponentsAdminModule implements OnInit {
-
-
-  ngOnInit(): void {
-
-  }
-
-
-}
+export class ComponentsAdminModule {}
