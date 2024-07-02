@@ -3,6 +3,6 @@ import { Routes } from '@angular/router';
 
 export const FULL_ROUTES: Routes = [
 
-  { path: 'dashboard', loadChildren: () => import('../components-admin/dashboard/dashboard.module').then(m => m.DashboardModule) },
+  { title: "ARÔTERRA | Dashboard", path: 'dashboard', loadChildren: () => import('../components-admin/dashboard/dashboard.module').then(m => m.DashboardModule) },
 
 ]
