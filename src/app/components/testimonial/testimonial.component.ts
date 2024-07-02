@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, ViewEncapsulation} from '@angular/core';
 import {NgIf} from "@angular/common";
 
 @Component({
@@ -8,7 +8,8 @@ import {NgIf} from "@angular/common";
     NgIf
   ],
   templateUrl: './testimonial.component.html',
-  styleUrl: './testimonial.component.css'
+  styleUrls: ['./testimonial.component.css', '../../../assets/css/style.css', '../../../assets/css/style.min.css' ],
+  encapsulation: ViewEncapsulation.None,
 })
 export class TestimonialComponent {
 

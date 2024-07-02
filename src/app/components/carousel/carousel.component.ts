@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 import {AboutComponent} from "../about/about.component";
 import {ContactComponent} from "../contact/contact.component";
 import {TestimonialComponent} from "../testimonial/testimonial.component";
@@ -24,7 +24,8 @@ import {NavbarComponent} from "../navbar/navbar.component";
     NavbarComponent
   ],
   templateUrl: './carousel.component.html',
-  styleUrl: './carousel.component.css'
+  styleUrls: ['./carousel.component.css', '../../../assets/css/style.css', '../../../assets/css/style.min.css' ],
+  encapsulation: ViewEncapsulation.None,
 })
 export class CarouselComponent {
 

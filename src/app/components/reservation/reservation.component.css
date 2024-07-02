@@ -8,7 +8,7 @@ ngb-timepicker {
 
 .ngb-tp {
   height: 90px;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .ngb-tp-spacer {

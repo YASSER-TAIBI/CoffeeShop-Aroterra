@@ -1,4 +1,4 @@
-import {Component, Input, ViewChild } from '@angular/core';
+import {Component, Input, ViewChild, ViewEncapsulation} from '@angular/core';
 import {NgIf} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import { NgForm } from '@angular/forms';
@@ -15,7 +15,8 @@ import {FooterComponent} from "../footer/footer.component";
     FooterComponent
   ],
   templateUrl: './contact.component.html',
-  styleUrl: './contact.component.css'
+  styleUrls: ['./contact.component.css', '../../../assets/css/style.css', '../../../assets/css/style.min.css' ],
+  encapsulation: ViewEncapsulation.None,
 })
 export class ContactComponent {
 

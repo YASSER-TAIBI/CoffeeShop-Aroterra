@@ -17,8 +17,8 @@ import {FooterComponent} from "../footer/footer.component";
     FooterComponent
   ],
   templateUrl: './reservation.component.html',
-  styleUrl: './reservation.component.css',
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./reservation.component.css', '../../../assets/css/style.css', "../../../assets/css/style.min.css"],
+  encapsulation: ViewEncapsulation.None,
 })
 export class ReservationComponent {
 

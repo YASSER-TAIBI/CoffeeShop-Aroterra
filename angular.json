@@ -25,8 +25,10 @@
               "src/assets"
             ],
             "styles": [
+              "src/styles.css",
+              "src/assets/css/style.css",
               "src/assets/css/style.min.css",
-              "src/assets/css/style.css"
+              "src/assets/css/admin-styles.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
@@ -89,7 +91,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/app/assets/css/style.css",
+              "src/assets/css/style.min.css",
+              "src/app/assets/css/admin-styles.css"
             ],
             "scripts": []
           }

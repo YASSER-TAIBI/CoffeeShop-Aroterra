@@ -92,11 +92,11 @@ p {
 abbr[title],
 abbr[data-original-title] {
   text-decoration: underline;
-  -webkit-text-decoration: underline dotted;
-  text-decoration: underline dotted;
+  /*-webkit-text-decoration: underline dotted;*/
+  /*text-decoration: underline dotted;*/
   cursor: help;
   border-bottom: 0;
-  -webkit-text-decoration-skip-ink: none;
+  /*-webkit-text-decoration-skip-ink: none;*/
   text-decoration-skip-ink: none;
 }
 
@@ -4623,7 +4623,7 @@ input[type="button"].btn-block {
     margin-left: -0.75rem;
   }
   .card-deck .card {
-    flex: 1 0 0%;
+    flex: 1 0 0;
     margin-right: 0.75rem;
     margin-bottom: 0;
     margin-left: 0.75rem;
@@ -4640,7 +4640,7 @@ input[type="button"].btn-block {
     flex-flow: row wrap;
   }
   .card-group > .card {
-    flex: 1 0 0%;
+    flex: 1 0 0;
     margin-bottom: 0;
   }
   .card-group > .card + .card {
@@ -5711,8 +5711,8 @@ a.close.disabled {
 
 .modal-dialog-centered::before {
   display: block;
-  height: calc(100vh - 1rem);
-  height: min-content;
+  /*height: calc(100vh - 1rem);*/
+  /*height: min-content;*/
   content: "";
 }
 
@@ -5825,8 +5825,8 @@ a.close.disabled {
     min-height: calc(100% - 3.5rem);
   }
   .modal-dialog-centered::before {
-    height: calc(100vh - 3.5rem);
-    height: min-content;
+    /*height: calc(100vh - 3.5rem);*/
+    /*height: min-content;*/
   }
   .modal-sm {
     max-width: 300px;
@@ -5855,8 +5855,8 @@ a.close.disabled {
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
-  text-align: left;
-  text-align: start;
+  /*text-align: left;*/
+  /*text-align: start;*/
   text-decoration: none;
   text-shadow: none;
   text-transform: none;
@@ -5968,8 +5968,8 @@ a.close.disabled {
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
-  text-align: left;
-  text-align: start;
+  /*text-align: left;*/
+  /*text-align: start;*/
   text-decoration: none;
   text-shadow: none;
   text-transform: none;
@@ -10129,7 +10129,7 @@ a:focus {
   border: 0;
   font-weight: 900;
   content: '\f105';
-  font-family: 'Font Awesome 5 Free';
+  /*font-family: 'Font Awesome 5 Free';*/
 }
 
 .sidebar .nav-item.dropdown.show .dropdown-toggle::after,
@@ -10411,7 +10411,7 @@ a:focus {
 .sidebar #sidebarToggle::after {
   font-weight: 900;
   content: '\f104';
-  font-family: 'Font Awesome 5 Free';
+  /*font-family: 'Font Awesome 5 Free';*/
   margin-right: 0.1rem;
 }
 
@@ -10430,7 +10430,7 @@ a:focus {
 
 .sidebar.toggled #sidebarToggle::after {
   content: '\f105';
-  font-family: 'Font Awesome 5 Free';
+  /*font-family: 'Font Awesome 5 Free';*/
   margin-left: 0.25rem;
 }
 
@@ -10526,7 +10526,7 @@ a:focus {
     width: 100%;
     text-align: left;
     padding: 1rem;
-    width: 14rem;
+    /*width: 14rem;*/
   }
   .sidebar .nav-item .nav-link i {
     font-size: 0.85rem;
@@ -10544,7 +10544,7 @@ a:focus {
     border: 0;
     font-weight: 900;
     content: '\f107';
-    font-family: 'Font Awesome 5 Free';
+    /*font-family: 'Font Awesome 5 Free';*/
   }
   .sidebar .nav-item .nav-link[data-toggle="collapse"].collapsed::after {
     content: '\f105';
@@ -10800,7 +10800,7 @@ a:focus {
   line-height: 51px;
   font-weight: 900;
   content: '\f107';
-  font-family: 'Font Awesome 5 Free';
+  /*font-family: 'Font Awesome 5 Free';*/
   color: #d1d3e2;
 }
 

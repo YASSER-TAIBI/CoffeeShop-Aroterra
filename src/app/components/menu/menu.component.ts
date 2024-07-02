@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, ViewEncapsulation} from '@angular/core';
 import {NgIf} from "@angular/common";
 import {NavbarComponent} from "../navbar/navbar.component";
 import {FooterComponent} from "../footer/footer.component";
@@ -12,7 +12,8 @@ import {FooterComponent} from "../footer/footer.component";
     FooterComponent
   ],
   templateUrl: './menu.component.html',
-  styleUrl: './menu.component.css'
+  styleUrls: ['./menu.component.css', '../../../assets/css/style.css', '../../../assets/css/style.min.css' ],
+  encapsulation: ViewEncapsulation.None,
 })
 export class MenuComponent {
 

@@ -17,7 +17,7 @@ declare const $: any;
     FooterComponent
   ],
   templateUrl: './components-admin.component.html',
-  styleUrls: ['./components-admin.component.css', '../../assets/css/admin-styles.css'],
+  styleUrls: ['./components-admin.component.css'],
 })
 export class ComponentsAdminComponent implements OnInit {
 

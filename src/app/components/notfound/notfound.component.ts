@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
 import {FooterComponent} from "../footer/footer.component";
 import {NavbarComponent} from "../navbar/navbar.component";
@@ -14,7 +14,8 @@ import {NavbarComponent} from "../navbar/navbar.component";
     NavbarComponent
   ],
   templateUrl: './notfound.component.html',
-  styleUrl: './notfound.component.css'
+  styleUrls: ['./notfound.component.css', '../../../assets/css/style.css', '../../../assets/css/style.min.css' ],
+  encapsulation: ViewEncapsulation.None,
 })
 export class NotfoundComponent {
 
