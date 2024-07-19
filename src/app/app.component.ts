@@ -16,6 +16,7 @@ import { TestimonialComponent } from './components/testimonial/testimonial.compo
 import { NotfoundComponent} from "./components/notfound/notfound.component";
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth.guard';
+import { firebaseProviders  } from './firebase.config';
 
 @Component({
   selector: 'app-root',
@@ -37,7 +38,11 @@ import { AuthGuard } from './auth/auth.guard';
     TestimonialComponent,
     NotfoundComponent,
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [
+    AuthService,
+    AuthGuard,
+    firebaseProviders
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

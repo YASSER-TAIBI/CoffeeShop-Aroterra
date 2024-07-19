@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
 import {NavbarComponent} from "../navbar/navbar.component";
 import {FooterComponent} from "../footer/footer.component";
+import {User} from "../../models/user"
 
 
 @Component({
@@ -22,8 +23,13 @@ export class LoginComponent {
 
   @Input() showPageHeader: boolean = true;
 
-    username: string ='';
-    password: string = '';
+  user: User = {
+    email:'',
+    password: ''
+  }
+
+    // username: string ='';
+    // password: string = '';
 
 
   login = {
@@ -33,20 +39,24 @@ export class LoginComponent {
     description: "Veuillez vous connecter pour accéder au panneau d’administration",
 }
 
-constructor(
-  private router: Router,
-  private authService: AuthService) {}
+  constructor(
+    private router: Router,
+    private authService: AuthService) {}
 
 
   onLogin() {
-    console.log("onLogin: ",this.username , this.password );
-    if (this.authService.login(this.username, this.password)) {
-      console.log('passed');
-      this.router.navigate(['/dashboard']);
-    }else{
-      console.log('no passed');
-      this.router.navigate(['/accueil']);
-    }
+    this.authService.login(this.user);
   }
+
+  // onLogin() {
+  //   console.log("onLogin: ",this.username , this.password );
+  //   if (this.authService.login(this.username, this.password)) {
+  //     console.log('passed');
+  //     this.router.navigate(['/dashboard']);
+  //   }else{
+  //     console.log('no passed');
+  //     this.router.navigate(['/accueil']);
+  //   }
+  // }
 
 }
