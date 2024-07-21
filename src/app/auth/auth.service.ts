@@ -1,17 +1,19 @@
-import { Injectable } from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import { Router } from '@angular/router';
 import {Auth, signInWithEmailAndPassword} from "@angular/fire/auth";
 import {User} from "../models/user"
 import {error} from "@angular/compiler-cli/src/transformers/util";
+import {from, Observable} from "rxjs";
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  firebaseAuth = inject(Auth);
   private isAuthenticated: boolean = false;
 
-  constructor(private router: Router, private auth: Auth) { }
+  constructor(private router: Router) { }
 
   // login(username: string, password: string): boolean {
   //   if (username === 'admin@admin.com' && password === 'admin') {
@@ -21,16 +23,13 @@ export class AuthService {
   //   return false;
   // }
 
-  login(user: User) {
+  login(email: string ,password: string): Observable<void> {
 
-    return signInWithEmailAndPassword(this.auth, user.email, user.password).then(()=>{
-      alert("Login Successful")
-      this.router.navigate(['/dashboard']);
-
-    }).catch((error)=>{
-      console.log("Error:", error);
-      alert("Incorrect email or password")
-    })
+    const promise =  signInWithEmailAndPassword( this.firebaseAuth,
+      email,
+      password
+    ).then(()=> {});
+    return from(promise);
   }
 
   logout(): void {

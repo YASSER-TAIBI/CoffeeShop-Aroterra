@@ -1,10 +1,11 @@
-import {Component, Input, ViewEncapsulation} from '@angular/core';
-import {FormsModule} from "@angular/forms";
+import {Component, inject, Input, ViewEncapsulation} from '@angular/core';
+import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import { Router } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
 import {NavbarComponent} from "../navbar/navbar.component";
 import {FooterComponent} from "../footer/footer.component";
 import {User} from "../../models/user"
+import {HttpClient} from "@angular/common/http";
 
 
 @Component({
@@ -13,7 +14,8 @@ import {User} from "../../models/user"
   imports: [
     FormsModule,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    ReactiveFormsModule
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css', '../../../assets/css/style.css', '../../../assets/css/style.min.css' ],
@@ -22,11 +24,13 @@ import {User} from "../../models/user"
 export class LoginComponent {
 
   @Input() showPageHeader: boolean = true;
+  fb = inject(FormBuilder);
+  router = inject(Router);
 
-  user: User = {
-    email:'',
-    password: ''
-  }
+  form = this.fb.nonNullable.group({
+    email:['', Validators.required],
+    password: ['', Validators.required],
+  });
 
     // username: string ='';
     // password: string = '';
@@ -40,12 +44,21 @@ export class LoginComponent {
 }
 
   constructor(
-    private router: Router,
     private authService: AuthService) {}
 
 
   onLogin() {
-    this.authService.login(this.user);
+    const rawForm = this.form.getRawValue();
+    this.authService.login(rawForm.email, rawForm.password).subscribe({
+      next: () => {
+        this.router.navigate(['/dashboard']);
+        console.log('passed');
+      },
+      error: (err) => {
+        console.log('no passed');
+        this.router.navigate(['/accueil']);
+      },
+    });
   }
 
   // onLogin() {
