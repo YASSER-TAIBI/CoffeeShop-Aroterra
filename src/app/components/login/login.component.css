@@ -118,3 +118,9 @@ h2 {
 .signup-link a:hover {
   text-decoration: underline;
 }
+.mess-err {
+  color: #DA9F5B;
+}
+
+
+

@@ -1,8 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, inject} from '@angular/core';
 import {RouterOutlet} from "@angular/router";
 import {HeaderComponent} from "./header/header.component";
 import {SidebarComponent} from "./sidebar/sidebar.component";
 import {FooterComponent} from "./footer/footer.component";
+import {Auth} from "@angular/fire/auth";
+import {AuthService} from "../auth/auth.service";
 
 
 declare const $: any;
@@ -20,12 +22,41 @@ declare const $: any;
   styleUrls: ['./components-admin.component.css'],
 })
 export class ComponentsAdminComponent implements OnInit {
+  authService = inject(AuthService)
 
   constructor() { }
 
   ngOnInit() {
+    this.authService.user$.subscribe((user) => {
+      if(user){
+        if(user.email?.toLowerCase() === 'yasser.taibi.19@gmail.com'){
+          this.authService.currentUserSig.set({
+            email: user.email!,
+            username: "Yasser TAIBI",
+          });
 
+        }else if (user.email?.toLowerCase() === 'jalila.aalilou555@gmail.com') {
+          this.authService.currentUserSig.set({
+            email: user.email!,
+            username: "Jalila AALILOU",
+          });
+        }else{
+          this.authService.currentUserSig.set({
+            email: user.email!,
+            username: "Administrateur",
+          });
+        }
+      }else{
+        this.authService.currentUserSig.set(null);
+      }
+      console.log(this.authService.currentUserSig());
+    });
+//------------------------------------++ JQUERY CODE ++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     "use strict"; // Start of use strict
+
+    if (typeof $ === 'undefined') {
+      throw new Error('jQuery not loaded');
+    }
 
     // Toggle the side navigation
     $("#sidebarToggle, #sidebarToggleTop").on('click', (e: MouseEvent) => {
@@ -79,6 +110,7 @@ export class ComponentsAdminComponent implements OnInit {
       }, 1000, 'easeInOutExpo');
       e.preventDefault();
     });
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   }
 }

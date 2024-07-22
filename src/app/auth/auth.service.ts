@@ -1,9 +1,8 @@
-import {inject, Injectable} from '@angular/core';
+import {inject, Injectable, signal} from '@angular/core';
 import { Router } from '@angular/router';
-import {Auth, signInWithEmailAndPassword} from "@angular/fire/auth";
-import {User} from "../models/user"
-import {error} from "@angular/compiler-cli/src/transformers/util";
+import {Auth, signInWithEmailAndPassword, signOut, user} from "@angular/fire/auth";
 import {from, Observable} from "rxjs";
+import {UserInterface} from "../models/user";
 
 
 @Injectable({
@@ -11,17 +10,10 @@ import {from, Observable} from "rxjs";
 })
 export class AuthService {
   firebaseAuth = inject(Auth);
-  private isAuthenticated: boolean = false;
+  user$ = user(this.firebaseAuth)
+  currentUserSig = signal<UserInterface | null | undefined>(undefined)
 
   constructor(private router: Router) { }
-
-  // login(username: string, password: string): boolean {
-  //   if (username === 'admin@admin.com' && password === 'admin') {
-  //     this.isAuthenticated = true;
-  //     return true;
-  //   }
-  //   return false;
-  // }
 
   login(email: string ,password: string): Observable<void> {
 
@@ -32,12 +24,11 @@ export class AuthService {
     return from(promise);
   }
 
-  logout(): void {
-    this.isAuthenticated = false;
-    this.router.navigate(['/login']);
+  logout(): Observable<void> {
+    const promise = signOut(this.firebaseAuth);
+    return from(promise);
   }
 
-  isLoggedIn(): boolean {
-    return this.isAuthenticated;
+  isLoggedIn() {
   }
 }

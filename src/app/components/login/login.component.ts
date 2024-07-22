@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
 import {NavbarComponent} from "../navbar/navbar.component";
 import {FooterComponent} from "../footer/footer.component";
-import {User} from "../../models/user"
+import {UserInterface} from "../../models/user"
 import {HttpClient} from "@angular/common/http";
 
 
@@ -45,7 +45,7 @@ export class LoginComponent {
 
   constructor(
     private authService: AuthService) {}
-
+  errorMessage: string | null = null;
 
   onLogin() {
     const rawForm = this.form.getRawValue();
@@ -56,7 +56,8 @@ export class LoginComponent {
       },
       error: (err) => {
         console.log('no passed');
-        this.router.navigate(['/accueil']);
+        this.errorMessage = err.code;
+        // this.router.navigate(['/accueil']);
       },
     });
   }

@@ -1,5 +1,7 @@
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {NgOptimizedImage} from "@angular/common";
+import {AuthService} from "../../auth/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -10,4 +12,13 @@ import {NgOptimizedImage} from "@angular/common";
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css', '../../../assets/css/admin-styles.css']
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+  authService = inject(AuthService);
+  router = inject(Router);
+
+
+  logout(){
+    this.authService.logout();
+    this.router.navigate(['/login']);
+  }
+}
