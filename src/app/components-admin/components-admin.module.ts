@@ -8,6 +8,8 @@ import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FooterComponent } from './footer/footer.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ProfileModule } from './profile/profile.module';
+import { ProfileRoutingModule } from './profile/profile-routing.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     HeaderComponent,
     SidebarComponent,
     FooterComponent,
-    DashboardComponent
+    DashboardComponent,
+    ProfileModule,
+    ProfileRoutingModule
   ],
 })
 export class ComponentsAdminModule {}

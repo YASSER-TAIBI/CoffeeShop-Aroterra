@@ -2,7 +2,7 @@ import {inject, Injectable, signal} from '@angular/core';
 import { Router } from '@angular/router';
 import {Auth, signInWithEmailAndPassword, signOut, user} from "@angular/fire/auth";
 import {from, Observable} from "rxjs";
-import {UserInterface} from "../models/user";
+import {UserConnect} from "../models/userConnect";
 
 
 @Injectable({
@@ -11,7 +11,7 @@ import {UserInterface} from "../models/user";
 export class AuthService {
   firebaseAuth = inject(Auth);
   user$ = user(this.firebaseAuth)
-  currentUserSig = signal<UserInterface | null | undefined>(undefined)
+  currentUserSig = signal<UserConnect | null | undefined>(undefined)
 
   constructor(private router: Router) { }
 
@@ -29,6 +29,33 @@ export class AuthService {
     return from(promise);
   }
 
+  setCurrentUser(email: string | null | undefined) {
+    if (!email) {
+      this.currentUserSig.set(null);
+      return;
+    }
+
+    switch (email.toLowerCase()) {
+      case 'yasser.taibi.19@gmail.com':
+        this.currentUserSig.set({
+          email,
+          username: 'Yasser TAIBI',
+          userRole: 'Administrateur',
+          civilite: 'Mr',
+        });
+        break;
+      case 'jalila.aalilou555@gmail.com':
+        this.currentUserSig.set({
+          email,
+          username: 'Jalila AALILOU',
+          userRole: 'Administrateur',
+          civilite: 'Mme',
+        });
+        break;
+      default:
+        this.currentUserSig.set(null);
+    }
+  }
   isLoggedIn() {
   }
 }

@@ -28,27 +28,7 @@ export class ComponentsAdminComponent implements OnInit {
 
   ngOnInit() {
     this.authService.user$.subscribe((user) => {
-      if(user){
-        if(user.email?.toLowerCase() === 'yasser.taibi.19@gmail.com'){
-          this.authService.currentUserSig.set({
-            email: user.email!,
-            username: "Yasser TAIBI",
-          });
-
-        }else if (user.email?.toLowerCase() === 'jalila.aalilou555@gmail.com') {
-          this.authService.currentUserSig.set({
-            email: user.email!,
-            username: "Jalila AALILOU",
-          });
-        }else{
-          this.authService.currentUserSig.set({
-            email: user.email!,
-            username: "Administrateur",
-          });
-        }
-      }else{
-        this.authService.currentUserSig.set(null);
-      }
+      this.authService.setCurrentUser(user?.email);
       console.log(this.authService.currentUserSig());
     });
 //------------------------------------++ JQUERY CODE ++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

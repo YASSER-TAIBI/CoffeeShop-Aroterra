@@ -4,8 +4,6 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
 import {NavbarComponent} from "../navbar/navbar.component";
 import {FooterComponent} from "../footer/footer.component";
-import {UserInterface} from "../../models/user"
-import {HttpClient} from "@angular/common/http";
 
 
 @Component({
@@ -32,10 +30,6 @@ export class LoginComponent {
     password: ['', Validators.required],
   });
 
-    // username: string ='';
-    // password: string = '';
-
-
   login = {
     title:"Espace Admin",
     urlPrevious:"Accueil",
@@ -61,16 +55,4 @@ export class LoginComponent {
       },
     });
   }
-
-  // onLogin() {
-  //   console.log("onLogin: ",this.username , this.password );
-  //   if (this.authService.login(this.username, this.password)) {
-  //     console.log('passed');
-  //     this.router.navigate(['/dashboard']);
-  //   }else{
-  //     console.log('no passed');
-  //     this.router.navigate(['/accueil']);
-  //   }
-  // }
-
 }

@@ -1,0 +1,64 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800">Profil de l'Utilisateur</h1>
+  <p class="mb-4"> Pour mettre à jour votre adresse ou votre numéro de téléphone, utilisez les champs disponibles ci-dessous. Pour des raisons de sécurité, le changement d'adresse e-mail nécessite l'intervention du responsable technique <a class="font-weight-bold" href="https://yasser-taibi.github.io/responsivePortfolioWebsite/">Yasser TAIBI</a>. Veuillez le contacter directement pour toute modification de votre adresse e-mail.</p>
+
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Données Personnelles</h6>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-3 border-right">
+          <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg" alt=""><span class="font-weight-bold">{{this.authService.currentUserSig()?.userRole}}</span><span class="text-black-50">{{this.authService.currentUserSig()?.email}}</span><span> </span></div>
+        </div>
+
+        <div class="col-md-5 border-right">
+          <div class="p-3 py-5">
+            <div class="d-flex justify-content-center align-items-center mb-3">
+              <h4 class="title-center">Mon Profil</h4>
+            </div>
+            <div class="row mt-3">
+              <div class="col-md-12"><label class="labels">Civilité</label><input type="text" class="form-control" value='{{this.authService.currentUserSig()?.civilite}}' readonly></div>
+            </div>
+              <div class="row mt-2">
+              <div class="col-md-6"><label class="labels">Prénom</label><input type="text" class="form-control" [value]="firstName" readonly></div>
+              <div class="col-md-6"><label class="labels">Nom</label><input type="text" class="form-control" [value]="lastName" readonly></div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-md-12"><label class="labels">Numéro de Téléphone</label><input type="text" class="form-control" placeholder="saisie le numéro de téléphone" value=""></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 ">
+          <div class="p-3 py-5">
+            <div class="d-flex justify-content-center align-items-center mb-3">
+              <h4 class="title-center">Adresse</h4>
+            </div>
+
+
+            <div class="row mt-3">
+              <div class="col-md-12"><label class="labels">Adresse ( Numéro et libellé de la voie )</label><input type="text" class="form-control" placeholder="saisie l'adresse" value=""></div>
+              <div class="col-md-12"><label class="labels">Code postal</label><input type="text" class="form-control" placeholder="saisie le code postal" value=""></div>
+              <div class="col-md-12"><label class="labels">Région</label><input type="text" class="form-control" placeholder="saisie la région" value=""></div>
+
+            </div>
+            <div class="row mt-3">
+              <div class="col-md-6"><label class="labels">Ville</label><input type="text" class="form-control" placeholder="saisie la ville" value=""></div>
+              <div class="col-md-6"><label class="labels">Pays</label><input type="text" class="form-control" value="" placeholder="saisie le pays"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-5 text-center">
+        <button class="btn btn-primary profile-button" type="button">Enregistrer</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- /.container-fluid -->

@@ -1,0 +1,13 @@
+.form-control:focus {
+  box-shadow: none;
+  border-color: #da9f5b;
+}
+
+.labels {
+  font-size: 12px
+}
+
+.title-center {
+  color: #858796 !important;
+}
+
