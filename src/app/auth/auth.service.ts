@@ -42,6 +42,7 @@ export class AuthService {
           username: 'Yasser TAIBI',
           userRole: 'Administrateur',
           civilite: 'Mr',
+          userImage: 'https://www.bhaskaranbrown.com/wp-content/uploads/2023/07/1-2.png'
         });
         break;
       case 'jalila.aalilou555@gmail.com':
@@ -50,6 +51,7 @@ export class AuthService {
           username: 'Jalila AALILOU',
           userRole: 'Administrateur',
           civilite: 'Mme',
+          userImage: 'https://www.bhaskaranbrown.com/wp-content/uploads/2023/07/2-2.png'
         });
         break;
       default:

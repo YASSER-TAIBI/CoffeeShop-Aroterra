@@ -3,4 +3,5 @@ export interface UserConnect {
   username: string;
   userRole: string;
   civilite: string;
+  userImage: string
 }

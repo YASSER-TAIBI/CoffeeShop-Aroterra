@@ -11,9 +11,13 @@
       <h6 class="m-0 font-weight-bold text-primary">Données Personnelles</h6>
     </div>
     <div class="card-body">
+      <form [formGroup]="profileForm" (ngSubmit)="onSave()">
       <div class="row">
         <div class="col-md-3 border-right">
-          <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg" alt=""><span class="font-weight-bold">{{this.authService.currentUserSig()?.userRole}}</span><span class="text-black-50">{{this.authService.currentUserSig()?.email}}</span><span> </span></div>
+          <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+            <img src="{{this.authService.currentUserSig()?.userImage}}" class="rounded-circle mt-5" width="150px" alt="...">
+            <span class="font-weight-bold">{{this.authService.currentUserSig()?.userRole}}</span>
+            <span class="text-black-50">{{this.authService.currentUserSig()?.email}}</span><span> </span></div>
         </div>
 
         <div class="col-md-5 border-right">
@@ -22,14 +26,22 @@
               <h4 class="title-center">Mon Profil</h4>
             </div>
             <div class="row mt-3">
-              <div class="col-md-12"><label class="labels">Civilité</label><input type="text" class="form-control" value='{{this.authService.currentUserSig()?.civilite}}' readonly></div>
+              <div class="col-md-12">
+                <label class="labels" for="civilite">Civilité</label>
+                <input id="civilite" type="text" class="form-control" value='{{this.authService.currentUserSig()?.civilite}}' readonly></div>
             </div>
               <div class="row mt-2">
-              <div class="col-md-6"><label class="labels">Prénom</label><input type="text" class="form-control" [value]="firstName" readonly></div>
-              <div class="col-md-6"><label class="labels">Nom</label><input type="text" class="form-control" [value]="lastName" readonly></div>
+              <div class="col-md-6">
+                <label class="labels" for="prenom">Prénom</label>
+                <input id="prenom" type="text" class="form-control" [value]="firstName" readonly></div>
+              <div class="col-md-6">
+                <label class="labels" for="nom">Nom</label>
+                <input id="nom" type="text" class="form-control" [value]="lastName" readonly></div>
             </div>
             <div class="row mt-3">
-              <div class="col-md-12"><label class="labels">Numéro de Téléphone</label><input type="text" class="form-control" placeholder="saisie le numéro de téléphone" value=""></div>
+              <div class="col-md-12">
+                <label class="labels" for="telephone">Numéro de Téléphone</label>
+                <input id="telephone" type="text" class="form-control" placeholder="saisie le numéro de téléphone" formControlName="telephone" value="" ></div>
             </div>
           </div>
         </div>
@@ -42,21 +54,32 @@
 
 
             <div class="row mt-3">
-              <div class="col-md-12"><label class="labels">Adresse ( Numéro et libellé de la voie )</label><input type="text" class="form-control" placeholder="saisie l'adresse" value=""></div>
-              <div class="col-md-12"><label class="labels">Code postal</label><input type="text" class="form-control" placeholder="saisie le code postal" value=""></div>
-              <div class="col-md-12"><label class="labels">Région</label><input type="text" class="form-control" placeholder="saisie la région" value=""></div>
+              <div class="col-md-12">
+                <label class="labels" for="adresse">Adresse ( Numéro et libellé de la voie )</label>
+                <input id="adresse" type="text" class="form-control" placeholder="saisie l'adresse" formControlName="adresse" value=""></div>
+              <div class="col-md-12">
+                <label class="labels" for="postal_adresse">Code postal</label>
+                <input id="postal_adresse" type="text" class="form-control" placeholder="saisie le code postal" formControlName="postal_adresse" value=""></div>
+              <div class="col-md-12">
+                <label class="labels" for="region_adresse">Région</label>
+                <input id="region_adresse" type="text" class="form-control" placeholder="saisie la région" formControlName="region_adresse" value=""></div>
 
             </div>
             <div class="row mt-3">
-              <div class="col-md-6"><label class="labels">Ville</label><input type="text" class="form-control" placeholder="saisie la ville" value=""></div>
-              <div class="col-md-6"><label class="labels">Pays</label><input type="text" class="form-control" value="" placeholder="saisie le pays"></div>
+              <div class="col-md-6">
+                <label class="labels" for="ville_adresse">Ville</label>
+                <input id="ville_adresse" type="text" class="form-control" placeholder="saisie la ville" formControlName="ville_adresse" value=""></div>
+              <div class="col-md-6">
+                <label class="labels" for="pays_adresse">Pays</label>
+                <input id="pays_adresse" type="text" class="form-control" placeholder="saisie le pays" formControlName="pays_adresse" value=""></div>
             </div>
           </div>
         </div>
       </div>
       <div class="mt-5 text-center">
-        <button class="btn btn-primary profile-button" type="button">Enregistrer</button>
+        <button class="btn btn-primary profile-button" type="submit">Enregistrer</button>
       </div>
+      </form>
     </div>
   </div>
 

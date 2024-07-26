@@ -4,10 +4,11 @@ export interface UserProfile {
   email: string;
   telephone: string;
   civilite: string;
+  userImage: string
+  adresse: string;
   pays_adresse: string;
+  region_adresse: string;
   ville_adresse: string;
-  rue_adresse: string;
-  num_adresse: number;
   postal_adresse: number;
   userRole: string;
 }
