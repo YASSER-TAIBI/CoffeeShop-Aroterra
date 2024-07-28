@@ -3,7 +3,7 @@ import {AuthService} from "../../auth/auth.service";
 import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {UserProfile} from "../../models/userProfile";
 import {UserConnect} from "../../models/userConnect";
-import {NgOptimizedImage} from "@angular/common";
+import {AsyncPipe, NgFor, NgOptimizedImage} from "@angular/common";
 import {UserProfileService} from "../../services/user-profile.service";
 
 @Component({
@@ -11,7 +11,9 @@ import {UserProfileService} from "../../services/user-profile.service";
   standalone: true,
   imports: [
     ReactiveFormsModule,
-    NgOptimizedImage
+    NgOptimizedImage,
+    AsyncPipe,
+    NgFor
   ],
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css', '../../../assets/css/admin-styles.css']
@@ -20,6 +22,9 @@ export class ProfileComponent implements OnInit {
   authService = inject(AuthService);
   fb = inject(FormBuilder);
    userProfileService = inject(UserProfileService);
+   profile$ = this.userProfileService.getUserProfile();
+
+
 
   profileForm = new FormGroup({
   telephone :new FormControl(''),
@@ -31,6 +36,7 @@ export class ProfileComponent implements OnInit {
   });
 
   ngOnInit(): void {
+    console.log('profile$', this.profile$);
   }
   get firstName(): string {
     return this.authService.currentUserSig()?.username.split(' ')[0] || '';
@@ -53,7 +59,7 @@ export class ProfileComponent implements OnInit {
   //
   //    }
 
-  onSave(): void {
+  async onSave(){
     if (this.profileForm.invalid) {
       alert('Remplir tous les champs de saisie !');
       return;
@@ -78,8 +84,9 @@ export class ProfileComponent implements OnInit {
 
       console.log("userProfile", userProfile);
 
-       this.userProfileService.addUserProfile(userProfile).then(() => {
-        alert('Profil mis à jour avec succès!');
+    const doc =  await this.userProfileService.addUserProfile(userProfile).then(() => {
+      console.log("doc", doc);
+      alert('Profil mis à jour avec succès!');
       }).catch(error => {
         console.error(error);
         alert('Erreur lors de la mise à jour du profil.');

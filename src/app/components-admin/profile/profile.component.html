@@ -80,6 +80,23 @@
         <button class="btn btn-primary profile-button" type="submit">Enregistrer</button>
       </div>
       </form>
+      <section>
+        <h1>User Profiles</h1>
+        <ul>
+          @for ( profile of profile$ | async; track profile ){
+          <li>
+            {{profile.nom}}<br>
+            {{profile.prenom}}<br>
+            {{profile.email}}<br>
+            {{profile.telephone}}<br>
+            {{profile.civilite}}<br>
+            {{profile.userImage}}<br>
+            {{profile.adresse}}
+
+          </li>
+          }
+        </ul>
+      </section>
     </div>
   </div>
 
