@@ -7,17 +7,24 @@
 
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
-    <div class="card-header py-3">
+    <div class="card-header profile py-3">
       <h6 class="m-0 font-weight-bold text-primary">Données Personnelles</h6>
+      <div class="card-edit-Profile ">
+        <a class="editprofile" (click)="edit()" href="javascript:void(0);" role="button"
+           aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-solid fa-pen fa-sm fa-fw "></i>
+          <h6 class="m-0 textedit font-weight-normal text-primary">Modifier mes données</h6>
+        </a>
+      </div>
     </div>
     <div class="card-body">
       <form [formGroup]="profileForm" (ngSubmit)="onSave()">
       <div class="row">
         <div class="col-md-3 border-right">
           <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-            <img src="{{this.authService.currentUserSig()?.userImage}}" class="rounded-circle mt-5" width="150px" alt="...">
-            <span class="font-weight-bold">{{this.authService.currentUserSig()?.userRole}}</span>
-            <span class="text-black-50">{{this.authService.currentUserSig()?.email}}</span><span> </span></div>
+            <img src="{{this.authService.getCurrentUser()?.userImage}}" class="rounded-circle mt-5" width="150px" alt="...">
+            <span class="font-weight-bold">{{this.authService.getCurrentUser()?.userRole}}</span>
+            <span class="text-black-50">{{this.authService.getCurrentUser()?.email}}</span><span> </span></div>
         </div>
 
         <div class="col-md-5 border-right">
@@ -28,7 +35,7 @@
             <div class="row mt-3">
               <div class="col-md-12">
                 <label class="labels" for="civilite">Civilité</label>
-                <input id="civilite" type="text" class="form-control" value='{{this.authService.currentUserSig()?.civilite}}' readonly></div>
+                <input id="civilite" type="text" class="form-control" value='{{this.authService.getCurrentUser()?.civilite}}' readonly></div>
             </div>
               <div class="row mt-2">
               <div class="col-md-6">
@@ -41,7 +48,7 @@
             <div class="row mt-3">
               <div class="col-md-12">
                 <label class="labels" for="telephone">Numéro de Téléphone</label>
-                <input id="telephone" type="text" class="form-control" placeholder="saisie le numéro de téléphone" formControlName="telephone" value="" ></div>
+                <input id="telephone" type="text" class="form-control" placeholder="saisie le numéro de téléphone" formControlName="telephone" value="" [readonly]="!isEditable"></div>
             </div>
           </div>
         </div>
@@ -56,47 +63,49 @@
             <div class="row mt-3">
               <div class="col-md-12">
                 <label class="labels" for="adresse">Adresse ( Numéro et libellé de la voie )</label>
-                <input id="adresse" type="text" class="form-control" placeholder="saisie l'adresse" formControlName="adresse" value=""></div>
+                <input id="adresse" type="text" class="form-control" placeholder="saisie l'adresse" formControlName="adresse" value="" [readonly]="!isEditable"></div>
               <div class="col-md-12">
                 <label class="labels" for="postal_adresse">Code postal</label>
-                <input id="postal_adresse" type="text" class="form-control" placeholder="saisie le code postal" formControlName="postal_adresse" value=""></div>
+                <input id="postal_adresse" type="text" class="form-control" placeholder="saisie le code postal" formControlName="postal_adresse" value="" [readonly]="!isEditable"></div>
               <div class="col-md-12">
                 <label class="labels" for="region_adresse">Région</label>
-                <input id="region_adresse" type="text" class="form-control" placeholder="saisie la région" formControlName="region_adresse" value=""></div>
+                <input id="region_adresse" type="text" class="form-control" placeholder="saisie la région" formControlName="region_adresse" value="" [readonly]="!isEditable"></div>
 
             </div>
             <div class="row mt-3">
               <div class="col-md-6">
                 <label class="labels" for="ville_adresse">Ville</label>
-                <input id="ville_adresse" type="text" class="form-control" placeholder="saisie la ville" formControlName="ville_adresse" value=""></div>
+                <input id="ville_adresse" type="text" class="form-control" placeholder="saisie la ville" formControlName="ville_adresse" value="" [readonly]="!isEditable"></div>
               <div class="col-md-6">
                 <label class="labels" for="pays_adresse">Pays</label>
-                <input id="pays_adresse" type="text" class="form-control" placeholder="saisie le pays" formControlName="pays_adresse" value=""></div>
+                <input id="pays_adresse" type="text" class="form-control" placeholder="saisie le pays" formControlName="pays_adresse" value="" [readonly]="!isEditable"></div>
             </div>
           </div>
         </div>
       </div>
+        @if (isButtonVisible) {
       <div class="mt-5 text-center">
         <button class="btn btn-primary profile-button" type="submit">Enregistrer</button>
       </div>
+        }
       </form>
-      <section>
-        <h1>User Profiles</h1>
-        <ul>
-          @for ( profile of profile$ | async; track profile ){
-          <li>
-            {{profile.nom}}<br>
-            {{profile.prenom}}<br>
-            {{profile.email}}<br>
-            {{profile.telephone}}<br>
-            {{profile.civilite}}<br>
-            {{profile.userImage}}<br>
-            {{profile.adresse}}
+<!--      <section>-->
+<!--        <h1>User Profiles</h1>-->
+<!--        <ul>-->
+<!--          @for ( profile of profile$ | async; track profile ){-->
+<!--          <li>-->
+<!--            {{profile.nom}}<br>-->
+<!--            {{profile.prenom}}<br>-->
+<!--            {{profile.email}}<br>-->
+<!--            {{profile.telephone}}<br>-->
+<!--            {{profile.civilite}}<br>-->
+<!--            {{profile.userImage}}<br>-->
+<!--            {{profile.adresse}}-->
 
-          </li>
-          }
-        </ul>
-      </section>
+<!--          </li>-->
+<!--          }-->
+<!--        </ul>-->
+<!--      </section>-->
     </div>
   </div>
 

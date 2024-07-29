@@ -29,7 +29,7 @@ export class ComponentsAdminComponent implements OnInit {
   ngOnInit() {
     this.authService.user$.subscribe((user) => {
       this.authService.setCurrentUser(user?.email);
-      console.log(this.authService.currentUserSig());
+      console.log(this.authService.getCurrentUser());
     });
 //------------------------------------++ JQUERY CODE ++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     "use strict"; // Start of use strict

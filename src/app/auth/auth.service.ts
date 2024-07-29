@@ -1,7 +1,7 @@
 import {inject, Injectable, signal} from '@angular/core';
 import { Router } from '@angular/router';
 import {Auth, signInWithEmailAndPassword, signOut, user} from "@angular/fire/auth";
-import {from, Observable} from "rxjs";
+import {BehaviorSubject, from, Observable} from "rxjs";
 import {UserConnect} from "../models/userConnect";
 
 
@@ -11,7 +11,8 @@ import {UserConnect} from "../models/userConnect";
 export class AuthService {
   firebaseAuth = inject(Auth);
   user$ = user(this.firebaseAuth)
-  currentUserSig = signal<UserConnect | null | undefined>(undefined)
+  private currentUserSubject = new BehaviorSubject<UserConnect | null>(null);
+  currentUserSig = this.currentUserSubject.asObservable();
 
   constructor(private router: Router) { }
 
@@ -29,15 +30,19 @@ export class AuthService {
     return from(promise);
   }
 
+  getCurrentUser(): UserConnect | null | undefined {
+    return this.currentUserSubject.value;
+  }
+
   setCurrentUser(email: string | null | undefined) {
     if (!email) {
-      this.currentUserSig.set(null);
+      this.currentUserSubject.next(null);
       return;
     }
 
     switch (email.toLowerCase()) {
       case 'yasser.taibi.19@gmail.com':
-        this.currentUserSig.set({
+        this.currentUserSubject.next({
           email,
           username: 'Yasser TAIBI',
           userRole: 'Administrateur',
@@ -46,7 +51,7 @@ export class AuthService {
         });
         break;
       case 'jalila.aalilou555@gmail.com':
-        this.currentUserSig.set({
+        this.currentUserSubject.next({
           email,
           username: 'Jalila AALILOU',
           userRole: 'Administrateur',
@@ -55,7 +60,7 @@ export class AuthService {
         });
         break;
       default:
-        this.currentUserSig.set(null);
+        this.currentUserSubject.next(null);
     }
   }
   isLoggedIn() {

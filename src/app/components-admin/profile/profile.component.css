@@ -14,3 +14,33 @@
 .rounded-circle{
   margin-bottom: 20px;
 }
+
+.profile {
+  display: flex;
+  justify-content: space-between;
+}
+
+.editprofile {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  cursor: pointer;
+}
+
+.editprofile:hover {
+  text-decoration: none;
+}
+.editprofile:hover .fas,
+.editprofile:hover .textedit {
+  color: #858796 !important;
+}
+
+.fas{
+  padding-right: 10px;
+}
+
+@media (max-width: 560px) {
+  .textedit{
+    font-size: 0rem !important;
+  }
+}
