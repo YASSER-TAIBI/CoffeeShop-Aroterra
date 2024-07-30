@@ -85,12 +85,12 @@ export class ProfileComponent implements OnInit {
   }
 
   async onSave(){
-
     if (this.profileForm.value.telephone == '' || this.profileForm.value.adresse == '' || this.profileForm.value.postal_adresse == 0 || this.profileForm.value.region_adresse == '' || this.profileForm.value.ville_adresse == '' ||this.profileForm.value.pays_adresse == ''){
             alert('Remplir tous les champs de saisie !');
             return;
         }
     if (window.confirm('Vous voulez vraiment modifier vos informations!')) {
+
       const userProfile: UserProfile = {
         civilite: this.authService.getCurrentUser()?.civilite || '',
         prenom: this.firstName || '',
@@ -108,7 +108,8 @@ export class ProfileComponent implements OnInit {
 
       console.log("userProfile", userProfile);
       try {
-    await this.userProfileService.addUserProfile(userProfile)
+    await this.userProfileService.updateProfile(userProfile);
+      this.edit();
       alert('Profil mis à jour avec succès!');
       } catch(error) {
         console.error(error);

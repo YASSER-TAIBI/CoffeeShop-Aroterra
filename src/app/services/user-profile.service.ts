@@ -1,7 +1,17 @@
 import {inject, Injectable} from '@angular/core';
 import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {UserProfile} from "../models/userProfile";
-import {Firestore, collection, addDoc, collectionData, query, where, getDocs} from '@angular/fire/firestore';
+import {
+  Firestore,
+  collection,
+  addDoc,
+  collectionData,
+  query,
+  where,
+  getDocs,
+  doc,
+  updateDoc
+} from '@angular/fire/firestore';
 import {Observable} from "rxjs";
 
 const PATH = 'profile';
@@ -29,6 +39,18 @@ export class UserProfileService {
         return null;
       } else {
         return querySnapshot.docs[0].data() as UserProfile;
+      }
+    });
+  }
+
+  updateProfile(userProfile: UserProfile){
+    const q = query(this._collection, where('email', '==', userProfile.email));
+    return getDocs(q).then(querySnapshot => {
+      if (querySnapshot.empty) {
+        throw new Error('No document to update');
+      } else {
+        const documentRef = doc(this._collection, querySnapshot.docs[0].id);
+        return updateDoc(documentRef, { ...userProfile });
       }
     });
   }
