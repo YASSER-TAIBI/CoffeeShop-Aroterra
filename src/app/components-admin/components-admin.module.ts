@@ -10,6 +10,10 @@ import { FooterComponent } from './footer/footer.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfileModule } from './profile/profile.module';
 import { ProfileRoutingModule } from './profile/profile-routing.module';
+import { ConsulterReservationsModule } from './reservation/consulter-reservations/consulter-reservations.module';
+import { ReserverTableModule } from './reservation/reserver-table/reserver-table.module';
+import { ConsulterReservationsRoutingModule } from './reservation/consulter-reservations/consulter-reservations-routing.module';
+import { ReserverTableRoutingModule } from './reservation/reserver-table/reserver-table-routing.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,11 @@ import { ProfileRoutingModule } from './profile/profile-routing.module';
     FooterComponent,
     DashboardComponent,
     ProfileModule,
-    ProfileRoutingModule
+    ProfileRoutingModule,
+    ConsulterReservationsModule,
+    ReserverTableModule,
+    ConsulterReservationsRoutingModule,
+    ReserverTableRoutingModule
   ],
 })
 export class ComponentsAdminModule {}

@@ -10367,7 +10367,7 @@ a:focus {
   padding: 0.5rem 1rem;
   margin: 0 0.5rem;
   display: block;
-  color: #3a3b45;
+  color: #da9f5b;
   text-decoration: none;
   border-radius: 0.35rem;
   white-space: nowrap;
@@ -10521,7 +10521,7 @@ a:focus {
   }
   .sidebar .nav-item .nav-link i {
     font-size: 0.85rem;
-    margin-right: 0.25rem;
+    margin-right: 1.25rem;
   }
   .sidebar .nav-item .nav-link span {
     font-size: 0.85rem;

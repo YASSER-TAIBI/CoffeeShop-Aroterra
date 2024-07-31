@@ -46,6 +46,9 @@
                 <input type="email" name="email" [(ngModel)]="formData.email" class="form-control bg-transparent border-primary p-4" placeholder="{{reservation.emailForm}}" required />
               </div>
               <div class="form-group">
+                <input type="tel" name="tel" [(ngModel)]="formData.tel" class="form-control bg-transparent border-primary p-4" placeholder="{{reservation.telForm}}" required />
+              </div>
+              <div class="form-group">
                 <div class="date" id="date" data-target-input="nearest">
                   <input type="text" name="date" [(ngModel)]="formData.date" placeholder="{{reservation.dateForm}}" (click)="d.toggle()" class="form-control bg-transparent border-primary p-4" ngbDatepicker #d="ngbDatepicker"/>
                 </div>
@@ -59,7 +62,7 @@
                 <select name="people" [(ngModel)]="formData.people" class="custom-select bg-transparent border-primary px-4" style="height: 49px;">
                   <option value="" selected disabled>{{reservation.personneForm}}</option>
                   @for (persOption of reservation.personneOption; track persOption){
-                  <option value="{{persOption.id}}">{{ persOption.texte }}</option>
+                  <option [value]="persOption.id">{{ persOption.texte }}</option>
                   }
                 </select>
               </div>

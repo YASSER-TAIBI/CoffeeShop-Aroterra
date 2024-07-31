@@ -89,7 +89,7 @@ export class ProfileComponent implements OnInit {
             alert('Remplir tous les champs de saisie !');
             return;
         }
-    if (window.confirm('Vous voulez vraiment modifier vos informations!')) {
+    if (window.confirm('Voulez-vous vraiment modifier vos informations!')) {
 
       const userProfile: UserProfile = {
         civilite: this.authService.getCurrentUser()?.civilite || '',
