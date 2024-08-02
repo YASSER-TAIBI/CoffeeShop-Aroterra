@@ -80,7 +80,7 @@ export class ReservationComponent{
         time: this.formData.time,
         people: this.formData.people || '',
         adminEmail:'',
-        etat: "En cours" || '',
+        etat: "En Cours" || '',
       };
 
       console.log('Form Submitted', reservation);

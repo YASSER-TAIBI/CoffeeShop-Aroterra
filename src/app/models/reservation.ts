@@ -9,4 +9,10 @@ export interface Reservation {
   people: string;
   adminEmail: string;
   etat: string;
+
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+//format Date and Time to string
+  formattedDate?: string;
+  formattedTime?: string;
 }

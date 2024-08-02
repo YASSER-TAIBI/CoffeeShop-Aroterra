@@ -4,6 +4,7 @@ import {ProfileRoutingModule} from "../../profile/profile-routing.module";
 import {ProfileComponent} from "../../profile/profile.component";
 import {ConsulterReservationsRoutingModule} from "./consulter-reservations-routing.module";
 import {ConsulterReservationsComponent} from "./consulter-reservations.component";
+import {NgxPaginationModule} from "ngx-pagination";
 
 
 
@@ -12,7 +13,8 @@ import {ConsulterReservationsComponent} from "./consulter-reservations.component
   imports: [
     CommonModule,
     ConsulterReservationsRoutingModule,
-    ConsulterReservationsComponent
+    ConsulterReservationsComponent,
+    NgxPaginationModule
   ]
 })
 export class ConsulterReservationsModule { }
