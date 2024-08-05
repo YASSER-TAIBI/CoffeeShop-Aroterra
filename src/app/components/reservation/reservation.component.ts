@@ -41,6 +41,7 @@ export class ReservationComponent{
     ],
     titreForm: "Réservez votre table",
     nomForm:"Nom",
+    prenomForm:"Prénom",
     emailForm:"Email",
     telForm:"Téléphone",
     dateForm:"Date",
@@ -51,34 +52,40 @@ export class ReservationComponent{
       {id: 2, texte: "2 Personnes"},
       {id: 3, texte: "3 Personnes"},
       {id: 4, texte: "4 Personnes"}
-    ]
+    ],
+    designationForm: "Désignation"
 
   }
   formData = {
-    name: '',
+    nom: '',
+    prenom: '',
     email: '',
     tel: '',
     date: null as NgbDateStruct | null,
     time: { hour: 7, minute: 0 },
-    people: ''
+    people: '',
+    designation: '',
+
   };
 
   async onSubmit(): Promise<void> {
     console.log('Form Submitted', this.formData);
 
-    if (this.formData.name === '' || this.formData.email === '' || this.formData.tel === '' || !this.formData.date || this.formData.people === '') {
+    if (this.formData.nom === '' ||this.formData.prenom === '' || this.formData.email === '' || this.formData.tel === '' || !this.formData.date || this.formData.people === '' || this.formData.designation === '' ) {
       alert('Remplir tous les champs de saisie !');
       return;
     }
 
     if (window.confirm('Voulez-vous continuer la réservation de votre table !')) {
       const reservation: Reservation = {
-        name: this.formData.name || '',
+        nom: this.formData.nom || '',
+        prenom: this.formData.prenom || '',
         email: this.formData.email || '',
         tel: this.formData.tel || '',
         date: this.formData.date,
         time: this.formData.time,
         people: this.formData.people || '',
+        designation: this.formData.designation || '',
         adminEmail:'',
         etat: "En Cours" || '',
       };
@@ -96,12 +103,14 @@ export class ReservationComponent{
 
   resetForm(){
   this.formData = {
-    name: '',
+    nom: '',
+    prenom: '',
     email: '',
     tel: '',
     date: null,
     time: { hour: 7, minute: 0 },
-    people: ''
+    people: '',
+    designation: ''
   }
   }
 }

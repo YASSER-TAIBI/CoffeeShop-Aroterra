@@ -33,11 +33,13 @@
             <thead>
             <tr>
               <th>Nom</th>
+              <th>Prénom</th>
               <th>Email</th>
               <th>Télephone</th>
               <th>Date</th>
               <th>Heure</th>
               <th>Nb Personne</th>
+              <th>Désignation</th>
               <th>Admin</th>
               <th>Etat</th>
               <th>Action</th>
@@ -48,12 +50,14 @@
             <!-- *ngFor= "let [--obj--] of [--list result in component--] " -->
               @for ( reservation of reservationList | paginate: { itemsPerPage: 5, currentPage: p }; track reservation ){
             <tr>
-              <td>{{reservation.name}}</td>
+              <td>{{reservation.nom}}</td>
+              <td>{{reservation.prenom}}</td>
               <td>{{reservation.email}}</td>
               <td>{{reservation.tel}}</td>
               <td>{{reservation.formattedDate}}</td>
               <td>{{reservation.formattedTime}}</td>
               <td>{{reservation.people}}</td>
+              <td>{{reservation.designation}}</td>
               <td>{{reservation.adminEmail}}</td>
               <td>
                 <select [(ngModel)]="reservation.etat" [ngClass]="getEtatClass(reservation.etat)">
@@ -62,9 +66,7 @@
                   }
                 </select>
               </td>
-              <!--<td><a (click)="openUserModal(templateUser, contrat.utilisateur)">{{contrat.utilisateur}}</a></td>-->
               <td>
-
                 <a class="edit"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                 <a class="delete" ><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
               </td>

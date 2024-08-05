@@ -1,7 +1,8 @@
 import {NgbDateStruct} from "@ng-bootstrap/ng-bootstrap";
 
 export interface Reservation {
-  name: string;
+  nom: string;
+  prenom: string;
   email: string;
   tel: string;
   date: NgbDateStruct | null;
@@ -9,6 +10,7 @@ export interface Reservation {
   people: string;
   adminEmail: string;
   etat: string;
+  designation: string;
 
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
