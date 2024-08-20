@@ -6,6 +6,7 @@ import {Reservation} from "../../../models/reservation";
 import {NgxPaginationModule} from "ngx-pagination";
 import {FormsModule} from "@angular/forms";
 import {NgClass} from "@angular/common";
+import {documentId} from "@angular/fire/firestore";
 
 @Component({
   selector: 'app-consulter-reservations',
@@ -37,6 +38,7 @@ export class ConsulterReservationsComponent implements OnInit {
     this.reservationService.getReservation().subscribe(data => {
       if (data) {
         this.reservationList = data.map(reservation => ({
+          id: reservation.id,
           ...reservation,
           formattedDate: reservation.date ? this.formatDate(reservation.date) : '',
           formattedTime: reservation.time ? this.formatTime(reservation.time) : ''
@@ -46,6 +48,35 @@ export class ConsulterReservationsComponent implements OnInit {
         console.log("aucun Reservation trouvé");
       }
     });
+  }
+
+  EditReservation(reservation: Reservation) {
+
+    if (window.confirm('Voulez-vous continuer la modification de cette réservation !')) {
+      this.reservationService.updateReservation(reservation.id!,
+        {etat: reservation.etat, adminEmail: this.authService.getCurrentUser()?.email || ''})
+        .then(() => {
+          alert('Réservation modifier avec succès!');
+          console.log('Reservation updated successfully!');
+        })
+        .catch(error => {
+          console.error('Error updating reservation: ', error);
+        });
+    }
+  }
+
+  DeleteReservation(reservation: Reservation) {
+    if (window.confirm('Voulez-vous vraiment supprimer cette réservation ?')) {
+      this.reservationService.deleteReservation(reservation.id!)
+        .then(() => {
+          alert('Réservation supprimée avec succès!');
+          // Supprimez la réservation localement de la liste pour éviter un appel supplémentaire à Firestore
+          this.reservationList = this.reservationList.filter(r => r.id !== reservation.id);
+        })
+        .catch(error => {
+          console.error('Error deleting reservation: ', error);
+        });
+    }
   }
 
   formatDate(date: { year: number, month: number, day: number }): string {
@@ -69,4 +100,5 @@ export class ConsulterReservationsComponent implements OnInit {
     }
   }
 
+  protected readonly documentId = documentId;
 }

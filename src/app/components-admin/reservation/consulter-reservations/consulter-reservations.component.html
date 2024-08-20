@@ -67,8 +67,8 @@
                 </select>
               </td>
               <td>
-                <a class="edit"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                <a class="delete" ><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                <a class="edit" (click)="EditReservation(reservation)"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                <a class="delete" (click)="DeleteReservation(reservation)"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
               </td>
             </tr>
               }

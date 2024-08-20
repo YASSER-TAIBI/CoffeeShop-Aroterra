@@ -23,20 +23,20 @@
               <div class="row mt-2">
                 <div class="col-md-6">
                   <label class="labels" for="prenom">Prénom</label>
-                  <input id="prenom" type="text" [(ngModel)]="formData.nom" class="form-control" placeholder="saisie le prénom" value=""></div>
+                  <input id="prenom" type="text" [(ngModel)]="formData.nom" name="prenom" class="form-control" placeholder="saisie le prénom"></div>
                 <div class="col-md-6">
                   <label class="labels" for="nom">Nom</label>
-                  <input id="nom" type="text" [(ngModel)]="formData.prenom" class="form-control" placeholder="saisie le nom" value=""></div>
+                  <input id="nom" type="text" [(ngModel)]="formData.prenom" name="nom" class="form-control" placeholder="saisie le nom"></div>
               </div>
               <div class="row mt-3">
                 <div class="col-md-12">
                   <label class="labels" for="email">Email</label>
-                  <input id="email" type="text" [(ngModel)]="formData.email" class="form-control" placeholder="saisie l'Email" value="" ></div>
+                  <input id="email" type="text" [(ngModel)]="formData.email" name="email" class="form-control" placeholder="saisie l'Email"></div>
               </div>
               <div class="row mt-3">
                 <div class="col-md-12">
                   <label class="labels" for="telephone">Numéro de Téléphone</label>
-                  <input id="telephone" type="text" [(ngModel)]="formData.tel" class="form-control" placeholder="saisie le numéro de téléphone" value=""></div>
+                  <input id="telephone" type="text" [(ngModel)]="formData.tel" name="telephone" class="form-control" placeholder="saisie le numéro de téléphone"></div>
               </div>
             </div>
           </div>
@@ -50,25 +50,25 @@
                 <div class="col-md-12">
                   <label class="labels" >Date</label>
                   <div class="date" id="date" data-target-input="nearest">
-                  <input type="text" name="date" [(ngModel)]="formData.date" class="form-control" (click)="d.toggle()" placeholder="saisie la date de reservation" ngbDatepicker #d="ngbDatepicker" value="">
+                  <input type="text" name="date" [(ngModel)]="formData.date" class="form-control" (click)="d.toggle()" placeholder="saisie la date de reservation" ngbDatepicker #d="ngbDatepicker">
                   </div>
               </div>
 
                 <div class="col-md-12">
                   <label class="labels">Heure</label>
                   <div class="time" id="time" data-target-input="nearest">
-                  <ngb-timepicker [(ngModel)]="formData.time" name="time" class="form-control-timepicker"/>
+                    <ngb-timepicker [(ngModel)]="formData.time" name="time" class="form-control-timepicker"/>
                   </div>
             </div>
               <div class="row mt-3">
               <div class="col-md-12">
                   <label class="labels" for="nb_personne">Nb Personne</label>
-                  <input id="nb_personne" type="text" [(ngModel)]="formData.people" class="form-control" placeholder="saisie la région" value=""></div>
+                  <input id="nb_personne" type="text" [(ngModel)]="formData.people" name="nb_personne" class="form-control" placeholder="saisie la région"></div>
               </div>
               <div class="row mt-3">
                 <div class="col-md-12">
                   <label class="labels" for="designation">Désignation</label>
-                  <textarea id="designation" type="text" [(ngModel)]="formData.designation" class="form-control" placeholder="saisie la désignation"></textarea></div>
+                  <textarea id="designation" type="text" [(ngModel)]="formData.designation" name="designation" class="form-control" placeholder="saisie la désignation"></textarea></div>
               </div>
           </div>
         </div>

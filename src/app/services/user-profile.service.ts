@@ -10,7 +10,7 @@ import {
   where,
   getDocs,
   doc,
-  updateDoc
+  updateDoc, documentId
 } from '@angular/fire/firestore';
 import {Observable} from "rxjs";
 

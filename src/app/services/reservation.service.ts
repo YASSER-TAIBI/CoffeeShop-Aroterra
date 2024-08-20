@@ -1,7 +1,18 @@
 import {inject, Injectable} from '@angular/core';
-import {addDoc, collection, collectionData, Firestore} from "@angular/fire/firestore";
+import {
+  addDoc,
+  collection,
+  collectionData, deleteDoc,
+  doc,
+  Firestore,
+  getDocs,
+  query,
+  updateDoc,
+  where
+} from "@angular/fire/firestore";
 import {Observable} from "rxjs";
 import {Reservation} from "../models/reservation";
+import {UserProfile} from "../models/userProfile";
 
 const PATH = 'reservation';
 
@@ -14,10 +25,22 @@ export class ReservationService {
 
 
   getReservation() {
-    return collectionData(this._collection) as Observable<Reservation[]>;
+    return collectionData(this._collection, {idField:'id'}) as Observable<Reservation[]>;
   }
 
   addReservation(reservation: Reservation) {
     return addDoc(this._collection, reservation);
+  }
+
+  // Méthode pour mettre à jour une réservation existante
+  updateReservation(id: string, reservation: Partial<Reservation>) {
+    const reservationDocRef = doc(this._firestore, `${PATH}/${id}`);
+    return updateDoc(reservationDocRef, reservation);
+  }
+
+  // Méthode pour supprimer une réservation par ID
+  deleteReservation(id: string) {
+    const reservationDocRef = doc(this._firestore, `${PATH}/${id}`);
+    return deleteDoc(reservationDocRef);
   }
 }

@@ -11259,3 +11259,19 @@ footer.sticky-footer .copyright {
 body.sidebar-toggled footer.sticky-footer {
   width: 100%;
 }
+
+.ngb-tp{
+  .btn.btn-link{
+    .visually-hidden{
+      display: none;
+    }
+  }
+}
+
+.ngb-tp-input-container {
+  width: 100% !important; ;
+}
+
+.ngb-tp-spacer {
+  width: 5em !important;
+}

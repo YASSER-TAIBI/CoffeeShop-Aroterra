@@ -34,4 +34,7 @@ textarea.form-control {
   height: 6rem !important;
 }
 
+.ngb-tp-input-container {
+  width: 100% !important;
+}
 
