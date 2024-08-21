@@ -30,6 +30,8 @@ export class ConsulterReservationsComponent implements OnInit {
   //Pagination
   p: number = 1;
 
+  searchText: string = '';
+
   ngOnInit(): void {
     this.getReservationList();
   }
@@ -48,6 +50,13 @@ export class ConsulterReservationsComponent implements OnInit {
         console.log("aucun Reservation trouvé");
       }
     });
+  }
+
+  get filteredReservations(): Reservation[] {
+    return this.reservationList.filter(reservation =>
+      reservation.nom.toLowerCase().includes(this.searchText.toLowerCase()) ||
+      reservation.prenom.toLowerCase().includes(this.searchText.toLowerCase())
+    );
   }
 
   EditReservation(reservation: Reservation) {

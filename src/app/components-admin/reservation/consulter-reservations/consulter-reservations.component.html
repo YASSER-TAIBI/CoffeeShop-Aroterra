@@ -2,26 +2,21 @@
 <div class="container-fluid">
 
   <!-- Page Heading -->
-  <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-  <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-    For more information about DataTables, please visit the <a target="_blank"
-                                                               href="https://datatables.net">official DataTables documentation</a>.</p>
+  <h1 class="h3 mb-2 text-gray-800">Liste des Réservations</h1>
+  <p class="mb-4">Cette liste répertorie les réservations effectuées par les clients ou par l'administrateur via un appel téléphonique. Dans cet espace, nous examinons chaque demande de réservation pour ensuite décider de la valider ou de la refuser, en fonction des critères établis et des disponibilités.</p>
 
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+      <h6 class="m-0 font-weight-bold text-primary">Données des réservations</h6>
     </div>
     <div class="card-body">
       <div class="table-responsive">
         <div class="table-wrapper">
           <div class="table-title">
             <div class="row">
-              <div class="input-group mb-3 col-sm-6">
-                <input type="text" class="form-control" placeholder="Recherche..." aria-label="Recipient's username">
-                <div class="input-group-append">
-                  <span class="input-group-text"><i class="fa fa-search"></i></span>
-                </div>
+              <div class="input-group mb-3 col-sm-4">
+                <input type="text" id="search" class="form-control" placeholder="Filtre par Nom ou le Prénom" aria-label="Recherche" [(ngModel)]="searchText">
               </div>
               <!--<div class="col-sm-6">
                 <a class="btn btn-success" ><i class="material-icons">&#xE147;</i>
@@ -48,7 +43,7 @@
             <tbody>
 
             <!-- *ngFor= "let [--obj--] of [--list result in component--] " -->
-              @for ( reservation of reservationList | paginate: { itemsPerPage: 5, currentPage: p }; track reservation ){
+              @for ( reservation of filteredReservations | paginate: { itemsPerPage: 10, currentPage: p }; track reservation.id ){
             <tr>
               <td>{{reservation.nom}}</td>
               <td>{{reservation.prenom}}</td>
