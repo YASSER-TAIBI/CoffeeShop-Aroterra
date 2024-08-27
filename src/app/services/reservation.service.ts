@@ -5,14 +5,10 @@ import {
   collectionData, deleteDoc,
   doc,
   Firestore,
-  getDocs,
-  query,
   updateDoc,
-  where
 } from "@angular/fire/firestore";
 import {Observable} from "rxjs";
 import {Reservation} from "../models/reservation";
-import {UserProfile} from "../models/userProfile";
 
 const PATH = 'reservation';
 

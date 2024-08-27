@@ -1,1 +1,101 @@
-<p>add-articles works!</p>
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800">Ajouter des Articles</h1>
+  <p class="mb-4">Dans cet espace, nous gérons les appels téléphoniques des clients qui souhaitent réserver une table. Nous notons leurs préférences, confirmons la disponibilité, et procédons à la réservation en fonction de leurs besoins spécifiques.</p>
+
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+    <div class="card-header profile py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Données de l'article</h6>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit()" #menuForm="ngForm" >
+        <div class="row">
+
+          <div class="col-md-6 border-right">
+            <div class="p-3 py-5">
+              <div class="d-flex justify-content-center align-items-center mb-3">
+                <h4 class="title-center">Détails sur le registraire</h4>
+              </div>
+
+              <div class="row mt-3">
+                <div class="col-md-12">
+                  <label class="labels" for="typeArticle">Type d'Article</label>
+                  <select id="typeArticle" name="typeArticle" [(ngModel)]="formData.typeArticle" class="form-control" >
+                    <option value="" selected disabled>Sélectionnez le type d'article</option>
+                    @for (typeArticle of menuTypeArticles ; track typeArticle){
+                      <option [value]="typeArticle">{{ typeArticle }}</option>
+                    }
+                  </select></div>
+            </div>
+
+              <div class="row mt-3">
+                <div class="col-md-12">
+                  <label class="labels" for="article">Article</label>
+                  <input id="article" type="text" [(ngModel)]="formData.article" name="article" class="form-control" placeholder="saisie le nom d'article"></div>
+              </div>
+
+              <div class="row mt-3">
+                <div class="col-md-12">
+                  <label class="labels" for="price">Prix</label>
+                  <input id="price" type="text" [(ngModel)]="formData.price" name="price" class="form-control" placeholder="saisie le prix d'article"></div>
+              </div>
+
+              <div class="row mt-3">
+                <div class="col-md-12">
+                  <label class="labels" for="designation">Désignation</label>
+                  <textarea id="designation" type="text" [(ngModel)]="formData.description" name="designation" class="form-control" placeholder="saisie une désignation d'article"></textarea></div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-md-6 ">
+            <div class="p-3 py-5">
+              <div class="d-flex justify-content-center align-items-center mb-3">
+                <h4 class="title-center">Réservation</h4>
+              </div>
+
+              <div class="row mt-3">
+                <div class="col-md-12">
+                  <label class="labels" for="article">Photo d'Article</label>
+                  <div class="image-container">
+                    <div class="image-placeholder" id="image-placeholder">
+                      @if (!imageSrc){
+                        <span>210 × 210</span>
+                      }
+                      @if (imageSrc){
+                        <img [src]="imageSrc" alt="Selected Image" />
+                      }
+                    </div>
+                    <button type="button" class="select-photo-btn" (click)="onSelectPhoto()">Sélectionner une Photo</button>
+                    <input type="file" id="file-input" accept="image/*" (change)="onFileSelected($event)" style="display: none;">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mt-3">
+                <div class="col-md-12">
+                  <label class="labels" for="etat">Etat</label>
+                  <select id="etat" name="etat" [(ngModel)]="formData.etat" class="form-control">
+                    <option value="" selected disabled>Sélectionnez l'état de l'article</option>
+                    @for (etat of menuEtats ; track etat){
+                      <option [value]="etat">{{ etat }}</option>
+                    }
+                  </select></div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="mt-5 text-center">
+          <button class="btn btn-primary profile-button" type="submit">Enregistrer</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>
+<!-- /.container-fluid -->

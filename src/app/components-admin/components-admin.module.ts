@@ -16,6 +16,8 @@ import { ConsulterReservationsRoutingModule } from './reservation/consulter-rese
 import { ReserverTableRoutingModule } from './reservation/reserver-table/reserver-table-routing.module';
 import { AddArticlesModule } from './menu/add-articles/add-articles.module';
 import { AddArticlesRoutingModule } from './menu/add-articles/add-articles-routing.module';
+import { ConsulterMenuModule } from './menu/consulter-menu/consulter-menu.module';
+import { ConsulterMenuRoutingModule } from './menu/consulter-menu/consulter-menu-routing.module';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { AddArticlesRoutingModule } from './menu/add-articles/add-articles-routi
     ConsulterReservationsRoutingModule,
     ReserverTableRoutingModule,
     AddArticlesModule,
-    AddArticlesRoutingModule
+    AddArticlesRoutingModule,
+    ConsulterMenuModule,
+    ConsulterMenuRoutingModule
   ],
 })
 export class ComponentsAdminModule {}

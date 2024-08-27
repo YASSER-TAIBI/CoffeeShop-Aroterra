@@ -1,0 +1,81 @@
+.form-control:focus {
+  box-shadow: none;
+  border-color: #da9f5b;
+}
+
+.labels {
+  font-size: 12px
+}
+
+.title-center {
+  color: #858796 !important;
+}
+
+.rounded-circle{
+  margin-bottom: 20px;
+}
+
+.profile {
+  display: flex;
+  justify-content: space-between;
+}
+
+.fas{
+  padding-right: 10px;
+}
+
+@media (max-width: 560px) {
+  .textedit{
+    font-size: 0rem !important;
+  }
+}
+
+textarea.form-control {
+  height: 6rem !important;
+}
+
+.ngb-tp-input-container {
+  width: 100% !important;
+}
+
+/*---------------------------------------------------------------------------------------------------------------------------------*/
+
+.image-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-placeholder {
+  background-color: #e0e0e0;
+  width: 210px;
+  height: 210px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.image-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.select-photo-btn {
+  background-color: white;
+  border: 1px solid #9e9e9e;
+  border-radius: 4px;
+  padding: 5px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #858796;
+  outline: none;
+}
+
+.select-photo-btn:hover {
+  background-color: #f0f0f0;
+}

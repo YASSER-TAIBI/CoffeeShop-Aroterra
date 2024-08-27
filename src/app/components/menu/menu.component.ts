@@ -155,7 +155,7 @@ export class MenuComponent {
 
   tabs = [
     { id: 'tabs-1', name: 'Boissons Chaudes', icon: './assets/img/tab-icon-01.png' },
-    { id: 'tabs-2', name: 'Boissons froides', icon: './assets/img/tab-icon-02.png' },
+    { id: 'tabs-2', name: 'Boissons Froides', icon: './assets/img/tab-icon-02.png' },
     { id: 'tabs-3', name: 'Petit-déjeuner', icon: './assets/img/tab-icon-03.png' }
   ];
 
