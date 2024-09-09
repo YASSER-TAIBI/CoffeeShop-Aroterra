@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import { Menu } from "../../../models/menu";
 
 @Component({
@@ -9,7 +9,7 @@ import { Menu } from "../../../models/menu";
   styleUrls: ['./delete-article-modal.component.css', '../../../../assets/css/admin-styles.css']
 })
 export class DeleteArticleModalComponent {
-@Input() menu!: Menu;
+  @Input() menu!: Menu;
   @Output() close = new EventEmitter<void>();
 
   confirmDelete() {

@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { Menu } from "../../../models/menu";
+import {FormBuilder, FormGroup, ReactiveFormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-edit-article-modal',
   standalone: true,
-  imports: [],
+  imports: [
+    ReactiveFormsModule
+  ],
   templateUrl: './edit-article-modal.component.html',
   styleUrls: ['./edit-article-modal.component.css', '../../../../assets/css/admin-styles.css']
 })

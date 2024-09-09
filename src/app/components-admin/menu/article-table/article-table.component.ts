@@ -2,9 +2,9 @@ import {Component, Input} from '@angular/core';
 import {Menu} from "../../../models/menu";
 import {NgxPaginationModule} from "ngx-pagination";
 import {FormsModule} from "@angular/forms";
-import {NgOptimizedImage} from "@angular/common";
-import { DeleteArticleModalComponent } from '../delete-article-modal/delete-article-modal.component';  // Assurez-vous que les imports sont corrects
-import { EditArticleModalComponent } from '../edit-article-modal/edit-article-modal.component';
+import {NgIf, NgOptimizedImage} from "@angular/common";
+import {DeleteArticleModalComponent} from "../delete-article-modal/delete-article-modal.component";
+import {EditArticleModalComponent} from "../edit-article-modal/edit-article-modal.component";
 
 @Component({
   selector: 'app-article-table',
@@ -14,7 +14,8 @@ import { EditArticleModalComponent } from '../edit-article-modal/edit-article-mo
     FormsModule,
     NgOptimizedImage,
     DeleteArticleModalComponent,
-    EditArticleModalComponent
+    EditArticleModalComponent,
+    NgIf
   ],
   templateUrl: './article-table.component.html',
   styleUrls: ['./article-table.component.css',  '../../../../assets/css/admin-styles.css']
@@ -32,7 +33,6 @@ export class ArticleTableComponent {
    p: number = 1;
 
    searchText: string = '';
-  ngOnInit(): void {}
 
   openEditModal(menu: any) {
     this.selectedMenu = menu;
