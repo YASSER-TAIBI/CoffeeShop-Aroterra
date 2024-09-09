@@ -18,7 +18,8 @@ import { AddArticlesModule } from './menu/add-articles/add-articles.module';
 import { AddArticlesRoutingModule } from './menu/add-articles/add-articles-routing.module';
 import { ConsulterMenuModule } from './menu/consulter-menu/consulter-menu.module';
 import { ConsulterMenuRoutingModule } from './menu/consulter-menu/consulter-menu-routing.module';
-
+import { DeleteArticleModalComponent} from './menu/delete-article-modal/delete-article-modal.component'
+import { EditArticleModalComponent} from './menu/edit-article-modal/edit-article-modal.component'
 @NgModule({
   declarations: [
 
@@ -41,7 +42,9 @@ import { ConsulterMenuRoutingModule } from './menu/consulter-menu/consulter-menu
     AddArticlesModule,
     AddArticlesRoutingModule,
     ConsulterMenuModule,
-    ConsulterMenuRoutingModule
+    ConsulterMenuRoutingModule,
+    DeleteArticleModalComponent,
+    EditArticleModalComponent
   ],
 })
 export class ComponentsAdminModule {}

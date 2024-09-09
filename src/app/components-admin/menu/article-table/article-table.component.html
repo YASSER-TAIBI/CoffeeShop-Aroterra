@@ -34,8 +34,8 @@
             <td>{{menu.description}}</td>
             <td>{{menu.etat}}</td>
             <td>
-              <a class="edit" (click)="EditMenu(menu)"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-              <a class="delete" (click)="DeleteMenu(menu)"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+              <a class="edit" (click)="openEditModal(menu)"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+              <a class="delete" (click)="openDeleteModal(menu)"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
             </td>
           </tr>
             }
@@ -45,4 +45,9 @@
       </div>
     </div>
   </div>
+  <!-- Modal Edit -->
+  <app-edit-article-modal [menu]="selectedMenu" *ngIf="isEditModalOpen" (close)="closeEditModal()"></app-edit-article-modal>
+
+  <!-- Modal Delete -->
+  <app-delete-article-modal [menu]="selectedMenu" *ngIf="isDeleteModalOpen" (close)="closeDeleteModal()"></app-delete-article-modal>
 </div>
