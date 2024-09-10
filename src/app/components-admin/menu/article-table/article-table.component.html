@@ -34,7 +34,7 @@
             <td>{{menu.description}}</td>
             <td>{{menu.etat}}</td>
             <td>
-              <a class="edit" (click)="openEditModal(menu)"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+              <a class="edit" (click)="openEditModal(templateEdit, menu)"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
               <a class="delete" (click)="openDeleteModal(menu)"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
             </td>
           </tr>
@@ -45,9 +45,26 @@
       </div>
     </div>
   </div>
+
+
   <!-- Modal Edit -->
-  <app-edit-article-modal [menu]="selectedMenu" *ngIf="isEditModalOpen" (close)="closeEditModal()"></app-edit-article-modal>
+  <ng-template #templateEdit let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+<!--  <app-edit-article-modal [menu]="selectedMenu" (close)="closeEditModal()"></app-edit-article-modal>-->
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-secondary" (click)="modal.close('Save click')">Save</button>
+    </div>
+  </ng-template>
+
 
   <!-- Modal Delete -->
-  <app-delete-article-modal [menu]="selectedMenu" *ngIf="isDeleteModalOpen" (close)="closeDeleteModal()"></app-delete-article-modal>
+
+<!--  <app-delete-article-modal [menu]="selectedMenu"  (close)="closeDeleteModal()"></app-delete-article-modal>-->
+
+
 </div>
