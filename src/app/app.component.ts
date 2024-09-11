@@ -16,6 +16,7 @@ import { TestimonialComponent } from './components/testimonial/testimonial.compo
 import { NotfoundComponent} from "./components/notfound/notfound.component";
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth.guard';
+import {DialogComponent} from "./shared/components/dialog/dialog.component";
 
 @Component({
   selector: 'app-root',
@@ -36,6 +37,7 @@ import { AuthGuard } from './auth/auth.guard';
     FooterComponent,
     TestimonialComponent,
     NotfoundComponent,
+    DialogComponent
   ],
   providers: [
     AuthService,

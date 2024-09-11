@@ -6,6 +6,9 @@ import {NgIf, NgOptimizedImage} from "@angular/common";
 import {DeleteArticleModalComponent} from "../delete-article-modal/delete-article-modal.component";
 import {EditArticleModalComponent} from "../edit-article-modal/edit-article-modal.component";
 import { ModalDismissReasons, NgbDatepickerModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {DialogComponent} from "../../../shared/components/dialog/dialog.component";
+import {GeneralService} from "../../../shared/services/general.service";
+
 
 
 @Component({
@@ -18,7 +21,8 @@ import { ModalDismissReasons, NgbDatepickerModule, NgbModal } from '@ng-bootstra
     DeleteArticleModalComponent,
     EditArticleModalComponent,
     NgbDatepickerModule,
-    NgIf
+    NgIf,
+    DialogComponent
   ],
   templateUrl: './article-table.component.html',
   styleUrls: ['./article-table.component.css',  '../../../../assets/css/admin-styles.css']
@@ -31,37 +35,34 @@ export class ArticleTableComponent {
   //Pagination
   p: number = 1;
   searchText: string = '';
-  selectedMenu: any = null;
-  // isEditModalOpen: boolean = false;
-  // isDeleteModalOpen: boolean = false;
+  selectedMenu: Menu | null = null;
+  isEditModalOpen: boolean = false;
+  isDeleteModalOpen: boolean = false;
 
-  private modalService = inject(NgbModal);
+  constructor(public generalService: GeneralService) {}
 
-  openEditModal(templateEdit: TemplateRef<any>,menu: any) {
-    this.modalService.open(templateEdit, { ariaLabelledBy: 'modal-basic-title' }).result.then(
-      (result) => {
+
+  openEditModal(menu: Menu) {
         this.selectedMenu = menu;
-        // this.isEditModalOpen = true;
-      },
-      (reason) => {
-        console.log("test de fermeture de modal");
-      },
-    );
-
+        this.isEditModalOpen = true;
     }
+
+  openModal(){
+
+  }
 
   openDeleteModal(menu: any) {
 
     this.selectedMenu = menu;
-    // this.isDeleteModalOpen = true;
+    this.isDeleteModalOpen = true;
     }
 
   closeEditModal() {
-      // this.isEditModalOpen = false;
+    this.selectedMenu = null; // Ferme le modal
     }
 
     closeDeleteModal() {
-      // this.isDeleteModalOpen = false;
+      this.isDeleteModalOpen = false;
     }
 
    trackById(index: number, item: any): number {

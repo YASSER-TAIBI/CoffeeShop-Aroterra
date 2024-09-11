@@ -4,6 +4,7 @@ import {NgxPaginationModule} from "ngx-pagination";
 import {Menu} from "../../../models/menu";
 import {ArticleTableComponent} from "../article-table/article-table.component";
 import {MenuService} from "../../../services/menu.service";
+import {DialogComponent} from "../../../shared/components/dialog/dialog.component";
 
 @Component({
   selector: 'app-consulter-menu',
@@ -11,6 +12,7 @@ import {MenuService} from "../../../services/menu.service";
   imports: [
     FormsModule,
     ArticleTableComponent,
+    DialogComponent,
   ],
   templateUrl: './consulter-menu.component.html',
   styleUrls: ['./consulter-menu.component.css',  '../../../../assets/css/admin-styles.css']

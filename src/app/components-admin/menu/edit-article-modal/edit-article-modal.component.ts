@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import { Menu } from "../../../models/menu";
 import {FormBuilder, FormGroup, ReactiveFormsModule} from "@angular/forms";
 
@@ -11,7 +11,7 @@ import {FormBuilder, FormGroup, ReactiveFormsModule} from "@angular/forms";
   templateUrl: './edit-article-modal.component.html',
   styleUrls: ['./edit-article-modal.component.css', '../../../../assets/css/admin-styles.css']
 })
-export class EditArticleModalComponent implements OnInit {
+export class EditArticleModalComponent implements OnInit, OnChanges  {
   @Input() menu!: Menu;
   @Output() close = new EventEmitter<void>();
   editForm!: FormGroup;
@@ -19,6 +19,17 @@ export class EditArticleModalComponent implements OnInit {
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
+    this.createForm();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['menu'] && changes['menu'].currentValue) {
+      this.createForm();  // Réinitialiser le formulaire si `menu` change
+    }
+  }
+
+
+  createForm() {
     this.editForm = this.fb.group({
       typeArticle: [this.menu?.typeArticle],
       article: [this.menu?.article],
