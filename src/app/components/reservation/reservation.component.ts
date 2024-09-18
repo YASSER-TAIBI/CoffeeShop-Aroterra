@@ -5,7 +5,9 @@ import { NgbDatepickerModule, NgbDateStruct, NgbTimepickerModule } from '@ng-boo
 import {NavbarComponent} from "../navbar/navbar.component";
 import {FooterComponent} from "../footer/footer.component";
 import {Reservation} from "../../models/reservation";
+import {Notification} from "../../models/notification";
 import {ReservationService} from "../../services/reservation.service";
+import {NotificationService} from "../../services/notification.service";
 
 @Component({
   selector: 'app-reservation',
@@ -26,6 +28,7 @@ export class ReservationComponent{
 
   @Input() showPageHeader: boolean = true;
   reservationService = inject(ReservationService);
+  notificationService = inject(NotificationService);
 
   reservation = {
     title:"Réservation en ligne",
@@ -91,9 +94,24 @@ export class ReservationComponent{
       };
 
       console.log('Form Submitted', reservation);
-      await  this.reservationService.addReservation(reservation).then(() => {
+      await  this.reservationService.addReservation(reservation).then(async (resId) => {
         this.resetForm();
-        alert('Profil mis à jour avec succès!');
+        alert('Réservation effectuée avec succès!');
+
+        // Extraire l'ID du document de la réservation
+        const reservationId = resId.id;
+
+        // Ajouter une notification en cas de succès
+        const notification: Notification = {
+          dateCreation: new Date(),
+          description: `Nouvelle réservation par ${reservation.nom} ${reservation.prenom} pour ${reservation.people} personnes.`,
+          icon: 'fa-calendar-alt',
+          color: '#da9f5b !important',
+          isRead: false,
+          titre: 'Reservation',
+          reservationId: reservationId
+        };
+        await this.notificationService.addNotification(notification);
       }).catch(error => {
         console.error(error);
         alert('Erreur lors de la mise à jour du profil.');
