@@ -14,6 +14,9 @@ import { ConsulterReservationsModule } from './reservation/consulter-reservation
 import { ReserverTableModule } from './reservation/reserver-table/reserver-table.module';
 import { ConsulterReservationsRoutingModule } from './reservation/consulter-reservations/consulter-reservations-routing.module';
 import { ReserverTableRoutingModule } from './reservation/reserver-table/reserver-table-routing.module';
+import { CalendrierReservationsModule } from './reservation/calendrier-reservations/calendrier-reservations.module';
+import { CalendrierReservationsRoutingModule } from './reservation/calendrier-reservations/calendrier-reservations-routing.module';
+import {FullCalendarModule} from "@fullcalendar/angular";
 
 @NgModule({
   declarations: [
@@ -33,7 +36,10 @@ import { ReserverTableRoutingModule } from './reservation/reserver-table/reserve
     ConsulterReservationsModule,
     ReserverTableModule,
     ConsulterReservationsRoutingModule,
-    ReserverTableRoutingModule
+    ReserverTableRoutingModule,
+    CalendrierReservationsModule,
+    CalendrierReservationsRoutingModule,
+    FullCalendarModule
   ],
 })
 export class ComponentsAdminModule {}
