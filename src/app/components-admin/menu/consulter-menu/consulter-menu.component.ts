@@ -22,6 +22,7 @@ export class ConsulterMenuComponent  implements OnInit {
   petitDejeunerList: Menu[] = [];
   boissonsChaudesList: Menu[] = [];
   boissonsFroidesList: Menu[] = [];
+  id: number = 0;
 
   menuService = inject(MenuService);
 

@@ -12,10 +12,10 @@ export enum MenuEtat {
 export interface Menu {
 
   id?: string;
-  typeArticle: MenuTypeArticle;
-  imageUrl: string;
-  price: number;
-  article: string;
-  description: string;
-  etat: MenuEtat
+  typeArticle: MenuTypeArticle | undefined;
+  imageUrl: string | undefined;
+  price: number | undefined;
+  article: string | undefined;
+  description: string | undefined;
+  etat: MenuEtat | undefined;
 }
