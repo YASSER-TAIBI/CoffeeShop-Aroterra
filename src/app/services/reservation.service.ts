@@ -43,4 +43,10 @@ export class ReservationService {
     const reservationDocRef = doc(this._firestore, `${PATH}/${id}`);
     return deleteDoc(reservationDocRef);
   }
+
+  // Récupérer uniquement les réservations validées
+  getValidatedReservations(): Observable<Reservation[]> {
+    const validatedQuery = query(this._collection, where('etat', '==', 'Valider'));
+    return collectionData(validatedQuery, { idField: 'id' }) as Observable<Reservation[]>;
+  }
 }
