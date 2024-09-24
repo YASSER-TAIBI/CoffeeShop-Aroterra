@@ -1,7 +1,6 @@
 import {NgModule, OnInit} from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-
 import { ComponentsAdminRoutingModule } from './components-admin-routing.module';
 import { ComponentsAdminComponent  } from './components-admin.component';
 import { HeaderComponent } from './header/header.component';
@@ -20,6 +19,10 @@ import { ConsulterMenuModule } from './menu/consulter-menu/consulter-menu.module
 import { ConsulterMenuRoutingModule } from './menu/consulter-menu/consulter-menu-routing.module';
 import { DeleteArticleModalComponent} from './menu/delete-article-modal/delete-article-modal.component'
 import { EditArticleModalComponent} from './menu/edit-article-modal/edit-article-modal.component'
+import { CalendrierReservationsModule } from './reservation/calendrier-reservations/calendrier-reservations.module';
+import { CalendrierReservationsRoutingModule } from './reservation/calendrier-reservations/calendrier-reservations-routing.module';
+import {FullCalendarModule} from "@fullcalendar/angular";
+
 @NgModule({
   declarations: [
 
@@ -44,7 +47,10 @@ import { EditArticleModalComponent} from './menu/edit-article-modal/edit-article
     ConsulterMenuModule,
     ConsulterMenuRoutingModule,
     DeleteArticleModalComponent,
-    EditArticleModalComponent
+    EditArticleModalComponent,
+    CalendrierReservationsModule,
+    CalendrierReservationsRoutingModule,
+    FullCalendarModule
   ],
 })
 export class ComponentsAdminModule {}

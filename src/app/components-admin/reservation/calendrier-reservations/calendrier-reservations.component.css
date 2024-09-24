@@ -1,0 +1,74 @@
+::ng-deep button.fc--button.fc-button.fc-button-primary{
+  display: none;
+}
+
+::ng-deep .fc-direction-ltr .fc-button-group > .fc-button:not(:first-child) {
+  margin-left: -3px !important;
+}
+
+::ng-deep .fc-toolbar-title {
+  text-transform: capitalize;
+}
+
+::ng-deep .fc-direction-ltr .fc-toolbar > * > :not(:first-child) {
+  margin-left: -2px;
+}
+
+::ng-deep .fc-timegrid-axis-cushion::before {
+  content: "Journée";
+}
+
+::ng-deep .fc-timegrid-axis-cushion {
+  visibility: hidden;
+}
+
+::ng-deep .fc-timegrid-axis-cushion::before {
+  visibility: visible;
+}
+
+::ng-deep .fc .fc-timegrid-axis-cushion {
+  flex-shrink: 0;
+  max-width: 74px;
+  height: 24px;
+}
+
+::ng-deep .fc .fc-timegrid-axis-cushion, .fc .fc-timegrid-slot-label-cushion {
+  padding: 0px 8px;
+}
+
+::ng-deep .fc-direction-ltr .fc-timegrid-slot-label-frame {
+  text-align: center;
+}
+
+::ng-deep .fc .fc-button-primary {
+  background-color: #daa05b;
+  border-color: #daa05b;
+  color: #fff;
+}
+
+::ng-deep .fc .fc-button-primary:not(:disabled).fc-button-active, .fc .fc-button-primary:not(:disabled):active {
+  background-color: #e5b882;
+  border-color: #e5b882;
+  color: #ffffff;
+}
+
+::ng-deep .fc .fc-button-primary:hover {
+  background-color: #e5b882;
+  border-color: #e5b882;
+  color: #ffffff;
+}
+
+::ng-deep .fc-button-primary:not(:disabled):active {
+  background-color: #e5b882 !important;
+  border-color: #e5b882 !important;
+  color: #ffffff !important;
+}
+
+::ng-deep h2{
+  font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  color: #d69346;
+}
+
+::ng-deep .fc .fc-daygrid-body-natural .fc-daygrid-day-events {
+  margin-bottom: 0px;
+}

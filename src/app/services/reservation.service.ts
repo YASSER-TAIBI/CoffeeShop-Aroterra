@@ -4,8 +4,8 @@ import {
   collection,
   collectionData, deleteDoc,
   doc,
-  Firestore,
-  updateDoc,
+  Firestore, query,
+  updateDoc, where,
 } from "@angular/fire/firestore";
 import {Observable} from "rxjs";
 import {Reservation} from "../models/reservation";
@@ -38,5 +38,11 @@ export class ReservationService {
   deleteReservation(id: string) {
     const reservationDocRef = doc(this._firestore, `${PATH}/${id}`);
     return deleteDoc(reservationDocRef);
+  }
+
+  // Récupérer uniquement les réservations validées
+  getValidatedReservations(): Observable<Reservation[]> {
+    const validatedQuery = query(this._collection, where('etat', '==', 'Valider'));
+    return collectionData(validatedQuery, { idField: 'id' }) as Observable<Reservation[]>;
   }
 }
