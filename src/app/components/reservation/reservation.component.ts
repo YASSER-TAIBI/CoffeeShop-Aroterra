@@ -68,7 +68,6 @@ export class ReservationComponent{
     time: { hour: 7, minute: 0 },
     people: '',
     designation: '',
-
   };
 
   async onSubmit(): Promise<void> {
