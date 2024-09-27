@@ -52,6 +52,16 @@
   color: #DA9F5B;
 }
 
+.stars i {
+  font-size: 12px;
+  margin-right: 2px;
+}
+
+.stars i:last-child {
+  margin-right: 0;
+}
+
+
 /*@media (width < 900px) {*/
 /*  .testimonials__grid {*/
 /*    grid-template-columns: repeat(2, 1fr);*/
