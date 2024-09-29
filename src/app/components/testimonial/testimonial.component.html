@@ -1,3 +1,6 @@
+@if(showPageHeader){
+  <app-navbar></app-navbar>
+}
 <!-- Page Header Start -->
 @if(showPageHeader){
 <div class="container-fluid page-header mb-5 position-relative overlay-bottom">
@@ -22,7 +25,6 @@
     </div>
 
     <swiper-container class="mySwiper testimonials__grid" pagination="true" pagination-clickable="true" spaceBetween={{30}}  slidesPerView={{slidesPerView}} autoplay-delay="3000" >
-
       <swiper-slide class="card">
         <span><i class="fa fa-quote-left" aria-hidden="true"></i></span>
         <p>
@@ -99,3 +101,6 @@
   </div>
 </div>
 <!-- Testimonial End -->
+@if(showPageHeader){
+  <app-footer></app-footer>
+}

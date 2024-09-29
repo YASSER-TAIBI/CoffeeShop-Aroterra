@@ -14,7 +14,16 @@
         <a routerLink="/service" routerLinkActive="active" ariaCurrentWhenActive="page" class="nav-item nav-link">Service</a>
         <a routerLink="/menu" routerLinkActive="active" ariaCurrentWhenActive="page" class="nav-item nav-link">Menu</a>
         <a routerLink="/reservation" routerLinkActive="active" ariaCurrentWhenActive="page" class="nav-item nav-link">Réservation</a>
-<!--        <a routerLink="/testimonial" routerLinkActive="active" ariaCurrentWhenActive="page" class="nav-item nav-link">Témoignages</a>-->
+
+        <div class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Témoignages</a>
+          <div class="dropdown-menu text-capitalize">
+            <a routerLink="/testimonial" routerLinkActive="active" ariaCurrentWhenActive="page" class="dropdown-item">Voir Témoignages</a>
+            <a routerLink="/avis-testimonial" routerLinkActive="active" ariaCurrentWhenActive="page" class="dropdown-item">Déposer un Avis</a>
+          </div>
+        </div>
+
+       <!-- <a routerLink="/testimonial" routerLinkActive="active" ariaCurrentWhenActive="page" class="nav-item nav-link">Témoignages</a> -->
         <a routerLink="/contact" routerLinkActive="active" ariaCurrentWhenActive="page" class="nav-item nav-link">Contact</a>
         <a routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page" class="nav-item nav-link login-nav-link" >
           <span class="user_icon"><i class="fa fa-user" aria-hidden="true"></i></span>Login

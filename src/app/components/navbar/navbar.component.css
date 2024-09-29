@@ -1,0 +1,23 @@
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0;
+}
+.dropdown-menu {
+  display: none;
+}
+.dropdown-item {
+  padding: .25rem 0.5rem !important;
+  color: #da9f5b !important;
+  text-align: center !important;
+}
+.navbar-nav .dropdown-menu {
+  float: left !important;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+  color: #fff !important;
+}
+.dropdown-item:hover, .dropdown-item:focus {
+  color: #fff !important;
+  background-color: #da9f5b !important;
+}

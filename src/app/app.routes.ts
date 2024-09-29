@@ -12,6 +12,7 @@ import {LoginComponent} from "./components/login/login.component";
 import {AuthGuard} from './auth/auth.guard';
 import {ComponentsAdminComponent} from "./components-admin/components-admin.component";
 import {FULL_ROUTES} from "./routes/full-layout.routes";
+import {AvisTestimonialComponent} from "./components/avis-testimonial/avis-testimonial.component";
 
 export const routes: Routes = [
 
@@ -22,7 +23,8 @@ export const routes: Routes = [
   {title: "ARÔTERRA | Menu",path: 'menu' , component: MenuComponent},
   {title: "ARÔTERRA | Réservation",path: 'reservation' , component: ReservationComponent},
   {title: "ARÔTERRA | Contact",path: 'contact' , component: ContactComponent},
-  {title: "ARÔTERRA | Témoignages",path: 'contact' , component: TestimonialComponent},
+  {title: "ARÔTERRA | Témoignages",path: 'testimonial' , component: TestimonialComponent},
+  {title: "ARÔTERRA | Témoignages",path: 'avis-testimonial' , component: AvisTestimonialComponent},
 
   {title: "ARÔTERRA | Login",path: 'login' , component: LoginComponent},
   { path: '', component: ComponentsAdminComponent,
