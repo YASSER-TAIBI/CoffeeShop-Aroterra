@@ -5,6 +5,10 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {Notification} from "../../models/notification";
 import {MenuEtat} from "../../models/menu";
 import {TestimonialCivilite} from "../../models/testimonial";
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import {StartRatingComponent} from "../../shared/components/start-rating/start-rating.component";
+
 
 @Component({
   selector: 'app-avis-testimonial',
@@ -13,13 +17,17 @@ import {TestimonialCivilite} from "../../models/testimonial";
     NavbarComponent,
     FooterComponent,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FontAwesomeModule,
+    StartRatingComponent
   ],
   templateUrl: './avis-testimonial.component.html',
   styleUrls: ['./avis-testimonial.component.css', '../../../assets/css/style.css', '../../../assets/css/style.min.css' ],
   encapsulation: ViewEncapsulation.None,
 })
 export class AvisTestimonialComponent implements OnInit {
+  faCoffee = faCoffee;
+
 
   @Input() showPageHeader: boolean = true;
   testimonialCivilite = TestimonialCivilite;
