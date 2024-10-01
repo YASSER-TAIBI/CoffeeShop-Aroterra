@@ -13,6 +13,16 @@
   margin-bottom: 0;
 }
 .text-white {
-  color: #fffbf2 !important;
+  color: #fff !important;
 }
 
+label {
+  display: flex !important;
+  align-items: center !important;
+  color: #fffbf2 !important;
+  justify-content: center !important;
+}
+
+app-start-rating {
+  margin-left: 20px;
+}

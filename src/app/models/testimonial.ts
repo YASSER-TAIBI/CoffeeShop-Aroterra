@@ -10,6 +10,9 @@ export interface Testimonial {
   civilite: string;
   photo: string;
   dateCreation: Date;
+  service: number;
+  Proprete: number;
+  nourriture: number;
   appreciation: number; // 5-star rating
   email: string;
   commentaire: string;

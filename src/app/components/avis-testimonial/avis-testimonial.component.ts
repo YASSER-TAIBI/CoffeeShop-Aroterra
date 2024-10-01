@@ -50,7 +50,10 @@ export class AvisTestimonialComponent implements OnInit {
     nomForm:"Nom",
     prenomForm:"Prénom",
     emailForm:"Email",
-    appreciationForm:"Appréciation",
+    appreciationForm:"Appréciation :",
+    serviceForm:"Service :",
+    propreteForm:"Propreté :",
+    nourritureForm:"Nourriture :",
     commentaireForm:"Commentaire"
   }
   formData = {
@@ -59,6 +62,9 @@ export class AvisTestimonialComponent implements OnInit {
     prenom: '',
     email: '',
     appreciation: '',
+    service: '',
+    proprete: '',
+    nourriture: '',
     commentaire: '',
   };
 
@@ -121,6 +127,9 @@ export class AvisTestimonialComponent implements OnInit {
       prenom: '',
       email: '',
       appreciation: '',
+      service: '',
+      proprete: '',
+      nourriture: '',
       commentaire: '',
     }
   }

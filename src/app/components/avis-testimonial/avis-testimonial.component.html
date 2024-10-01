@@ -51,16 +51,34 @@
                 <input type="email" name="email" [(ngModel)]="formData.email" class="form-control bg-transparent border-primary p-4" placeholder="{{avis.emailForm}}" required />
               </div>
               <div class="form-group">
-                <input type="text" name="appreciation" [(ngModel)]="formData.appreciation" class="form-control bg-transparent border-primary p-4" placeholder="{{avis.appreciationForm}}" required />
+                <label>
+                  {{avis.serviceForm}}
+                  <app-start-rating [rating]="1"></app-start-rating>
+                </label>
               </div>
               <div class="form-group">
-                <app-start-rating [rating]="0"></app-start-rating>
+                <label>
+                  {{avis.propreteForm}}
+                  <app-start-rating [rating]="1"></app-start-rating>
+                </label>
+              </div>
+              <div class="form-group">
+                <label>
+                  {{avis.nourritureForm}}
+                  <app-start-rating [rating]="1"></app-start-rating>
+                </label>
+              </div>
+              <div class="form-group">
+                <label>
+                  {{avis.appreciationForm}}
+                  <app-start-rating [rating]="1"></app-start-rating>
+                </label>
               </div>
               <div class="form-group">
                 <textarea type="text" name="commentaire" [(ngModel)]="formData.commentaire" class="form-control bg-transparent border-primary p-4" placeholder="{{avis.commentaireForm}}" required ></textarea>
               </div>
               <div>
-                <button class="btn btn-primary btn-block font-weight-bold py-3" type="submit">Réserver maintenant</button>
+                <button class="btn btn-primary btn-block font-weight-bold py-3" type="submit">Envoyer</button>
               </div>
             </form>
           </div>
