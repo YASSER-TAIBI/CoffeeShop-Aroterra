@@ -6,7 +6,6 @@ import {Notification} from "../../models/notification";
 import {MenuEtat} from "../../models/menu";
 import {TestimonialCivilite} from "../../models/testimonial";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import {StartRatingComponent} from "../../shared/components/start-rating/start-rating.component";
 
 
@@ -22,12 +21,10 @@ import {StartRatingComponent} from "../../shared/components/start-rating/start-r
     StartRatingComponent
   ],
   templateUrl: './avis-testimonial.component.html',
-  styleUrls: ['./avis-testimonial.component.css', '../../../assets/css/style.css', '../../../assets/css/style.min.css' ],
+  styleUrls: ['./avis-testimonial.component.css', '../../../assets/css/style.css', '../../../assets/css/style.min.css'],
   encapsulation: ViewEncapsulation.None,
 })
 export class AvisTestimonialComponent implements OnInit {
-  faCoffee = faCoffee;
-
 
   @Input() showPageHeader: boolean = true;
   testimonialCivilite = TestimonialCivilite;
@@ -50,10 +47,10 @@ export class AvisTestimonialComponent implements OnInit {
     nomForm:"Nom",
     prenomForm:"Prénom",
     emailForm:"Email",
-    appreciationForm:"Appréciation :",
-    serviceForm:"Service :",
-    propreteForm:"Propreté :",
-    nourritureForm:"Nourriture :",
+    appreciationForm:"Appréciation",
+    serviceForm:"Service",
+    propreteForm:"Propreté",
+    nourritureForm:"Nourriture",
     commentaireForm:"Commentaire"
   }
   formData = {
@@ -61,18 +58,28 @@ export class AvisTestimonialComponent implements OnInit {
     nom: '',
     prenom: '',
     email: '',
-    appreciation: '',
-    service: '',
-    proprete: '',
-    nourriture: '',
+    appreciation: 0,
+    service: 0,
+    proprete: 0,
+    nourriture: 0,
     commentaire: '',
   };
+
+  get averageRating() {
+    const { service, proprete, nourriture } = this.formData;
+    return (service + proprete + nourriture) / 3 || 0;
+  }
 
   private getTestimonialCiviliteEnum(value: string): TestimonialCivilite | undefined {
     return Object.values(TestimonialCivilite).find(item => item === value);
   }
 
   async onSubmit(): Promise<void> {
+
+    // Handle form submission, e.g., send the data to your backend
+    console.log('Form Data:', this.formData);
+    console.log('Average Rating:', this.averageRating);
+
   /*  console.log('Form Submitted', this.formData);
 
     if (this.formData.nom === '' ||this.formData.prenom === '' || this.formData.email === '' || this.formData.tel === '' || !this.formData.date || this.formData.people === '' || this.formData.designation === '' ) {
@@ -126,10 +133,10 @@ export class AvisTestimonialComponent implements OnInit {
       nom: '',
       prenom: '',
       email: '',
-      appreciation: '',
-      service: '',
-      proprete: '',
-      nourriture: '',
+      appreciation: 0,
+      service: 0,
+      proprete: 0,
+      nourriture: 0,
       commentaire: '',
     }
   }

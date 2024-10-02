@@ -11,7 +11,7 @@ export interface Testimonial {
   photo: string;
   dateCreation: Date;
   service: number;
-  Proprete: number;
+  proprete: number;
   nourriture: number;
   appreciation: number; // 5-star rating
   email: string;

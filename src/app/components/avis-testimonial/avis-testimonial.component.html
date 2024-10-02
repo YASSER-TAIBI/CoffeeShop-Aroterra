@@ -53,25 +53,19 @@
               <div class="form-group">
                 <label>
                   {{avis.serviceForm}}
-                  <app-start-rating [rating]="1"></app-start-rating>
+                  <app-start-rating [(rating)]="formData.service"></app-start-rating>
                 </label>
-              </div>
-              <div class="form-group">
                 <label>
                   {{avis.propreteForm}}
-                  <app-start-rating [rating]="1"></app-start-rating>
+                  <app-start-rating [(rating)]="formData.proprete"></app-start-rating>
                 </label>
-              </div>
-              <div class="form-group">
                 <label>
                   {{avis.nourritureForm}}
-                  <app-start-rating [rating]="1"></app-start-rating>
+                  <app-start-rating [(rating)]="formData.nourriture"></app-start-rating>
                 </label>
-              </div>
-              <div class="form-group">
                 <label>
                   {{avis.appreciationForm}}
-                  <app-start-rating [rating]="1"></app-start-rating>
+                  <app-start-rating [rating]="averageRating" [readonly]="true"></app-start-rating>
                 </label>
               </div>
               <div class="form-group">

@@ -20,9 +20,7 @@ label {
   display: flex !important;
   align-items: center !important;
   color: #fffbf2 !important;
+  flex-direction: column !important;
   justify-content: center !important;
 }
 
-app-start-rating {
-  margin-left: 20px;
-}
