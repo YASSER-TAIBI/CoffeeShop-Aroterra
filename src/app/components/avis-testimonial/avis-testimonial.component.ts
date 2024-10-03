@@ -7,6 +7,7 @@ import {MenuEtat} from "../../models/menu";
 import {TestimonialCivilite} from "../../models/testimonial";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {StartRatingComponent} from "../../shared/components/start-rating/start-rating.component";
+import {faStar} from "@fortawesome/free-solid-svg-icons";
 
 
 @Component({
@@ -47,7 +48,7 @@ export class AvisTestimonialComponent implements OnInit {
     nomForm:"Nom",
     prenomForm:"Prénom",
     emailForm:"Email",
-    appreciationForm:"Appréciation",
+    appreciationForm:"Appréciation Globale",
     serviceForm:"Service",
     propreteForm:"Propreté",
     nourritureForm:"Nourriture",
@@ -140,4 +141,6 @@ export class AvisTestimonialComponent implements OnInit {
       commentaire: '',
     }
   }
+
+  protected readonly faStar = faStar;
 }

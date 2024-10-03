@@ -11,7 +11,7 @@
     &.rated,
     &:hover,
     &:hover ~ fa-icon {
-      color: orange;
+      color: #d19a59;
     }
 
     transition: color 0.3s ease-in-out;

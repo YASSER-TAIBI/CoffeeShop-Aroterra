@@ -24,3 +24,12 @@ label {
   justify-content: center !important;
 }
 
+.d-flex.justify-content-center.align-items-center.my-4 {
+  margin-top: 1.5rem !important;
+  height: 30px !important;
+  margin-bottom: 0 !important;
+}
+
+strong {
+  padding-right: 8px;
+}
