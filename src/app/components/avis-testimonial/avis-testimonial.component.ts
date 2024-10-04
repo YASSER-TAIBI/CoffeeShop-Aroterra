@@ -68,7 +68,7 @@ export class AvisTestimonialComponent implements OnInit {
 
   get averageRating() {
     const { service, proprete, nourriture } = this.formData;
-    return (service + proprete + nourriture) / 3 || 0;
+    return Math.round((service + proprete + nourriture) / 3) || 0;
   }
 
   private getTestimonialCiviliteEnum(value: string): TestimonialCivilite | undefined {
@@ -77,6 +77,7 @@ export class AvisTestimonialComponent implements OnInit {
 
   async onSubmit(): Promise<void> {
 
+    this.formData.appreciation = this.averageRating;
     // Handle form submission, e.g., send the data to your backend
     console.log('Form Data:', this.formData);
     console.log('Average Rating:', this.averageRating);
