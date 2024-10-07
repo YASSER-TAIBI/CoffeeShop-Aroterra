@@ -13,7 +13,7 @@ export interface Testimonial {
   service: number;
   proprete: number;
   nourriture: number;
-  appreciation: number; // 5-star rating
+  appreciation: number;
   email: string;
   commentaire: string;
 }

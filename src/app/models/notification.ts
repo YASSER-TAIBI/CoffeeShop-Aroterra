@@ -6,5 +6,6 @@ export interface Notification {
   icon: string;
   color: string;
   isRead: boolean;
-  reservationId: string;
+  reservationId?: string;
+  testimonialId?: string;
 }

@@ -22,6 +22,10 @@ import { EditArticleModalComponent} from './menu/edit-article-modal/edit-article
 import { CalendrierReservationsModule } from './reservation/calendrier-reservations/calendrier-reservations.module';
 import { CalendrierReservationsRoutingModule } from './reservation/calendrier-reservations/calendrier-reservations-routing.module';
 import {FullCalendarModule} from "@fullcalendar/angular";
+import { TestimonialClientModule } from './testimonial-client/testimonial-client.module';
+import { TestimonialClientRoutingModule } from './testimonial-client/testimonial-client-routing.module';
+import { NotificationModule } from './notification/notification.module';
+import { NotificationRoutingModule } from './notification/notification-routing.module';
 
 @NgModule({
   declarations: [
@@ -50,7 +54,11 @@ import {FullCalendarModule} from "@fullcalendar/angular";
     EditArticleModalComponent,
     CalendrierReservationsModule,
     CalendrierReservationsRoutingModule,
-    FullCalendarModule
+    FullCalendarModule,
+    TestimonialClientModule,
+    TestimonialClientRoutingModule,
+    NotificationModule,
+    NotificationRoutingModule
   ],
 })
 export class ComponentsAdminModule {}

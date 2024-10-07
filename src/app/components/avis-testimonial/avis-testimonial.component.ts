@@ -1,13 +1,16 @@
-import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, inject, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {NavbarComponent} from "../navbar/navbar.component";
 import {FooterComponent} from "../footer/footer.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {Notification} from "../../models/notification";
 import {MenuEtat} from "../../models/menu";
-import {TestimonialCivilite} from "../../models/testimonial";
+import {Testimonial, TestimonialCivilite} from "../../models/testimonial";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {StartRatingComponent} from "../../shared/components/start-rating/start-rating.component";
 import {faStar} from "@fortawesome/free-solid-svg-icons";
+import {TestimonialService} from "../../services/testimonial.service";
+import {ReservationService} from "../../services/reservation.service";
+import {NotificationService} from "../../services/notification.service";
 
 
 @Component({
@@ -25,13 +28,12 @@ import {faStar} from "@fortawesome/free-solid-svg-icons";
   styleUrls: ['./avis-testimonial.component.css', '../../../assets/css/style.css', '../../../assets/css/style.min.css'],
   encapsulation: ViewEncapsulation.None,
 })
-export class AvisTestimonialComponent implements OnInit {
+export class AvisTestimonialComponent {
 
   @Input() showPageHeader: boolean = true;
+  testimonialService = inject(TestimonialService);
+  notificationService = inject(NotificationService);
   testimonialCivilite = TestimonialCivilite;
-
-
-  ngOnInit(): void {}
 
   get testimonialCivilites(): string[] {
     return Object.values(this.testimonialCivilite);
@@ -54,6 +56,7 @@ export class AvisTestimonialComponent implements OnInit {
     nourritureForm:"Nourriture",
     commentaireForm:"Commentaire"
   }
+
   formData = {
     civilite: '',
     nom: '',
@@ -71,62 +74,69 @@ export class AvisTestimonialComponent implements OnInit {
     return Math.round((service + proprete + nourriture) / 3) || 0;
   }
 
+  getClientImage() {
+    if (this.formData.civilite === this.testimonialCivilite.monsieur){
+      return 'https://www.bhaskaranbrown.com/wp-content/uploads/2023/07/1-2.png';
+    }else{
+      return 'https://www.bhaskaranbrown.com/wp-content/uploads/2023/07/2-2.png';
+    }
+  }
+
   private getTestimonialCiviliteEnum(value: string): TestimonialCivilite | undefined {
     return Object.values(TestimonialCivilite).find(item => item === value);
   }
 
   async onSubmit(): Promise<void> {
 
-    this.formData.appreciation = this.averageRating;
     // Handle form submission, e.g., send the data to your backend
-    console.log('Form Data:', this.formData);
-    console.log('Average Rating:', this.averageRating);
+    console.log('Form Data before:', this.formData);
 
-  /*  console.log('Form Submitted', this.formData);
-
-    if (this.formData.nom === '' ||this.formData.prenom === '' || this.formData.email === '' || this.formData.tel === '' || !this.formData.date || this.formData.people === '' || this.formData.designation === '' ) {
+    if (this.formData.nom === '' ||this.formData.prenom === '' || this.formData.email === '' || this.formData.civilite === '' || this.formData.commentaire === '' || this.formData.service === 0 || this.formData.nourriture === 0 || this.formData.proprete === 0 ) {
       alert('Remplir tous les champs de saisie !');
       return;
     }
 
-    if (window.confirm('Voulez-vous continuer la réservation de votre table !')) {
-      const reservation: Reservation = {
+   if (window.confirm('Voulez-vous continuer la réservation de votre table !')) {
+
+      const testimonial: Testimonial = {
         nom: this.formData.nom || '',
         prenom: this.formData.prenom || '',
         email: this.formData.email || '',
-        tel: this.formData.tel || '',
-        date: this.formData.date,
-        time: this.formData.time,
-        people: this.formData.people || '',
-        designation: this.formData.designation || '',
-        adminEmail:'',
-        etat: "En Cours" || '',
+        civilite: this.formData.civilite || '',
+        dateCreation: new Date() || '',
+        commentaire: this.formData.commentaire || '',
+        photo: this.getClientImage() || '',
+        service: this.formData.service  || 0,
+        proprete: this.formData.proprete  || 0,
+        nourriture: this.formData.nourriture  || 0,
+        appreciation: this.averageRating  || 0,
       };
 
-      console.log('Form Submitted', reservation);
-      await  this.reservationService.addReservation(reservation).then(async (resId) => {
+      console.log('Form Data after:', testimonial);
+      this.resetForm();
+       await  this.testimonialService.addTestimonial(testimonial).then(async (testId) => {
         this.resetForm();
-        alert('Réservation effectuée avec succès!');
+        alert('Votre avis est enregistré avec succès!');
 
-        // Extraire l'ID du document de la réservation
-        const reservationId = resId.id;
+        // Extraire l'ID du document de la testimonial
+        const testimonialId = testId.id;
 
         // Ajouter une notification en cas de succès
         const notification: Notification = {
           dateCreation: new Date(),
-          description: `Nouvelle réservation par ${reservation.nom} ${reservation.prenom} pour ${reservation.people} personnes.`,
-          icon: 'fa-calendar-alt',
-          color: '#da9f5b !important',
+          description: `Nouvel avis du client ${testimonial.nom} ${testimonial.prenom}.`,
+          icon: 'fa-star',
+          color: '#1cc88a !important',
           isRead: false,
-          titre: 'Reservation',
-          reservationId: reservationId
+          titre: 'Testimonial',
+          testimonialId: testimonialId
         };
         await this.notificationService.addNotification(notification);
       }).catch(error => {
         console.error(error);
         alert('Erreur lors de la mise à jour du profil.');
       });
-    } */
+    }
   }
 
   resetForm(){

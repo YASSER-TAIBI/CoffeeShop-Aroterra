@@ -46,7 +46,7 @@ export class AuthService {
           email,
           username: 'Yasser TAIBI',
           userRole: 'Administrateur',
-          civilite: 'Mr',
+          civilite: 'M.',
           userImage: 'https://www.bhaskaranbrown.com/wp-content/uploads/2023/07/1-2.png'
         });
         break;

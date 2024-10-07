@@ -49,8 +49,8 @@ export class HeaderComponent {
       });
     if (notification.titre === 'Reservation') {
        window.location.href = 'consulter-reservations';
-    } else if (notification.titre === 'Menu') {
-       window.location.href = 'reserver-table';
+    } else if (notification.titre === 'Testimonial') {
+       window.location.href = 'testimonial-client';
     }
 
 

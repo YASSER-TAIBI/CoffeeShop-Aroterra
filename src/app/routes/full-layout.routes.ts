@@ -12,5 +12,7 @@ export const FULL_ROUTES: Routes = [
   { title: "ARÔTERRA | Réservation", path: 'reserver-table', loadChildren: () => import('../components-admin/reservation/reserver-table/reserver-table.module').then(m => m.ReserverTableModule) },
   { title: "ARÔTERRA | Menu & Tarifs", path: 'add-articles', loadChildren: () => import('../components-admin/menu/add-articles/add-articles.module').then(m => m.AddArticlesModule) },
   { title: "ARÔTERRA | Menu & Tarifs", path: 'consulter-menu', loadChildren: () => import('../components-admin/menu/consulter-menu/consulter-menu.module').then(m => m.ConsulterMenuModule) },
-  { title: "ARÔTERRA | Réservation", path: 'calendrier-reservations', loadChildren: () => import('../components-admin/reservation/calendrier-reservations/calendrier-reservations.module').then(m => m.CalendrierReservationsModule) }
+  { title: "ARÔTERRA | Réservation", path: 'calendrier-reservations', loadChildren: () => import('../components-admin/reservation/calendrier-reservations/calendrier-reservations.module').then(m => m.CalendrierReservationsModule) },
+  { title: "ARÔTERRA | Testimonial", path: 'testimonial-client', loadChildren: () => import('../components-admin/testimonial-client/testimonial-client.module').then(m => m.TestimonialClientModule) },
+  { title: "ARÔTERRA | Notification", path: 'notification', loadChildren: () => import('../components-admin/notification/notification.module').then(m => m.NotificationModule) }
 ]
