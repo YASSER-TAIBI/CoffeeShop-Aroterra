@@ -218,3 +218,12 @@ table.table .avatar {
 .modal form label {
   font-weight: normal;
 }
+
+::ng-deep .svg-inline--fa {
+  width: 15px;
+}
+.rating-cell {
+  text-align: center;
+  vertical-align: middle;
+}
+

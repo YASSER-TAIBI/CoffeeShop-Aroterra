@@ -6,6 +6,8 @@ import {documentId} from "@angular/fire/firestore";
 import {Testimonial} from "../../models/testimonial";
 import {TestimonialService} from "../../services/testimonial.service";
 import {Reservation} from "../../models/reservation";
+import {StartRatingComponent} from "../../shared/components/start-rating/start-rating.component";
+import {NgStyle} from "@angular/common";
 
 @Component({
   selector: 'app-testimonial-client',
@@ -13,7 +15,9 @@ import {Reservation} from "../../models/reservation";
   imports: [
     NgxPaginationModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    StartRatingComponent,
+    NgStyle
   ],
   templateUrl: './testimonial-client.component.html',
   styleUrls: ['./testimonial-client.component.css', '../../../assets/css/admin-styles.css']

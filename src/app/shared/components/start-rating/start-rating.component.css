@@ -1,6 +1,6 @@
 #container {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   flex-direction: row-reverse;
 
   fa-icon {
