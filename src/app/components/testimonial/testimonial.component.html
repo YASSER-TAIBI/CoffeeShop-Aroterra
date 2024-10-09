@@ -1,18 +1,18 @@
-@if(showPageHeader){
+@if (showPageHeader) {
   <app-navbar></app-navbar>
 }
 <!-- Page Header Start -->
-@if(showPageHeader){
-<div class="container-fluid page-header mb-5 position-relative overlay-bottom">
-  <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
-    <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase">Témoignages</h1>
-    <div class="d-inline-flex mb-lg-5">
-      <p class="m-0 text-white"><a class="text-white" href="">Accueil</a></p>
-      <p class="m-0 text-white px-2">/</p>
-      <p class="m-0 text-white">Témoignages</p>
+@if (showPageHeader) {
+  <div class="container-fluid page-header mb-5 position-relative overlay-bottom">
+    <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
+      <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase">Témoignages</h1>
+      <div class="d-inline-flex mb-lg-5">
+        <p class="m-0 text-white"><a class="text-white" href="">Accueil</a></p>
+        <p class="m-0 text-white px-2">/</p>
+        <p class="m-0 text-white">Témoignages</p>
+      </div>
     </div>
   </div>
-</div>
 }
 <!-- Page Header End -->
 
@@ -24,83 +24,24 @@
       <h1 class="display-4">Ce que disent nos clients</h1>
     </div>
 
-    <swiper-container class="mySwiper testimonials__grid" pagination="true" pagination-clickable="true" spaceBetween={{30}}  slidesPerView={{slidesPerView}} autoplay-delay="3000" >
-      <swiper-slide class="card">
+    <swiper-container class="mySwiper testimonials__grid" pagination="true" pagination-clickable="true"
+                      spaceBetween={{30}} slidesPerView={{slidesPerView}} autoplay-delay="3000">
+      <swiper-slide class="card" *ngFor="let testimonial of testimonials">
         <span><i class="fa fa-quote-left" aria-hidden="true"></i></span>
-        <p>
-          J'ai découvert ce café il y a quelques mois et depuis, je suis fidèle ! L'ambiance chaleureuse,
-          le café délicieux et le service attentionné font de chaque visite un vrai plaisir. Je recommande vivement !
-        </p>
-        <hr />
-        <img src="./assets/img/testimonial-1.jpg" alt="user" />
-        <p class="name">Allan Collins</p>
-        <div class ="stars">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="far fa-star"></i>
-          <i class="far fa-star"></i>
+        <p>{{ testimonial.commentaire }}</p>
+        <hr/>
+        <img [src]="testimonial.photo" alt="{{ testimonial.nom }} {{ testimonial.prenom }}"/>
+        <p class="name">{{ testimonial.nom }} {{ testimonial.prenom }}</p>
+        <div class="stars">
+          <app-start-rating [(rating)]="testimonial.appreciation" [readonly]="true" ></app-start-rating>
         </div>
-      </swiper-slide>
 
-      <swiper-slide class="card">
-        <span><i class="fa fa-quote-left" aria-hidden="true"></i></span>
-        <p>
-          En tant qu'entrepreneur, j'ai souvent besoin d'un endroit calme pour travailler en dehors de mon bureau. Ce café est devenu mon refuge. La connexion Wi-Fi fiable,
-          les sièges confortables et le café savoureux en font mon endroit idéal pour travailler.
-        </p>
-        <hr />
-        <img src="./assets/img/testimonial-2.jpg" alt="user" />
-        <p class="name">Clay Washington</p>
-        <div class ="stars">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="far fa-star"></i>
-        </div>
-      </swiper-slide>
-
-      <swiper-slide class="card">
-        <span><i class="fa fa-quote-left" aria-hidden="true"></i></span>
-        <p>
-          Après une longue journée de cours, rien de mieux qu'un bon café pour se détendre. Ce café est devenu mon endroit préféré pour me ressourcer. L'atmosphère relaxante,
-          la musique douce et les délicieuses pâtisseries en font un véritable havre de paix.
-        </p>
-        <hr />
-        <img src="./assets/img/testimonial-3.jpg" alt="user" />
-        <p class="name">Tanya Grant</p>
-        <div class ="stars">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="far fa-star"></i>
-          <i class="far fa-star"></i>
-        </div>
-      </swiper-slide>
-
-      <swiper-slide class="card">
-        <span><i class="fa fa-quote-left" aria-hidden="true"></i></span>
-        <p>
-          En tant qu'artiste, je cherche toujours des endroits inspirants pour travailler sur mes projets. Ce café est devenu mon lieu de prédilection. L'ambiance créative,
-          les rencontres intéressantes et le café de qualité en font un lieu unique où je me sens toujours inspiré.
-        </p>
-        <hr />
-        <img src="./assets/img/testimonial-4.jpg" alt="user" />
-        <p class="name">Yasser Taibi</p>
-        <div class ="stars">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="far fa-star"></i>
-          <i class="far fa-star"></i>
-          <i class="far fa-star"></i>
-        </div>
       </swiper-slide>
     </swiper-container>
 
   </div>
 </div>
 <!-- Testimonial End -->
-@if(showPageHeader){
+@if (showPageHeader) {
   <app-footer></app-footer>
 }

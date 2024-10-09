@@ -1,8 +1,11 @@
-import {Component, Input, ViewEncapsulation, CUSTOM_ELEMENTS_SCHEMA, OnInit, HostListener} from '@angular/core';
-import {NgIf} from "@angular/common";
+import {Component, Input, ViewEncapsulation, CUSTOM_ELEMENTS_SCHEMA, OnInit, HostListener, inject} from '@angular/core';
+import {NgClass, NgForOf, NgIf} from "@angular/common";
 import { register } from 'swiper/element/bundle';
 import {NavbarComponent} from "../navbar/navbar.component";
 import {FooterComponent} from "../footer/footer.component";
+import {Testimonial} from "../../models/testimonial";
+import {TestimonialService} from "../../services/testimonial.service";
+import {StartRatingComponent} from "../../shared/components/start-rating/start-rating.component";
 
 register();
 @Component({
@@ -11,7 +14,10 @@ register();
   imports: [
     NgIf,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    NgClass,
+    NgForOf,
+    StartRatingComponent
   ],
   templateUrl: './testimonial.component.html',
   styleUrls: ['./testimonial.component.css', '../../../assets/css/style.css', '../../../assets/css/style.min.css' ],
@@ -23,9 +29,19 @@ export class TestimonialComponent implements OnInit {
   @Input() showPageHeader: boolean = true;
   isMobile: boolean = false;
   slidesPerView: number = 3;
+  testimonials: Testimonial[] = [];
+
+  testimonialService = inject(TestimonialService);
 
   ngOnInit(): void {
     this.checkScreenSize();
+    this.fetchTestimonials();
+  }
+
+  fetchTestimonials() {
+    this.testimonialService.getTestimonial().subscribe((data: Testimonial[]) => {
+      this.testimonials = data;
+    });
   }
 
   // Listen to window resize events
