@@ -47,29 +47,30 @@
       <div class="col-md-6 pb-5">
         <div class="contact-form">
           <div id="success"></div>
-          <form (ngSubmit)="onSubmit()" #contactForm="ngForm" name="sentMessage" novalidate="novalidate">
+          <form (ngSubmit)="onSubmit()" #contactForm="ngForm" [formGroup]="form">
             <div class="control-group">
-              <input type="text" name="name" [(ngModel)]="formData.name" #name="ngModel" class="form-control bg-transparent p-4" placeholder="{{contact.nomForm}}"
+              <input type="text" formControlName="name" class="form-control bg-transparent p-4" placeholder="{{ contact.nomForm }}"
                      required="required" data-validation-required-message="Veuillez entrer votre nom" />
               <p class="help-block text-danger"></p>
             </div>
             <div class="control-group">
-              <input type="email" name="email" [(ngModel)]="formData.email" #email="ngModel" class="form-control bg-transparent p-4" placeholder="{{contact.emailForm}}"
-                     required="required" data-validation-required-message="Veuillez entrer votre email" />
+              <input type="email" formControlName="email" class="form-control bg-transparent p-4" placeholder="{{ contact.emailForm }}"
+                     required="required" data-validation-required-message="Veuillez entrer votre email"/>
               <p class="help-block text-danger"></p>
             </div>
             <div class="control-group">
-              <input type="text" name="email" [(ngModel)]="formData.subject" #subject="ngModel" class="form-control bg-transparent p-4"  placeholder="{{contact.subjectForm}}"
-                     required="required" data-validation-required-message="Veuillez entrer un sujet" />
+              <input type="text" formControlName="subject" class="form-control bg-transparent p-4" placeholder="{{ contact.subjectForm }}"
+                     required="required" data-validation-required-message="Veuillez entrer un sujet"/>
               <p class="help-block text-danger"></p>
             </div>
             <div class="control-group">
-              <textarea name="email" [(ngModel)]="formData.message"  #message="ngModel" class="form-control bg-transparent py-3 px-4" rows="5" placeholder="{{contact.messageForm}}"
+              <textarea formControlName="message" class="form-control bg-transparent py-3 px-4" rows="5" placeholder="{{ contact.messageForm }}"
                         required="required" data-validation-required-message="Veuillez entrer votre message"></textarea>
               <p class="help-block text-danger"></p>
             </div>
+            {{ form.value | json }}
             <div>
-              <button class="btn btn-primary font-weight-bold py-3 px-5" type="submit" >Envoyer le Message</button>
+              <button class="btn btn-primary font-weight-bold py-3 px-5" type="submit" [disabled]="form.invalid">Envoyer le Message</button>
             </div>
           </form>
         </div>
