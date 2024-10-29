@@ -6,14 +6,15 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideStorage, getStorage} from "@angular/fire/storage";
 
 import { routes } from './app.routes';
+import {getMessaging, provideMessaging} from "@angular/fire/messaging";
 
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: "AIzaSyBeWq5wSAO_mCcJNqEuAG72P68w7uxL68k",
   authDomain: "coffeeshop-aroterra.firebaseapp.com",
   projectId: "coffeeshop-aroterra",
   storageBucket: "coffeeshop-aroterra.appspot.com",
   messagingSenderId: "301393911820",
-  appId: "1:301393911820:web:c35475531a07a8a7bc8e29"
+  appId: "1:301393911820:web:c35475531a07a8a7bc8e29",
 };
 
 export const appConfig: ApplicationConfig = {
@@ -22,6 +23,7 @@ export const appConfig: ApplicationConfig = {
       provideFirebaseApp(() => initializeApp(firebaseConfig)),
       provideFirestore(() => getFirestore()),
       provideAuth(() => getAuth()),
+      provideMessaging(() => getMessaging()),
       provideStorage(() => getStorage())
     )
   ]
