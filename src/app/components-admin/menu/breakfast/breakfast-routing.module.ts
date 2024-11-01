@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {BreakfastComponent} from "./breakfast.component";
 import {RouterModule, Routes} from "@angular/router";
-import {ConsulterMenuComponent} from "./consulter-menu.component";
 
-const routes: Routes = [{ path: '', component: ConsulterMenuComponent }];
+const routes: Routes = [{ path: '', component: BreakfastComponent }];
 
 @NgModule({
   declarations: [],
@@ -13,4 +13,4 @@ const routes: Routes = [{ path: '', component: ConsulterMenuComponent }];
   ],
   exports: [RouterModule]
 })
-export class ConsulterMenuRoutingModule { }
+export class BreakfastRoutingModule { }

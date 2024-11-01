@@ -3,6 +3,7 @@ import {
   ConsulterReservationsModule
 } from "../components-admin/reservation/consulter-reservations/consulter-reservations.module";
 import {ReserverTableModule} from "../components-admin/reservation/reserver-table/reserver-table.module";
+import {HotDrinksModule} from "../components-admin/menu/hot-drinks/hot-drinks.module";
 //import { RoleGuard } from '../shared/role.guard';
 
 export const FULL_ROUTES: Routes = [
@@ -11,8 +12,10 @@ export const FULL_ROUTES: Routes = [
   { title: "ARÔTERRA | Réservation", path: 'consulter-reservations', loadChildren: () => import('../components-admin/reservation/consulter-reservations/consulter-reservations.module').then(m => m.ConsulterReservationsModule) },
   { title: "ARÔTERRA | Réservation", path: 'reserver-table', loadChildren: () => import('../components-admin/reservation/reserver-table/reserver-table.module').then(m => m.ReserverTableModule) },
   { title: "ARÔTERRA | Menu & Tarifs", path: 'add-articles', loadChildren: () => import('../components-admin/menu/add-articles/add-articles.module').then(m => m.AddArticlesModule) },
-  { title: "ARÔTERRA | Menu & Tarifs", path: 'consulter-menu', loadChildren: () => import('../components-admin/menu/consulter-menu/consulter-menu.module').then(m => m.ConsulterMenuModule) },
   { title: "ARÔTERRA | Réservation", path: 'calendrier-reservations', loadChildren: () => import('../components-admin/reservation/calendrier-reservations/calendrier-reservations.module').then(m => m.CalendrierReservationsModule) },
   { title: "ARÔTERRA | Testimonial", path: 'testimonial-client', loadChildren: () => import('../components-admin/testimonial-client/testimonial-client.module').then(m => m.TestimonialClientModule) },
-  { title: "ARÔTERRA | Notification", path: 'notification', loadChildren: () => import('../components-admin/notification/notification.module').then(m => m.NotificationModule) }
+  { title: "ARÔTERRA | Notification", path: 'notification', loadChildren: () => import('../components-admin/notification/notification.module').then(m => m.NotificationModule) },
+  { title: "ARÔTERRA | Menu & Tarifs", path: 'hot-drinks', loadChildren: () => import('../components-admin/menu/hot-drinks/hot-drinks.module').then(m => m.HotDrinksModule) },
+  { title: "ARÔTERRA | Menu & Tarifs", path: 'breakfast', loadChildren: () => import('../components-admin/menu/breakfast/breakfast.module').then(m => m.BreakfastModule) },
+  { title: "ARÔTERRA | Menu & Tarifs", path: 'cold-drinks', loadChildren: () => import('../components-admin/menu/cold-drinks/cold-drinks.module').then(m => m.ColdDrinksModule) },
 ]

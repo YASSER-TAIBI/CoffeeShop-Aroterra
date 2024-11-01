@@ -26,6 +26,12 @@ import { TestimonialClientModule } from './testimonial-client/testimonial-client
 import { TestimonialClientRoutingModule } from './testimonial-client/testimonial-client-routing.module';
 import { NotificationModule } from './notification/notification.module';
 import { NotificationRoutingModule } from './notification/notification-routing.module';
+import { BreakfastModule } from './menu/breakfast/breakfast.module';
+import { ColdDrinksModule } from './menu/cold-drinks/cold-drinks.module';
+import { HotDrinksModule } from './menu/hot-drinks/hot-drinks.module';
+import { HotDrinksRoutingModule } from './menu/hot-drinks/hot-drinks-routing.module';
+import { ColdDrinksRoutingModule } from './menu/cold-drinks/cold-drinks-routing.module';
+import { BreakfastRoutingModule } from './menu/breakfast/breakfast-routing.module';
 
 @NgModule({
   declarations: [
@@ -58,7 +64,13 @@ import { NotificationRoutingModule } from './notification/notification-routing.m
     TestimonialClientModule,
     TestimonialClientRoutingModule,
     NotificationModule,
-    NotificationRoutingModule
+    NotificationRoutingModule,
+    BreakfastModule,
+    ColdDrinksModule,
+    HotDrinksModule,
+    HotDrinksRoutingModule,
+    ColdDrinksRoutingModule,
+    BreakfastRoutingModule
   ],
 })
 export class ComponentsAdminModule {}
