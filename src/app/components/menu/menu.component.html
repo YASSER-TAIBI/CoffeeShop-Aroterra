@@ -44,145 +44,45 @@
             </div>
           </div>
           <div class="col-lg-12">
-            <section class='tabs-content'>
-              @if (selectedTab === 'tabs-1'){
-              <article id='tabs-1'>
+            <section class="tabs-content">
+              <article id="tabs-1">
                 <div class="row">
+                  <!-- Left Section -->
                   <div class="col-lg-6">
-                    <div class="row">
-                      <div class="left-list">
-                        @for (grpMenuLeftTaps01 of menu.groupMenuLeftTaps01; track grpMenuLeftTaps01){
-                        <div class="col-lg-12">
-                          <div class="row align-items-center mb-5">
-                            <div class="col-4 col-sm-3">
-                              <img class="w-100 rounded-circle mb-3 mb-sm-0" src="./assets/img/{{grpMenuLeftTaps01.image}}" alt="">
-                              <h5 class="menu-price">{{ grpMenuLeftTaps01.price }}</h5>
-                            </div>
-                            <div class="col-8 col-sm-9">
-                              <h4>{{ grpMenuLeftTaps01.titre }}</h4>
-                              <p class="m-0">{{ grpMenuLeftTaps01.texte }}</p>
-                            </div>
+                    <div class="left-list">
+                      <div *ngFor="let item of filteredMenuItems.left" class="menu-item">
+                        <div class="row align-items-center mb-5">
+                          <div class="col-4 col-sm-3">
+                            <img class="rounded-circle custom-image-size" [src]="item.imageUrl" alt="">
+                            <h5 class="menu-price">{{ item.price }}€</h5>
+                          </div>
+                          <div class="col-8 col-sm-9">
+                            <h4>{{ item.article }}</h4>
+                            <p class="m-0">{{ item.description }}</p>
                           </div>
                         </div>
-                        }
                       </div>
                     </div>
                   </div>
+                  <!-- Right Section -->
                   <div class="col-lg-6">
-                    <div class="row">
-                      <div class="right-list">
-                        @for (grpMenuRightTaps01 of menu.groupMenuRightTaps01; track grpMenuRightTaps01){
-                        <div class="col-lg-12">
-                          <div class="row align-items-center mb-5">
-                            <div class="col-4 col-sm-3">
-                              <img class="w-100 rounded-circle mb-3 mb-sm-0" src="./assets/img/{{ grpMenuRightTaps01.image }}" alt="">
-                              <h5 class="menu-price">{{ grpMenuRightTaps01.price }}</h5>
-                            </div>
-                            <div class="col-8 col-sm-9">
-                              <h4>{{ grpMenuRightTaps01.titre }}</h4>
-                              <p class="m-0">{{ grpMenuRightTaps01.texte }}</p>
-                            </div>
+                    <div class="right-list">
+                      <div *ngFor="let item of filteredMenuItems.right" class="menu-item">
+                        <div class="row align-items-center mb-5">
+                          <div class="col-4 col-sm-3">
+                            <img class="rounded-circle custom-image-size" [src]="item.imageUrl" alt="">
+                            <h5 class="menu-price">{{ item.price }}€</h5>
+                          </div>
+                          <div class="col-8 col-sm-9">
+                            <h4>{{ item.article }}</h4>
+                            <p class="m-0">{{ item.description }}</p>
                           </div>
                         </div>
-                        }
                       </div>
                     </div>
                   </div>
                 </div>
               </article>
-              }
-              @if (selectedTab === 'tabs-2'){
-              <article id='tabs-2'>
-                <div class="row">
-                  <div class="col-lg-6">
-                    <div class="row">
-                      <div class="left-list">
-                        @for (grpMenuLeftTaps02 of menu.groupMenuLeftTaps02; track grpMenuLeftTaps02){
-                        <div class="col-lg-12">
-                          <div class="row align-items-center mb-5">
-                            <div class="col-4 col-sm-3">
-                              <img class="w-100 rounded-circle mb-3 mb-sm-0" src="./assets/img/{{grpMenuLeftTaps02.image}}" alt="">
-                              <h5 class="menu-price">{{grpMenuLeftTaps02.price}}</h5>
-                            </div>
-                            <div class="col-8 col-sm-9">
-                              <h4>{{grpMenuLeftTaps02.titre}}</h4>
-                              <p class="m-0">{{grpMenuLeftTaps02.texte}}</p>
-                            </div>
-                          </div>
-                        </div>
-                        }
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="row">
-                      <div class="right-list">
-                        @for (grpMenuRightTaps02 of menu.groupMenuRightTaps02; track grpMenuRightTaps02){
-                        <div class="col-lg-12">
-                          <div class="row align-items-center mb-5">
-                            <div class="col-4 col-sm-3">
-                              <img class="w-100 rounded-circle mb-3 mb-sm-0" src="./assets/img/{{grpMenuRightTaps02.image}}" alt="">
-                              <h5 class="menu-price">{{grpMenuRightTaps02.price}}</h5>
-                            </div>
-                            <div class="col-8 col-sm-9">
-                              <h4>{{grpMenuRightTaps02.titre}}</h4>
-                              <p class="m-0">{{grpMenuRightTaps02.texte}}</p>
-                            </div>
-                          </div>
-                        </div>
-                        }
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </article>
-              }
-              @if (selectedTab === 'tabs-3'){
-              <article id='tabs-3'>
-                <div class="row">
-                  <div class="col-lg-6">
-                    <div class="row">
-                      <div class="left-list">
-                        @for (grpMenuLeftTaps03 of menu.groupMenuLeftTaps03; track grpMenuLeftTaps03){
-                        <div class="col-lg-12">
-                          <div class="row align-items-center mb-5">
-                            <div class="col-4 col-sm-3">
-                              <img class="w-100 rounded-circle mb-3 mb-sm-0" src="./assets/img/{{grpMenuLeftTaps03.image}}" alt="">
-                              <h5 class="menu-price">{{grpMenuLeftTaps03.price}}</h5>
-                            </div>
-                            <div class="col-8 col-sm-9">
-                              <h4>{{grpMenuLeftTaps03.titre}}</h4>
-                              <p class="m-0">{{grpMenuLeftTaps03.texte}}</p>
-                            </div>
-                          </div>
-                        </div>
-                        }
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="row">
-                      <div class="right-list">
-                        @for (grpMenuRightTaps03 of menu.groupMenuRightTaps03; track grpMenuRightTaps03){
-                        <div class="col-lg-12">
-                          <div class="row align-items-center mb-5">
-                            <div class="col-4 col-sm-3">
-                              <img class="w-100 rounded-circle mb-3 mb-sm-0" src="./assets/img/{{grpMenuRightTaps03.image}}" alt="">
-                              <h5 class="menu-price">{{grpMenuRightTaps03.price}}</h5>
-                            </div>
-                            <div class="col-8 col-sm-9">
-                              <h4>{{grpMenuRightTaps03.titre}}</h4>
-                              <p class="m-0">{{grpMenuRightTaps03.texte}}</p>
-                            </div>
-                          </div>
-                        </div>
-                        }
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </article>
-              }
             </section>
           </div>
         </div>

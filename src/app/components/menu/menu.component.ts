@@ -1,7 +1,10 @@
-import {Component, Input, ViewEncapsulation} from '@angular/core';
-import {NgIf} from "@angular/common";
+import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
+import {NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
 import {NavbarComponent} from "../navbar/navbar.component";
 import {FooterComponent} from "../footer/footer.component";
+import {Menu, MenuTypeArticle} from "../../models/menu";
+import {MenuService} from "../../services/menu.service";
+
 
 @Component({
   selector: 'app-menu',
@@ -9,13 +12,15 @@ import {FooterComponent} from "../footer/footer.component";
   imports: [
     NgIf,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    NgOptimizedImage,
+    NgForOf
   ],
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css', '../../../assets/css/style.css', '../../../assets/css/style.min.css' ],
   encapsulation: ViewEncapsulation.None,
 })
-export class MenuComponent {
+export class MenuComponent implements OnInit {
 
   @Input() showPageHeader: boolean = true;
 
@@ -25,143 +30,44 @@ export class MenuComponent {
     urlCurrent:"Menu",
     description: "Tarifs Compétitifs",
 
-    groupMenuLeftTaps01: [
-      { id:1,
-        image:"menu-1.jpg",
-        price:"5€",
-        titre:"Café Noir",
-        texte:"Profitez d'un café noir riche et intense, parfait pour commencer votre journée avec énergie."
-      },
-      { id:2,
-        image:"menu-2.jpg",
-        price:"7€",
-        titre:"Café au Chocolat",
-        texte:"Savourez la combinaison parfaite de café et de chocolat pour une expérience gourmande et réconfortante."
-      },
-      { id:3,
-        image:"menu-3.jpg",
-        price:"9€",
-        titre:"Café Noir",
-        texte:"Un café crémeux et doux, parfait pour ceux qui aiment leur café avec une touche de lait."
-      }
-    ],
-
-    groupMenuRightTaps01: [
-      { id:1,
-        image:"menu-2.jpg",
-        price:"7€",
-        titre:"Café au Chocolat",
-        texte:"Le mélange parfait de café et de chocolat, servi froid pour une pause gourmande et rafraîchissante."
-      },
-      { id:2,
-        image:"menu-3.jpg",
-        price:"9€",
-        titre:"Café au Lait",
-        texte:"Un café froid crémeux, idéal pour les amateurs de café au lait qui souhaitent une boisson rafraîchissante."
-      },
-      { id:3,
-        image:"menu-1.jpg",
-        price:"5€",
-        titre:"Café Noir",
-        texte:"Un café noir rafraîchissant, parfait pour se désaltérer tout en profitant d'une saveur intense."
-      }
-      ],
-
-    groupMenuLeftTaps02: [
-      { id:1,
-        image:"menu-3.jpg",
-        price:"9€",
-        titre:"Café au Lait",
-        texte:"Un café froid crémeux, idéal pour les amateurs de café au lait qui souhaitent une boisson rafraîchissante."
-      },
-      { id:2,
-        image:"menu-1.jpg",
-        price:"5€",
-        titre:"Café Noir",
-        texte:"Un café noir rafraîchissant, parfait pour se désaltérer tout en profitant d'une saveur intense."
-      },
-      { id:3,
-        image:"menu-2.jpg",
-        price:"7€",
-        titre:"Café au Chocolat",
-        texte:"Le mélange parfait de café et de chocolat, servi froid pour une pause gourmande et rafraîchissante."
-      }
-    ],
-
-    groupMenuRightTaps02: [
-      { id:1,
-        image:"menu-1.jpg",
-        price:"5€",
-        titre:"Café Noir",
-        texte:"Un café noir rafraîchissant, parfait pour se désaltérer tout en profitant d'une saveur intense."
-      },
-      { id:5,
-        image:"menu-3.jpg",
-        price:"9€",
-        titre:"Café au Lait",
-        texte:"Un café froid crémeux, idéal pour les amateurs de café au lait qui souhaitent une boisson rafraîchissante."
-      },
-      { id:6,
-        image:"menu-2.jpg",
-        price:"7€",
-        titre:"Café au Chocolat",
-        texte:"Le mélange parfait de café et de chocolat, servi froid pour une pause gourmande et rafraîchissante."
-      }
-    ],
-
-    groupMenuLeftTaps03: [
-      { id:1,
-        image:"menu-2.jpg",
-        price:"7€",
-        titre:"Café au Chocolat",
-        texte:"Le mélange parfait de café et de chocolat, servi froid pour une pause gourmande et rafraîchissante."
-      },
-      { id:2,
-        image:"menu-1.jpg",
-        price:"7€",
-        titre:"Café au Lait",
-        texte:"Un café froid crémeux, idéal pour les amateurs de café au lait qui souhaitent une boisson rafraîchissante."
-      },
-      { id:3,
-        image:"menu-3.jpg",
-        price:"9€",
-        titre:"Café Noir",
-        texte:"Un café noir rafraîchissant, parfait pour se désaltérer tout en profitant d'une saveur intense."
-      }
-    ],
-
-    groupMenuRightTaps03: [
-      { id:1,
-        image:"menu-2.jpg",
-        price:"7€",
-        titre:"Café au Chocolat",
-        texte:"Le mélange parfait de café et de chocolat, servi froid pour une pause gourmande et rafraîchissante."
-      },
-      { id:2,
-        image:"menu-3.jpg",
-        price:"5€",
-        titre:"Café Noir",
-        texte:"Un café noir rafraîchissant, parfait pour se désaltérer tout en profitant d'une saveur intense."
-      },
-      { id:3,
-        image:"menu-1.jpg",
-        price:"9€",
-        titre:"Café au Lait",
-        texte:"Un café froid crémeux, idéal pour les amateurs de café au lait qui souhaitent une boisson rafraîchissante."
-      }
-    ]
-
   }
 
   tabs = [
-    { id: 'tabs-1', name: 'Boissons Chaudes', icon: './assets/img/tab-icon-01.png' },
-    { id: 'tabs-2', name: 'Boissons Froides', icon: './assets/img/tab-icon-02.png' },
-    { id: 'tabs-3', name: 'Petit-déjeuner', icon: './assets/img/tab-icon-03.png' }
+    { id: 'tabs-1', name: 'Boissons Chaudes', icon: './assets/img/tab-icon-01.png', typeArticle: MenuTypeArticle.BoissonsChaudes  },
+    { id: 'tabs-2', name: 'Boissons Froides', icon: './assets/img/tab-icon-02.png', typeArticle: MenuTypeArticle.BoissonsFroides  },
+    { id: 'tabs-3', name: 'Petit-déjeuner', icon: './assets/img/tab-icon-03.png', typeArticle: MenuTypeArticle.PetitDejeuner  }
   ];
 
   selectedTab = this.tabs[0].id;
 
+  menuItems: Menu[] = [];
+  filteredMenuItems: { left: Menu[], right: Menu[] } = { left: [], right: [] };
+
+  constructor(private menuService: MenuService) {}
+
+  ngOnInit(): void {
+    // Récupération des données depuis Firestore
+    this.menuService.getMenu().subscribe(menuItems => {
+      this.menuItems = menuItems;
+      this.filterMenuItems();
+    });
+  }
+
   selectTab(tabId: string): void {
     this.selectedTab = tabId;
+    this.filterMenuItems();
   }
+
+  // Filtrer les éléments de menu en fonction de l'onglet sélectionné
+  filterMenuItems(): void {
+    const currentTab = this.tabs.find(tab => tab.id === this.selectedTab);
+    if (currentTab) {
+      const filtered = this.menuItems.filter(item => item.typeArticle === currentTab.typeArticle);
+
+      // Répartir les éléments dans les listes gauche et droite
+      this.filteredMenuItems.left = filtered.filter((_, index) => index % 2 === 0);
+      this.filteredMenuItems.right = filtered.filter((_, index) => index % 2 !== 0);
+    }
+  }
+
 }
