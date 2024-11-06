@@ -8,32 +8,35 @@
 
 /* Image and price styles */
 .custom-image-size {
-  width: 80px;  /* Ajustez selon vos préférences */
-  height: 80px;
+  width: 100px;  /* Ajustez selon vos préférences */
+  height: 100px;
   object-fit: cover;
   border: 2px solid #ccc;
 }
 
 .menu-price {
   position: absolute;
-  top: -15px !important;
-  right: 5px !important;
-  width: 40px !important;
-  height: 40px !important;
-  font-size: 1rem !important;
-  text-align: center;
-  transform: translate(-148%, -3%) !important;
+
+  font-size: 18px !important;
+  font-weight: bold !important;
+  color: #33211D !important;
 }
 
-.menu-item .row {
+.col-4.col-sm-3 {
   display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
-.menu-item {
-  position: relative;
+.col-4 {
+  flex: 0 0 28%;
+  max-width: 33.33333%;
 }
 
-.menu-item img {
-  position: relative;
+@media (min-width: 576px) {
+  .col-sm-3 {
+    flex: 0 0 20%;
+    max-width: 25%;
+  }
 }
+
