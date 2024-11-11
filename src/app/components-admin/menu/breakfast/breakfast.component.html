@@ -2,7 +2,7 @@
 <div class="container-fluid">
 
   <!-- Page Heading -->
-  <h1 class="h3 mb-2 text-gray-800">Menu & Tarifs - Petit-déjeuner -</h1>
+  <h1 class="h3 mb-2 text-gray-800">Petit-déjeuner</h1>
   <p class="mb-4">Cette liste répertorie les réservations effectuées par les clients ou par l'administrateur via un appel téléphonique. Dans cet espace, nous examinons chaque demande de réservation pour ensuite décider de la valider ou de la refuser, en fonction des critères établis et des disponibilités.</p>
 
   <div class="card shadow mb-4">
@@ -22,7 +22,6 @@
         <table class="table table-striped table-hover">
           <thead>
           <tr>
-            <th>ID</th>
             <th>Photo</th>
             <th>Type Article</th>
             <th>Article</th>
@@ -35,7 +34,6 @@
           <tbody>
 
           <tr *ngFor="let menu of petitDejeunerList | paginate: { itemsPerPage: 10, currentPage: p }; trackBy: trackByFn" >
-            <td>{{menu.id}}</td>
             <td><img src="{{menu.imageUrl}}" width="80px" height="80px" style="border-radius: 50%;" alt=""></td>
             <td>{{menu.typeArticle}}</td>
             <td>{{menu.article}}</td>

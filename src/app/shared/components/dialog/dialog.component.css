@@ -8,6 +8,8 @@
   height: 100%;
   background-color: #00000036;
   z-index: 12;
+  justify-content: center;
+  align-items: center;
 }
 
 #container {
@@ -18,32 +20,32 @@
   top: 0px;
   bottom: 0px;
   right: 0px;
-  width: 40%;
-  height: max-content;
+  width: 90%;
+  max-width: 600px;
+  max-height: 85%;
   box-shadow: 5px 5px 6px rgba(19, 19, 19, 0.2);
   border-radius: 10px;
   background-color:#fff;
-  display: flex;
-  flex-direction: column;
+  overflow: scroll;
 }
 
 
 #header {
   border-bottom: 1px solid #ccc;
-  height: 70px;
+  height: 60px;
   display: flex;
   align-items: center;
   padding-left: 30px;
   padding-right: 30px;
-  font: 25px sans-serif;
+  font: 22px sans-serif;
   font-weight: bold;
   color: #5a5c69;
+  background-color: #f8f9fa;
 }
 
 #content {
   flex-grow: 1;
-  padding: 10px 30px 0 30px;
-  font: 16px Nunito, -apple-system, "system-ui";
+  font: 14px Nunito, -apple-system, "system-ui";
 }
 
 #actions {
@@ -52,3 +54,10 @@
   gap: 20px;
   padding: 20px;
 }
+
+@media (min-height: 1087px) {
+  #container {
+    max-height: max-content;
+  }
+}
+

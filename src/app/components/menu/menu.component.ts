@@ -62,7 +62,7 @@ export class MenuComponent implements OnInit {
   filterMenuItems(): void {
     const currentTab = this.tabs.find(tab => tab.id === this.selectedTab);
     if (currentTab) {
-      const filtered = this.menuItems.filter(item => item.typeArticle === currentTab.typeArticle);
+      const filtered = this.menuItems.filter(item => item.typeArticle === currentTab.typeArticle && item.etat === "Disponible");
 
       // Répartir les éléments dans les listes gauche et droite
       this.filteredMenuItems.left = filtered.filter((_, index) => index % 2 === 0);
