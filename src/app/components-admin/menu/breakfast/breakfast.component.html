@@ -23,7 +23,6 @@
           <thead>
           <tr>
             <th>Photo</th>
-            <th>Type Article</th>
             <th>Article</th>
             <th>Prix</th>
             <th>Description</th>
@@ -33,15 +32,14 @@
           </thead>
           <tbody>
 
-          <tr *ngFor="let menu of petitDejeunerList | paginate: { itemsPerPage: 10, currentPage: p }; trackBy: trackByFn" >
+          <tr *ngFor="let menu of filteredBreakfast | paginate: { itemsPerPage: 10, currentPage: p }; trackBy: trackByFn" >
             <td><img src="{{menu.imageUrl}}" width="80px" height="80px" style="border-radius: 50%;" alt=""></td>
-            <td>{{menu.typeArticle}}</td>
             <td>{{menu.article}}</td>
             <td>{{menu.price}}</td>
             <td>{{menu.description}}</td>
             <td>{{menu.etat}}</td>
             <td>
-              <a class="edit" (click)="openEditModal(menu, id)"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+              <a class="edit" (click)="openEditModal(menu)"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
               <a class="delete"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
             </td>
           </tr>
@@ -53,68 +51,77 @@
   </div>
 
 
-  <app-dialog *ngIf="generalService.showDialog"
-              [title]="'Modifier Article'"
-              [message]="'Are you sure you want to delete this article?'"
-              [id]=id>
+  <app-dialog *ngIf="generalService.showDialog" [title]="'Modifier Article'">
     <div class="modal-body">
       <div class="title-body">
-        <h5 class="warning-text">Voulez-vous vraiment supprimer ce <strong><u>contrat</u></strong> ?</h5>
+        <h5 class="warning-text">Souhaitez-vous vraiment apporter des modifications à cette <strong>petit-déjeuner </strong>?</h5>
       </div>
       <div class="content-body">
         <form [formGroup]="editForm" novalidate>
 
           <div class="form-group">
-            <label>imageUrl</label>
+            <label>Photo d'Article:</label>
             <div class="input-group">
-              <input formControlName="imgUrl" class="form-control">
-            </div>
-          </div>
-          <div class="form-group">
-            <label>price</label>
-            <div class="input-group">
-              <input formControlName="prc" class="form-control">
-            </div>
-          </div>
-          <div class="form-group">
-            <label>article</label>
-            <div class="input-group">
-              <input formControlName="art" class="form-control">
-            </div>
-          </div>
-          <div class="form-group">
-            <label>description</label>
-            <div class="input-group">
-              <input formControlName="desc" class="form-control">
+              <div class="image-container">
+                <div class="image-placeholder" id="image-placeholder">
+                  <img [src]="editForm.get('imageUrl')?.value" alt="Selected Image" />
+                </div>
+                <button type="button" class="select-photo-btn" (click)="onSelectPhoto()">Sélectionner une Photo</button>
+                <input type="file" id="file-input" accept="image/*" (change)="onFileSelected($event)" style="display: none;">
+              </div>
             </div>
           </div>
 
           <div class="form-group">
-            <label class="form-label">typeArticle</label>
+            <label>Article:</label>
             <div class="input-group">
-              <select class="form-control" formControlName="typeArt" aria-label="Default select example">
+              <input formControlName="article" class="form-control">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Prix:</label>
+            <div class="input-group">
+              <input formControlName="price" class="form-control">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Description:</label>
+            <div class="input-group">
+              <textarea formControlName="description" class="form-control"></textarea>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Type d'Article:</label>
+            <div class="input-group">
+              <select class="form-control" formControlName="typeArticle" aria-label="Default select example">
                 <option selected>Sélectionner...</option>
                 <option *ngFor="let type of menuTypes" [value]="type">{{ type }}</option>
               </select>
             </div>
           </div>
 
+          <div class="form-group">
+            <label class="form-label">État:</label>
+            <div class="input-group">
+              <select class="form-control" formControlName="etat" aria-label="Default select example">
+                <option selected>Sélectionner...</option>
+                <option *ngFor="let etat of menuEtats" [value]="etat">{{ etat }}</option>
+              </select>
+            </div>
+          </div>
+
 
           <div class="modal-footer">
-            <button type="submit" class="btn btn-primary" >Modifer</button>
+            <button type="submit" class="btn btn-primary" (click)="EditArticleMenu()">Modifer</button>
             <button type="button" class="btn btn-secondary" aria-label="Close" (click)="closeEditModal()">Annuler</button>
           </div>
         </form>
       </div>
     </div>
   </app-dialog>
-
-  <!-- Modal Edit -->
-  <!--<app-edit-article-modal *ngIf="selectedMenu" (close)="closeEditModal()"></app-edit-article-modal>-->
-
-
-  <!-- Modal Delete -->
-  <!--<app-delete-article-modal [menu]="selectedMenu"  (close)="closeDeleteModal()"></app-delete-article-modal>-->
 
 </div>
 

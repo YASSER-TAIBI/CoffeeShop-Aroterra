@@ -26,9 +26,12 @@
   box-shadow: 5px 5px 6px rgba(19, 19, 19, 0.2);
   border-radius: 10px;
   background-color:#fff;
-  overflow: scroll;
+  overflow-y: auto;
 }
 
+#container::-webkit-scrollbar {
+  display: none;
+}
 
 #header {
   border-bottom: 1px solid #ccc;

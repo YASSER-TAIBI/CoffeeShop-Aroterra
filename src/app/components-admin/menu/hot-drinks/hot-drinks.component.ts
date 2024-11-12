@@ -28,7 +28,6 @@ export class HotDrinksComponent  implements OnInit {
   tableTitle: string ="Boissons Chaudes";
   tableImage: string ="./assets/img/tab-icon-01.png";
   file: File | null = null;
-  id: number = 0 ;
 
   //Pagination
   p: number = 1;
@@ -37,17 +36,17 @@ export class HotDrinksComponent  implements OnInit {
   editForm: FormGroup;
   menuTypes = Object.values(MenuTypeArticle);
   menuEtats = Object.values(MenuEtat);
+  id: number = 0 ;
 
   constructor(private fb: FormBuilder, public generalService: GeneralService) {
     this.editForm = this.fb.group({
       id: [''],
-      imageUrl: [''],
+      imageUrl: ['', Validators.required],
       price: [null, Validators.required],
       article: ['', Validators.required],
       description: ['', Validators.required],
       typeArticle: [null, Validators.required],
       etat: [null, Validators.required]
-
     });
   }
 
@@ -62,13 +61,16 @@ export class HotDrinksComponent  implements OnInit {
     });
   }
 
-  openEditModal(menu: Menu, id: number) {
-    console.log('Selected Menu:', menu);
-    console.log('id:', id);
-    const selectedMenu = menu; // Set the selected menu
-    if (selectedMenu){
+  get filteredHotDrinks(): Menu[] {
+    return this.boissonsChaudesList = this.menuList.filter(menu =>
+      menu.typeArticle === 'Boissons Chaudes' &&
+      menu.article?.toLowerCase().includes(this.searchText.toLowerCase())
+    );
+  }
 
-      console.log(selectedMenu);
+  openEditModal(menu: Menu) {
+    const selectedMenu = menu;
+    if (selectedMenu){
       this.editForm.patchValue({
         id: selectedMenu.id || '',
         imageUrl: selectedMenu.imageUrl || '',
@@ -78,11 +80,9 @@ export class HotDrinksComponent  implements OnInit {
         typeArticle: selectedMenu.typeArticle || '',
         etat: selectedMenu.etat || ''
       })
-      console.log(this.editForm);
     }else {
       console.error("Le menu sélectionné est null ou undefined");
     }
-
     this.generalService.showDialog= true;
   }
 
@@ -103,38 +103,37 @@ export class HotDrinksComponent  implements OnInit {
       this.file = input.files[0];
       const reader = new FileReader();
       reader.onload = () => {
-        this.editForm.patchValue({ imgUrl: reader.result as string });
+        this.editForm.patchValue({ imageUrl: reader.result as string });
       };
       reader.readAsDataURL(this.file);
+    }
+  }
+
+  EditArticleMenu() {
+    if (!this.editForm.valid) {
+      alert('Remplir tous les champs de saisie !');
+      return;
+    }
+
+    if (window.confirm('Voulez-vous continuer la modification de cet article !')) {
+      const updatedMenu: Partial<Menu> = this.editForm.value;
+
+      if (updatedMenu.id) {
+        this.menuService.updateMenu(updatedMenu.id, updatedMenu)
+          .then(() => {
+            this.closeEditModal();
+            alert('Article modifié avec succès!');
+          })
+          .catch(error => {
+            alert('Erreur lors de la mise à jour de l\'article: '+error);
+          });
+      } else {
+        alert('ID de l\'article manquant. Impossible de modifier l\'article.');
+      }
     }
   }
 
   trackByFn(index: number, item: Menu): string {
     return item.id ? item.id : index.toString();  // Assurez-vous que 'id' est une propriété unique de chaque Menu
   }
-
-  EditArticleMenu() {
-    if (window.confirm('Voulez-vous continuer la modification de cet article !')) {
-      console.log('Entrée dans la fonction EditArticleMenu');
-
-      const updatedMenu: Partial<Menu> = this.editForm.value;
-
-      console.log('Données de l\'article modifié:', updatedMenu);
-
-      if (updatedMenu.id) {  // Vérifiez que updatedMenu.id est défini
-        this.menuService.updateMenu(updatedMenu.id, updatedMenu)
-          .then(() => {
-            alert('Article modifié avec succès!');
-            console.log('Article mis à jour avec succès!');
-          })
-          .catch(error => {
-            console.error('Erreur lors de la mise à jour de l\'article:', error);
-          });
-      } else {
-        console.error('Erreur : L\'ID de l\'article est manquant.');
-        alert('ID de l\'article manquant. Impossible de modifier l\'article.');
-      }
-    }
-  }
-
 }

@@ -2,8 +2,8 @@ import {Component, inject, OnInit} from '@angular/core';
 import {DialogComponent} from "../../../shared/components/dialog/dialog.component";
 import {NgForOf, NgIf} from "@angular/common";
 import {NgxPaginationModule} from "ngx-pagination";
-import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {Menu, MenuTypeArticle} from "../../../models/menu";
+import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
+import {Menu, MenuEtat, MenuTypeArticle} from "../../../models/menu";
 import {GeneralService} from "../../../shared/services/general.service";
 import {MenuService} from "../../../services/menu.service";
 
@@ -27,7 +27,7 @@ export class ColdDrinksComponent  implements OnInit {
   boissonsFroidesList: Menu[] = [];
   tableTitle: string ="Boissons Froides";
   tableImage: string ="./assets/img/tab-icon-02.png";
-  id: number = 0 ;
+  file: File | null = null;
 
   //Pagination
   p: number = 1;
@@ -35,16 +35,18 @@ export class ColdDrinksComponent  implements OnInit {
   selectedMenu: Menu | null = null;
   editForm: FormGroup;
   menuTypes = Object.values(MenuTypeArticle);
-  isEditModalOpen: boolean = false;
-  isDeleteModalOpen: boolean = false;
+  menuEtats = Object.values(MenuEtat);
+  id: number = 0 ;
 
   constructor(private fb: FormBuilder, public generalService: GeneralService) {
     this.editForm = this.fb.group({
-      imgUrl: [''],
-      prc: [''],
-      art: [''],
-      desc: [''],
-      typeArt: ['']
+      id: [''],
+      imageUrl: ['', Validators.required],
+      price: [null, Validators.required],
+      article: ['', Validators.required],
+      description: ['', Validators.required],
+      typeArticle: [null, Validators.required],
+      etat: [null, Validators.required]
     });
   }
 
@@ -59,25 +61,28 @@ export class ColdDrinksComponent  implements OnInit {
     });
   }
 
-  openEditModal(menu: Menu, id: number) {
-    console.log('Selected Menu:', menu);
-    console.log('id:', id);
-    const selectedMenu = menu; // Set the selected menu
-    if (selectedMenu){
+  get filteredColdDrinks(): Menu[] {
+    return this.boissonsFroidesList = this.menuList.filter(menu =>
+      menu.typeArticle === 'Boissons Froides' &&
+      menu.article?.toLowerCase().includes(this.searchText.toLowerCase())
+    );
+  }
 
-      console.log(selectedMenu);
+  openEditModal(menu: Menu) {
+    const selectedMenu = menu;
+    if (selectedMenu){
       this.editForm.patchValue({
-        imgUrl: selectedMenu.imageUrl || '',
-        prc: selectedMenu.price || '',
-        art: selectedMenu.article || '',
-        desc: selectedMenu.description || '',
-        typeArt: selectedMenu.typeArticle || ''
+        id: selectedMenu.id || '',
+        imageUrl: selectedMenu.imageUrl || '',
+        price: selectedMenu.price || '',
+        article: selectedMenu.article || '',
+        description: selectedMenu.description || '',
+        typeArticle: selectedMenu.typeArticle || '',
+        etat: selectedMenu.etat || ''
       })
-      console.log(this.editForm);
     }else {
       console.error("Le menu sélectionné est null ou undefined");
     }
-
     this.generalService.showDialog= true;
   }
 
@@ -85,6 +90,47 @@ export class ColdDrinksComponent  implements OnInit {
     this.editForm.reset();
     this.selectedMenu = null;
     this.generalService.showDialog= false;
+  }
+
+  onSelectPhoto(): void {
+    const fileInput = document.getElementById('file-input') as HTMLInputElement;
+    fileInput.click();
+  }
+
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files[0]) {
+      this.file = input.files[0];
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.editForm.patchValue({ imageUrl: reader.result as string });
+      };
+      reader.readAsDataURL(this.file);
+    }
+  }
+
+  EditArticleMenu() {
+    if (!this.editForm.valid) {
+      alert('Remplir tous les champs de saisie !');
+      return;
+    }
+
+    if (window.confirm('Voulez-vous continuer la modification de cet article !')) {
+      const updatedMenu: Partial<Menu> = this.editForm.value;
+
+      if (updatedMenu.id) {
+        this.menuService.updateMenu(updatedMenu.id, updatedMenu)
+          .then(() => {
+            this.closeEditModal();
+            alert('Article modifié avec succès!');
+          })
+          .catch(error => {
+            alert('Erreur lors de la mise à jour de l\'article: '+error);
+          });
+      } else {
+        alert('ID de l\'article manquant. Impossible de modifier l\'article.');
+      }
+    }
   }
 
   trackByFn(index: number, item: Menu): string {

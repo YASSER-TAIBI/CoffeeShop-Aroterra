@@ -23,7 +23,6 @@
             <thead>
             <tr>
               <th>Photo</th>
-              <th>Type Article</th>
               <th>Article</th>
               <th>Prix</th>
               <th>Description</th>
@@ -33,15 +32,14 @@
             </thead>
             <tbody>
 
-            <tr *ngFor="let menu of boissonsChaudesList | paginate: { itemsPerPage: 10, currentPage: p }; trackBy: trackByFn" >
+            <tr *ngFor="let menu of filteredHotDrinks | paginate: { itemsPerPage: 10, currentPage: p }; trackBy: trackByFn" >
               <td><img src="{{menu.imageUrl}}" width="80px" height="80px" style="border-radius: 50%;" alt=""></td>
-              <td>{{menu.typeArticle}}</td>
               <td>{{menu.article}}</td>
               <td>{{menu.price}}</td>
               <td>{{menu.description}}</td>
               <td>{{menu.etat}}</td>
               <td>
-                <a class="edit" (click)="openEditModal(menu, id)"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                <a class="edit" (click)="openEditModal(menu)"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                 <a class="delete"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
               </td>
             </tr>
@@ -56,13 +54,13 @@
     <app-dialog *ngIf="generalService.showDialog" [title]="'Modifier Article'">
       <div class="modal-body">
         <div class="title-body">
-          <h5 class="warning-text">Voulez-vous vraiment Modifier cette <strong>Boisson Chaude </strong>?</h5>
+          <h5 class="warning-text">Souhaitez-vous vraiment apporter des modifications à cette <strong>boisson chaude </strong>?</h5>
         </div>
         <div class="content-body">
           <form [formGroup]="editForm" novalidate>
 
             <div class="form-group">
-              <label>Photo:</label>
+              <label>Photo d'Article:</label>
               <div class="input-group">
               <div class="image-container">
                 <div class="image-placeholder" id="image-placeholder">
