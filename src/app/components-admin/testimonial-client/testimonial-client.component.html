@@ -2,13 +2,13 @@
 <div class="container-fluid">
 
   <!-- Page Heading -->
-  <h1 class="h3 mb-2 text-gray-800">Liste des Testimoniales</h1>
-  <p class="mb-4">Cette liste répertorie les réservations effectuées par les clients ou par l'administrateur via un appel téléphonique. Dans cet espace, nous examinons chaque demande de réservation pour ensuite décider de la valider ou de la refuser, en fonction des critères établis et des disponibilités.</p>
+  <h1 class="h3 mb-2 text-gray-800">Testimoniales</h1>
+  <p class="mb-4">Sur cette page, nous gérons les témoignages partagés par nos clients pour notre coffee shop. Consultez, modifiez ou supprimez les avis afin de valoriser l'expérience client et maintenir une image positive et authentique de notre établissement.</p>
 
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary">Données des réservations</h6>
+      <h6 class="m-0 font-weight-bold text-primary">Données des Témoignages</h6>
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -16,12 +16,9 @@
           <div class="table-title">
             <div class="row">
               <div class="input-group mb-3 col-sm-4">
-                <input type="text" id="search" class="form-control" placeholder="Filtre par Nom ou le Prénom" aria-label="Recherche" [(ngModel)]="searchText">
+                <label>Recherche:</label>
+                <input type="text" id="search" class="form-control" placeholder="Filtrer par nom ou le prénom..." aria-label="Recherche" [(ngModel)]="searchText">
               </div>
-              <!--<div class="col-sm-6">
-                <a class="btn btn-success" ><i class="material-icons">&#xE147;</i>
-                  <span>Ajouter</span></a>
-              </div>-->
             </div>
           </div>
           <table class="table table-striped table-hover">
