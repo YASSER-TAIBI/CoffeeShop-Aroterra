@@ -1,3 +1,13 @@
+label{
+  display: flex !important;
+  margin-bottom: 0 !important;
+  align-items: center;
+}
+.form-control{
+  margin-left: 10px;
+  border-radius: 6px !important;
+  font-size: 14px !important;
+}
 .table-wrapper {
   background: #fff;
   padding: 1.56rem;
@@ -8,9 +18,13 @@
 .table-title {
   padding-bottom: 15px;
   background: #0000;
-  color: #fff;
+  /*color: #fff;*/
   min-width: 100%;
   border-radius: 3px 3px 0 0;
+}
+.table-title .row{
+  flex-wrap: nowrap !important;
+  justify-content: space-around;
 }
 .table-title h2 {
   margin: 5px 0 0;
@@ -23,11 +37,26 @@
   color: #fff;
   float: right;
   font-size: 13px;
-  border: none;
   min-width: 50px;
-  border-radius: 2px;
   outline: none !important;
   margin-left: 10px;
+}
+.table-title .btn-success {
+  background-color: #da9f5b;
+  border-color: #da9f5b;
+}
+
+.table-title .btn-success:focus{
+  box-shadow: 0 0 0 0.2rem rgba(201, 149, 15, 0.81) !important;
+}
+
+.table-title .btn-success:hover{
+  background-color: #d18731;
+  border-color: #d18731;
+}
+.table-title .btn-success:active{
+  background-color: #d18731 !important;
+  border-color: #d18731 !important;
 }
 .table-title .btn i {
   float: left;
@@ -98,49 +127,12 @@ table.table .avatar {
   vertical-align: middle;
   margin-right: 10px;
 }
-.etat-en-cours {
-  color: #d59246 !important;
-}
 
-.etat-valider {
-  color: green !important;
+::ng-deep .ngx-pagination .disabled {
+  color: #858796 !important;
 }
-
-.etat-non-valider {
-  color: red !important;
-}
-
-.pagination {
-  float: right;
-  margin: 0 0 5px;
-}
-.pagination li a {
-  border: none;
-  font-size: 13px;
-  min-width: 30px;
-  min-height: 30px;
-  color: #999;
-  margin: 0 2px;
-  line-height: 30px;
-  border-radius: 2px !important;
-  text-align: center;
-  padding: 0 6px;
-}
-.pagination li a:hover {
-  color: #666;
-}
-.pagination li.active a, .pagination li.active a.page-link {
-  background: #03A9F4;
-}
-.pagination li.active a:hover {
-  background: #0397d6;
-}
-.pagination li.disabled i {
-  color: #ccc;
-}
-.pagination li i {
-  font-size: 16px;
-  padding-top: 6px
+::ng-deep .ngx-pagination .current {
+  background: #da9f5b !important;
 }
 .hint-text {
   float: left;

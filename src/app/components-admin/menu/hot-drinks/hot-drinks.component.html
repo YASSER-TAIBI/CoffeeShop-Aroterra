@@ -3,11 +3,14 @@
 
   <!-- Page Heading -->
   <h1 class="h3 mb-2 text-gray-800">Boissons Chaudes</h1>
-  <p class="mb-4">Cette liste répertorie les réservations effectuées par les clients ou par l'administrateur via un appel téléphonique. Dans cet espace, nous examinons chaque demande de réservation pour ensuite décider de la valider ou de la refuser, en fonction des critères établis et des disponibilités.</p>
+  <p class="mb-4">Cette liste répertorie les réservations effectuées par les clients ou par l'administrateur via un
+    appel téléphonique. Dans cet espace, nous examinons chaque demande de réservation pour ensuite décider de la valider
+    ou de la refuser, en fonction des critères établis et des disponibilités.</p>
 
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary"><img [src]="tableImage" width="50" height="50" alt="">{{ tableTitle }}</h6>
+      <h6 class="m-0 font-weight-bold text-primary"><img [src]="tableImage" width="50" height="50"
+                                                         alt="">{{ tableTitle }}</h6>
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -15,7 +18,13 @@
           <div class="table-title">
             <div class="row">
               <div class="input-group mb-3 col-sm-4">
-                <input type="text" id="searchId" class="form-control" placeholder="Filtre par Article" aria-label="Recherche" [(ngModel)]="searchText">
+                <label>Recherche:</label>
+                <input type="text" id="searchId" class="form-control" placeholder="Filtrer par article..."
+                       aria-label="Recherche" [(ngModel)]="searchText">
+              </div>
+              <div class="col-sm-6">
+                <a class="btn btn-success" href="add-articles"><i class="material-icons">&#xE147;</i>
+                  <span>Ajouter</span></a>
               </div>
             </div>
           </div>
@@ -32,15 +41,17 @@
             </thead>
             <tbody>
 
-            <tr *ngFor="let menu of filteredHotDrinks | paginate: { itemsPerPage: 10, currentPage: p }; trackBy: trackByFn" >
+            <tr
+              *ngFor="let menu of filteredHotDrinks | paginate: { itemsPerPage: 10, currentPage: p }; trackBy: trackByFn">
               <td><img src="{{menu.imageUrl}}" width="80px" height="80px" style="border-radius: 50%;" alt=""></td>
-              <td>{{menu.article}}</td>
-              <td>{{menu.price}}</td>
-              <td>{{menu.description}}</td>
-              <td>{{menu.etat}}</td>
+              <td>{{ menu.article }}</td>
+              <td>{{ menu.price }}</td>
+              <td>{{ menu.description }}</td>
+              <td>{{ menu.etat }}</td>
               <td>
-                <a class="edit" (click)="openEditModal(menu)"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                <a class="delete"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                <a class="edit" (click)="openEditModal(menu)"><i class="material-icons" data-toggle="tooltip"
+                                                                 title="Edit">&#xE254;</i></a>
+                <a class="delete" (click)="openDeleteModal(menu)"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
               </td>
             </tr>
             </tbody>
@@ -54,7 +65,8 @@
     <app-dialog *ngIf="generalService.showDialog" [title]="'Modifier Article'">
       <div class="modal-body">
         <div class="title-body">
-          <h5 class="warning-text">Souhaitez-vous vraiment apporter des modifications à cette <strong>boisson chaude </strong>?</h5>
+          <h5 class="warning-text">Souhaitez-vous vraiment apporter des modifications à cette <strong>boisson
+            chaude </strong>?</h5>
         </div>
         <div class="content-body">
           <form [formGroup]="editForm" novalidate>
@@ -62,13 +74,15 @@
             <div class="form-group">
               <label>Photo d'Article:</label>
               <div class="input-group">
-              <div class="image-container">
-                <div class="image-placeholder" id="image-placeholder">
-                    <img [src]="editForm.get('imageUrl')?.value" alt="Selected Image" />
+                <div class="image-container">
+                  <div class="image-placeholder" id="image-placeholder">
+                    <img [src]="editForm.get('imageUrl')?.value" alt="Selected Image"/>
+                  </div>
+                  <button type="button" class="select-photo-btn" (click)="onSelectPhoto()">Sélectionner une Photo
+                  </button>
+                  <input type="file" id="file-input" accept="image/*" (change)="onFileSelected($event)"
+                         style="display: none;">
                 </div>
-                <button type="button" class="select-photo-btn" (click)="onSelectPhoto()">Sélectionner une Photo</button>
-                <input type="file" id="file-input" accept="image/*" (change)="onFileSelected($event)" style="display: none;">
-              </div>
               </div>
             </div>
 
@@ -88,8 +102,8 @@
 
             <div class="form-group">
               <label>Description:</label>
-             <div class="input-group">
-              <textarea formControlName="description" class="form-control"></textarea>
+              <div class="input-group">
+                <textarea formControlName="description" class="form-control"></textarea>
               </div>
             </div>
 
@@ -115,7 +129,8 @@
 
             <div class="modal-footer">
               <button type="submit" class="btn btn-primary" (click)="EditArticleMenu()">Modifer</button>
-              <button type="button" class="btn btn-secondary" aria-label="Close" (click)="closeEditModal()">Annuler</button>
+              <button type="button" class="btn btn-secondary" aria-label="Close" (click)="closeEditModal()">Annuler
+              </button>
             </div>
           </form>
         </div>

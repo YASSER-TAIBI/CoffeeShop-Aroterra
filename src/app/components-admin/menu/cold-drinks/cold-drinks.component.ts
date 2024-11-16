@@ -86,6 +86,20 @@ export class ColdDrinksComponent  implements OnInit {
     this.generalService.showDialog= true;
   }
 
+  openDeleteModal(menu: Menu){
+    if (window.confirm('Voulez-vous vraiment supprimer cette Article ?')) {
+      this.menuService.deleteReservation(menu.id!)
+        .then(() => {
+          alert('Article supprimée avec succès!');
+          // Supprimez la réservation localement de la liste pour éviter un appel supplémentaire à Firestore
+          this.menuList = this.menuList.filter(r => r.id !== menu.id);
+        })
+        .catch(error => {
+          console.error('Error deleting article: ', error);
+        });
+    }
+  }
+
   closeEditModal() {
     this.editForm.reset();
     this.selectedMenu = null;
