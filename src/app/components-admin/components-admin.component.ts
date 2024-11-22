@@ -5,6 +5,7 @@ import {SidebarComponent} from "./sidebar/sidebar.component";
 import {FooterComponent} from "./footer/footer.component";
 import {Auth} from "@angular/fire/auth";
 import {AuthService} from "../auth/auth.service";
+import {UserProfile} from "../models/userProfile";
 
 
 declare const $: any;
@@ -22,15 +23,27 @@ declare const $: any;
   styleUrls: ['./components-admin.component.css'],
 })
 export class ComponentsAdminComponent implements OnInit {
+
+  // profilUser: UserProfile | null = null;
+
   authService = inject(AuthService)
 
-  constructor() { }
 
   ngOnInit() {
     this.authService.user$.subscribe((user) => {
       this.authService.setCurrentUser(user?.email);
-      console.log(this.authService.getCurrentUser());
+      console.log('getCurrentUser',this.authService.getCurrentUser());
     });
+
+    this.authService.user$.subscribe((user) => {
+      this.authService.setProfilUser(user?.email)
+    });
+
+    // this.authService.profilUserSig.subscribe((profile) => {
+    //   this.profilUser = profile;
+    //   console.log('Profil utilisateur :', profile);
+    // });
+
 //------------------------------------++ JQUERY CODE ++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     "use strict"; // Start of use strict
 
@@ -41,8 +54,8 @@ export class ComponentsAdminComponent implements OnInit {
     // Toggle the side navigation
     $("#sidebarToggle, #sidebarToggleTop").on('click', (e: MouseEvent) => {
       $("body").toggleClass("sidebar-toggled");
-      $(".sidebar").toggleClass("toggled");
-      if ($(".sidebar").hasClass("toggled")) {
+      $('.sidebar').toggleClass("toggled");
+      if ($('.sidebar').hasClass("toggled")) {
         $('.sidebar .collapse').collapse('hide');
       };
     });
@@ -54,7 +67,7 @@ export class ComponentsAdminComponent implements OnInit {
       };
 
       // Toggle the side navigation when window is resized below 480px
-      if ($(window).width() < 480 && !$(".sidebar").hasClass("toggled")) {
+      if ($(window).width() < 480 && !$('.sidebar').hasClass("toggled")) {
         $("body").addClass("sidebar-toggled");
         $(".sidebar").addClass("toggled");
         $('.sidebar .collapse').collapse('hide');
