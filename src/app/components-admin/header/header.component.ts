@@ -38,7 +38,6 @@ export class HeaderComponent {
     console.log('Titre de la notification:', notification.titre);
 
     if (notification.titre){
-
       // Mettre la notification à lue (isRead = true)
       notification.isRead = true;
       // Appeler la méthode de mise à jour pour sauvegarder dans Firestore
@@ -52,10 +51,6 @@ export class HeaderComponent {
     } else if (notification.titre === 'Testimonial') {
        window.location.href = 'testimonial-client';
     }
-
-
-
-
     }
   }
 

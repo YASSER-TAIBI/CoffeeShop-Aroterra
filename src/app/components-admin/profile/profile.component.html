@@ -22,7 +22,11 @@
       <div class="row">
         <div class="col-md-3 border-right">
           <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-            <img src="{{this.authService.getCurrentUser()?.userImage}}" class="rounded-circle mt-5" width="150px" alt="...">
+            <img [src]="imageSrc || this.authService.getCurrentUser()?.userImage" class="rounded-circle mt-5" width="150px" alt="...">
+            @if (isButtonVisible) {
+            <button type="button" class="select-photo-btn" (click)="onSelectPhoto()">Sélectionner une Photo</button>
+            <input type="file" id="file-input" accept="image/*" (change)="onFileSelected($event)" style="display: none;">
+            }
             <span class="font-weight-bold">{{this.authService.getCurrentUser()?.userRole}}</span>
             <span class="text-black-50">{{this.authService.getCurrentUser()?.email}}</span><span> </span></div>
         </div>
@@ -89,23 +93,6 @@
       </div>
         }
       </form>
-<!--      <section>-->
-<!--        <h1>User Profiles</h1>-->
-<!--        <ul>-->
-<!--          @for ( profile of profile$ | async; track profile ){-->
-<!--          <li>-->
-<!--            {{profile.nom}}<br>-->
-<!--            {{profile.prenom}}<br>-->
-<!--            {{profile.email}}<br>-->
-<!--            {{profile.telephone}}<br>-->
-<!--            {{profile.civilite}}<br>-->
-<!--            {{profile.userImage}}<br>-->
-<!--            {{profile.adresse}}-->
-
-<!--          </li>-->
-<!--          }-->
-<!--        </ul>-->
-<!--      </section>-->
     </div>
   </div>
 

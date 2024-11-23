@@ -12,7 +12,7 @@
 }
 
 .rounded-circle{
-  margin-bottom: 20px;
+  margin-bottom: 6px;
 }
 
 .profile {
@@ -41,6 +41,24 @@
 
 @media (max-width: 560px) {
   .textedit{
-    font-size: 0rem !important;
+    font-size: 0 !important;
   }
+}
+
+.select-photo-btn {
+  background-color: white;
+  border: 2px solid #da9f5b;
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  color: #da9f5b;
+  outline: none;
+  margin-bottom: 12px;
+}
+
+.select-photo-btn:hover {
+  background-color: #da9f5b;
+  color: white;
+  border: 2px solid white;
 }
