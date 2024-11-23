@@ -1,1 +1,64 @@
-<p>notification works!</p>
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800">Notifications</h1>
+  <p class="mb-4">Sur cette page, nous gérons les notifications liées à l'activité de notre coffee shop. Consultez ou supprimez des notifications pour informer efficacement les utilisateurs et assurer une communication fluide.</p>
+
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Données des notifications</h6>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <div class="table-wrapper">
+          <div class="table-title">
+            <div class="row">
+              <div class="input-group mb-3 col-sm-4">
+                <label>Recherche:</label>
+                <input type="text" id="search" class="form-control" placeholder="Filtrer par titre..." aria-label="Recherche" [(ngModel)]="searchText">
+              </div>
+            </div>
+          </div>
+          <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+              <th>Titre</th>
+              <th>Date</th>
+              <th>Heure</th>
+              <th>Description</th>
+              <th>Lu/Non-lu</th>
+              <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <!-- *ngFor= "let [--obj--] of [--list result in component--] " -->
+              @for ( notification of filteredNotifications | paginate: { itemsPerPage: 10, currentPage: p }; track trackByNotificationId ){
+                <tr>
+                  <td>{{notification.titre}}</td>
+                  <td>{{notification.dateCreation | date: 'dd/MM/yyyy' }}</td>
+                  <td>{{notification.dateCreation | date: 'HH:mm' }}</td>
+                  <td>{{notification.description}}</td>
+                  <td>
+                    <label class="switch">
+                    <input type="checkbox" [(ngModel)]="notification.isRead" (change)="toggleReadStatus(notification)">
+                    <span class="slider round"></span>
+                  </label>
+                  </td>
+                  <td>
+                    <a class="delete" (click)="DeleteNotification(notification)"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- /.container-fluid -->
