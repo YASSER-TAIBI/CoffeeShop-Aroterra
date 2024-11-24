@@ -193,17 +193,20 @@ table.table .avatar {
 
 .select-photo-btn {
   background-color: white;
-  border: 1px solid #9e9e9e;
+  border: 2px solid #da9f5b;
   border-radius: 4px;
-  padding: 5px 20px;
-  font-size: 16px;
+  padding: 4px 10px;
+  font-size: 12px;
   cursor: pointer;
-  color: #858796;
+  color: #da9f5b;
   outline: none;
+  margin-bottom: 12px;
 }
 
 .select-photo-btn:hover {
-  background-color: #f0f0f0;
+  background-color: #da9f5b;
+  color: white;
+  border: 2px solid white;
 }
 
 .input-group {
