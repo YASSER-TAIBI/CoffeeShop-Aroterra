@@ -30,6 +30,7 @@ export class ComponentsAdminComponent implements OnInit {
 
 
   ngOnInit() {
+
     this.authService.user$.subscribe((user) => {
       this.authService.setCurrentUser(user?.email);
       console.log('getCurrentUser',this.authService.getCurrentUser());

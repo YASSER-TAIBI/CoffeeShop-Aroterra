@@ -12,6 +12,9 @@ import {UserProfile} from "../../models/userProfile";
 import {UserProfileService} from "../../services/user-profile.service";
 import {AuthService} from "../../auth/auth.service";
 import {Subscription} from "rxjs";
+import {NgxSpinnerComponent, NgxSpinnerModule, NgxSpinnerService} from "ngx-spinner";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+
 
 @Component({
   selector: 'app-dashboard',
@@ -19,7 +22,10 @@ import {Subscription} from "rxjs";
   imports: [
     NgOptimizedImage,
     NgForOf,
-    NgStyle
+    NgStyle,
+    NgxSpinnerComponent,
+    BrowserAnimationsModule,
+    NgxSpinnerModule
   ],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css', '../../../assets/css/admin-styles.css'],
@@ -33,12 +39,15 @@ export class DashboardComponent implements OnInit, AfterViewInit{
   widthImag: string | undefined;
 
   authService = inject(AuthService);
-  userProfileService = inject(UserProfileService)
+  userProfileService = inject(UserProfileService);
+  private spinner = inject(NgxSpinnerService);
+
 
 
   ngOnInit(): void {
+    this.spinner.show();
     this.loadProfiles();
-
+    this.spinner.hide();
   }
 
   ngAfterViewInit() {

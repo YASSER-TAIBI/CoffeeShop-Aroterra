@@ -1,4 +1,4 @@
-import {NgModule, OnInit} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule, OnInit} from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ComponentsAdminRoutingModule } from './components-admin-routing.module';
@@ -28,6 +28,8 @@ import { HotDrinksModule } from './menu/hot-drinks/hot-drinks.module';
 import { HotDrinksRoutingModule } from './menu/hot-drinks/hot-drinks-routing.module';
 import { ColdDrinksRoutingModule } from './menu/cold-drinks/cold-drinks-routing.module';
 import { BreakfastRoutingModule } from './menu/breakfast/breakfast-routing.module';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {NgxSpinnerModule} from "ngx-spinner";
 
 @NgModule({
   declarations: [
@@ -62,7 +64,9 @@ import { BreakfastRoutingModule } from './menu/breakfast/breakfast-routing.modul
     HotDrinksModule,
     HotDrinksRoutingModule,
     ColdDrinksRoutingModule,
-    BreakfastRoutingModule
+    BreakfastRoutingModule,
+
   ],
+
 })
 export class ComponentsAdminModule {}

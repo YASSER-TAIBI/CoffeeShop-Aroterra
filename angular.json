@@ -28,11 +28,12 @@
               "src/styles.css",
               "src/assets/css/style.css",
               "src/assets/css/style.min.css",
-              "src/assets/css/admin-styles.css"
+              "src/assets/css/admin-styles.css",
+              "node_modules/ngx-spinner/animations/ball-scale-multiple.css"
+
             ],
             "scripts": [
-              "src/assets/js/main.js",
-              "src/assets/js/script.js"
+              "src/assets/js/main.js"
             ]
           },
           "configurations": {
