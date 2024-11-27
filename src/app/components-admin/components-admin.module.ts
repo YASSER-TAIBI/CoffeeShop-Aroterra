@@ -66,7 +66,9 @@ import {NgxSpinnerModule} from "ngx-spinner";
     ColdDrinksRoutingModule,
     BreakfastRoutingModule,
 
+    BrowserAnimationsModule,
+    NgxSpinnerModule
   ],
-
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ComponentsAdminModule {}

@@ -6,6 +6,7 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideStorage, getStorage} from "@angular/fire/storage";
 
 import { routes } from './app.routes';
+import {provideAnimations} from "@angular/platform-browser/animations";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBeWq5wSAO_mCcJNqEuAG72P68w7uxL68k",
@@ -17,12 +18,14 @@ const firebaseConfig = {
 };
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes),
+  providers: [
+    provideRouter(routes),
+    provideAnimations(),
     importProvidersFrom(
       provideFirebaseApp(() => initializeApp(firebaseConfig)),
       provideFirestore(() => getFirestore()),
       provideAuth(() => getAuth()),
       provideStorage(() => getStorage())
     )
-  ]
+  ],
 };

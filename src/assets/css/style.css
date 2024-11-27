@@ -51,25 +51,25 @@ h4,
 
 /* Par défaut, pour les écrans de toutes tailles */
 .logo {
-    max-width: 230px !important;
+    max-width: 190px !important;
     height: auto !important;
 }
 /* Pour les écrans de taille PC uniquement */
 @media (min-width: 992px) {
     .logo {
-        max-width: 230px !important;
+        max-width: 190px !important;
     }
 }
 /* Pour les écrans de taille tablette */
 @media (max-width: 991px) {
     .logo {
-        max-width: 180px !important;
+        max-width: 150px !important;
     }
 }
 /* Pour les écrans de taille mobile */
 @media (max-width: 767px) {
     .logo {
-        max-width: 150px !important;
+        max-width: 120px !important;
     }
 }
 
@@ -100,7 +100,7 @@ h4,
   }
 }
 
-@media (max-width: 993px) {
+@media (max-width: 1054px) {
     .container-fluid.nav-bar,
     .nav-bar.container-sm,
     .nav-bar.container-md,
@@ -132,12 +132,12 @@ h4,
 }
 
 .p-4{
-  padding: 0rem !important;
+  padding: 0 !important;
 }
 
 .navbar-dark .navbar-nav .nav-link {
-  padding-left: 10px !important;
-  padding-right: 10px !important;
+  padding-left: 8px !important;
+  padding-right: 8px !important;
   font-size: 15px !important;
 }
 

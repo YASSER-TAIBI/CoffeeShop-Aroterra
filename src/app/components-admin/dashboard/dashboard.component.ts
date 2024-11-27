@@ -11,10 +11,7 @@ import {NgForOf, NgOptimizedImage, NgStyle} from "@angular/common";
 import {UserProfile} from "../../models/userProfile";
 import {UserProfileService} from "../../services/user-profile.service";
 import {AuthService} from "../../auth/auth.service";
-import {Subscription} from "rxjs";
-import {NgxSpinnerComponent, NgxSpinnerModule, NgxSpinnerService} from "ngx-spinner";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-
+import {NgxSpinnerComponent, NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-dashboard',
@@ -24,8 +21,6 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     NgForOf,
     NgStyle,
     NgxSpinnerComponent,
-    BrowserAnimationsModule,
-    NgxSpinnerModule
   ],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css', '../../../assets/css/admin-styles.css'],
@@ -40,14 +35,24 @@ export class DashboardComponent implements OnInit, AfterViewInit{
 
   authService = inject(AuthService);
   userProfileService = inject(UserProfileService);
-  private spinner = inject(NgxSpinnerService);
+
+  constructor(private spinner: NgxSpinnerService) {}
 
 
 
   ngOnInit(): void {
+    // Désactive le scroll
+    document.body.style.overflow = 'hidden';
+
     this.spinner.show();
     this.loadProfiles();
-    this.spinner.hide();
+
+    setTimeout(() => {
+      /** spinner ends after 3 seconds */
+      this.spinner.hide();
+      // Réactive le scroll
+      document.body.style.overflow = '';
+    }, 3000);
   }
 
   ngAfterViewInit() {
