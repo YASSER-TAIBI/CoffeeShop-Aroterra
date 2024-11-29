@@ -9,7 +9,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { TestimonialComponent } from './components/testimonial/testimonial.component';
 import {NotfoundComponent} from "./components/notfound/notfound.component";
 import {LoginComponent} from "./components/login/login.component";
-import {AuthGuard} from './auth/auth.guard';
+import {authGuard} from './auth/auth.guard';
 import {ComponentsAdminComponent} from "./components-admin/components-admin.component";
 import {FULL_ROUTES} from "./routes/full-layout.routes";
 import {AvisTestimonialComponent} from "./components/avis-testimonial/avis-testimonial.component";
@@ -25,10 +25,9 @@ export const routes: Routes = [
   {title: "ARÔTERRA | Contact",path: 'contact' , component: ContactComponent},
   {title: "ARÔTERRA | Témoignages",path: 'testimonial' , component: TestimonialComponent},
   {title: "ARÔTERRA | Témoignages",path: 'avis-testimonial' , component: AvisTestimonialComponent},
-
   {title: "ARÔTERRA | Login",path: 'login' , component: LoginComponent},
   { path: '', component: ComponentsAdminComponent,
-    children : FULL_ROUTES
+    children : FULL_ROUTES, canActivate:[authGuard]
   },
   {title: "ARÔTERRA | Erreur 404",path: '**' , component: NotfoundComponent},
 ];

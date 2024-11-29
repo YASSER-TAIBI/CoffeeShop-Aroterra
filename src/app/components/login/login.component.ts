@@ -46,7 +46,6 @@ export class LoginComponent {
     this.authService.login(rawForm.email, rawForm.password).subscribe({
       next: () => {
         this.router.navigate(['/dashboard']);
-        console.log('passed');
       },
       error: (err) => {
         console.log('no passed');

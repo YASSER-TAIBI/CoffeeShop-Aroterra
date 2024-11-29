@@ -1,22 +1,15 @@
-import { Injectable } from '@angular/core';
-import {Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
-import {AuthService} from './auth.service';
-import {Observable} from "rxjs";
+import {inject} from '@angular/core';
+import {CanActivateFn, Router} from '@angular/router';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class AuthGuard {
+export const authGuard: CanActivateFn = (route, state) => {
 
-  constructor(private authService: AuthService, private router: Router) {
+  const router = inject(Router);
+
+  const storedUser = localStorage.getItem('currentUser');
+  if (!storedUser) {
+    router.navigate(['/login']);
+    alert('Vous devez vous connecter d\'abord.');
+    return false;
   }
-
-  // canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-  //   if (this.authService.isLoggedIn()) {
-  //     return true;
-  //   } else {
-  //     this.router.navigate(['/login']);
-  //     return false;
-  //   }
-  // }
-}
+  return true;
+};

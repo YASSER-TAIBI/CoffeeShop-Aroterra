@@ -15,7 +15,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import { TestimonialComponent } from './components/testimonial/testimonial.component';
 import { NotfoundComponent} from "./components/notfound/notfound.component";
 import { AuthService } from './auth/auth.service';
-import { AuthGuard } from './auth/auth.guard';
 import {DialogComponent} from "./shared/components/dialog/dialog.component";
 
 @Component({
@@ -41,7 +40,6 @@ import {DialogComponent} from "./shared/components/dialog/dialog.component";
   ],
   providers: [
     AuthService,
-    AuthGuard,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
