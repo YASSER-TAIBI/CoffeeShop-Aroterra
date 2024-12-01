@@ -136,15 +136,15 @@ table.table .avatar {
 }
 
 .etat-en-cours {
-  color: #d59246 !important;
+  color: #f6c23e !important;
 }
 
 .etat-valider {
-  color: green !important;
+  color: #1cc88a !important;
 }
 
 .etat-non-valider {
-  color: red !important;
+  color: #e74a3b !important;
 }
 .hint-text {
   float: left;

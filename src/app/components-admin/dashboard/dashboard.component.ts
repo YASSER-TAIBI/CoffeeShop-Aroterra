@@ -12,6 +12,10 @@ import {UserProfile} from "../../models/userProfile";
 import {UserProfileService} from "../../services/user-profile.service";
 import {AuthService} from "../../auth/auth.service";
 import {NgxSpinnerComponent, NgxSpinnerService} from "ngx-spinner";
+import { Chart, registerables } from "chart.js";
+import {collection, Firestore, getDocs, query, where} from "@angular/fire/firestore";
+import {ChartService} from "../../services/chart.service";
+Chart.register(...registerables);
 
 @Component({
   selector: 'app-dashboard',
@@ -33,26 +37,47 @@ export class DashboardComponent implements OnInit, AfterViewInit{
   heightImag: string | undefined;
   widthImag: string | undefined;
 
+  chart: any;
+  reservationsCount = { valider: 0, enCours: 0, nonValider: 0 };
+
   authService = inject(AuthService);
   userProfileService = inject(UserProfileService);
-
-  constructor(private spinner: NgxSpinnerService) {}
-
+  firestore = inject(Firestore);
+  chartService = inject(ChartService);
+  private spinner= inject(NgxSpinnerService);
 
 
   ngOnInit(): void {
-    // Désactive le scroll
     document.body.style.overflow = 'hidden';
+
+    // Chart
+    this.initChart();
 
     this.spinner.show();
     this.loadProfiles();
 
     setTimeout(() => {
-      /** spinner ends after 3 seconds */
       this.spinner.hide();
-      // Réactive le scroll
       document.body.style.overflow = '';
-    }, 3000);
+    }, 2000);
+  }
+
+  async initChart(): Promise<void> {
+    // Charger la configuration initiale
+    const config = this.chartService.getChartConfig();
+
+    // Charger les données des réservations
+    this.reservationsCount = await this.chartService.loadReservationsData();
+
+    // Mettre à jour les données du graphique
+    config.data.datasets[0].data = [
+      this.reservationsCount.valider,
+      this.reservationsCount.enCours,
+      this.reservationsCount.nonValider,
+    ];
+
+    // Créer le graphique
+    this.chart = new Chart('MyChart', config);
   }
 
   ngAfterViewInit() {
