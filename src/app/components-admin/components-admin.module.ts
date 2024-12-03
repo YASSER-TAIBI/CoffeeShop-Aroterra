@@ -30,6 +30,8 @@ import { ColdDrinksRoutingModule } from './menu/cold-drinks/cold-drinks-routing.
 import { BreakfastRoutingModule } from './menu/breakfast/breakfast-routing.module';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {NgxSpinnerModule} from "ngx-spinner";
+import { ChartModule } from './chart/chart.module';
+import { ChartRoutingModule } from './chart/chart-routing.module';
 
 @NgModule({
   declarations: [
@@ -67,7 +69,9 @@ import {NgxSpinnerModule} from "ngx-spinner";
     BreakfastRoutingModule,
 
     BrowserAnimationsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    ChartModule,
+    ChartRoutingModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

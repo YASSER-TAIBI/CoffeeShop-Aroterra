@@ -111,7 +111,7 @@
   <div class="row">
 
     <!-- work teams -->
-    <div class="col-xl-4 col-lg-5" #card>
+    <div class="col-xl-4 col-lg-6" #card>
       <div class="card shadow mb-4">
         <!-- Card Header -->
         <div
@@ -150,17 +150,98 @@
     </div>
 
     <!-- table vide -->
-    <div class="col-xl-4 col-lg-7">
+    <div class="col-xl-4 col-lg-6">
       <div class="card shadow mb-4">
         <!-- Card Header -->
         <div
           class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-          <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+          <h6 class="m-0 font-weight-bold text-primary">Evénement du jour</h6>
         </div>
         <!-- Card Body -->
-        <div class="card-body">
-          <div class="chart-area">
-            <canvas id="myAreaChart"></canvas>
+        <div class="card-body-event">
+
+          <div class="text-center">
+            <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 10rem;"
+                 src="./assets/img/event.png" alt="..." width="512" height="512">
+          </div>
+
+          <!-- No Timeline -->
+          <div class="no-event">
+            <p> Aucun événement pour aujourd'hui.</p>
+          </div>
+
+          <!-- Timeline Item 1-->
+<!--          <div class="timeline-item">-->
+<!--            <div class="timeline-item-marker">-->
+<!--              <div class="timeline-item-marker-text">1 Jour</div>-->
+<!--              <div class="timeline-item-marker-indicator bg-green"></div>-->
+<!--            </div>-->
+<!--            <div class="timeline-item-content">-->
+<!--              La veille de Noël-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          &lt;!&ndash; Timeline Item 2&ndash;&gt;-->
+<!--          <div class="timeline-item">-->
+<!--            <div class="timeline-item-marker">-->
+<!--              <div class="timeline-item-marker-text">1 Jour</div>-->
+<!--              <div class="timeline-item-marker-indicator bg-blue"></div>-->
+<!--            </div>-->
+<!--            <div class="timeline-item-content">-->
+<!--              Noël-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          &lt;!&ndash; Timeline Item 3&ndash;&gt;-->
+<!--          <div class="timeline-item">-->
+<!--            <div class="timeline-item-marker">-->
+<!--              <div class="timeline-item-marker-text">1 Jour</div>-->
+<!--              <div class="timeline-item-marker-indicator bg-purple"></div>-->
+<!--            </div>-->
+<!--            <div class="timeline-item-content">-->
+<!--              la Saint-Sylvestre-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          &lt;!&ndash; Timeline Item 4&ndash;&gt;-->
+<!--          <div class="timeline-item">-->
+<!--            <div class="timeline-item-marker">-->
+<!--              <div class="timeline-item-marker-text">1 Jour</div>-->
+<!--              <div class="timeline-item-marker-indicator bg-yellow"></div>-->
+<!--            </div>-->
+<!--            <div class="timeline-item-content">Server activity monitor alert</div>-->
+<!--          </div>-->
+<!--          &lt;!&ndash; Timeline Item 5&ndash;&gt;-->
+<!--          <div class="timeline-item">-->
+<!--            <div class="timeline-item-marker">-->
+<!--              <div class="timeline-item-marker-text">1 Jour</div>-->
+<!--              <div class="timeline-item-marker-indicator bg-green"></div>-->
+<!--            </div>-->
+<!--            <div class="timeline-item-content">-->
+<!--              Jour de l'an-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          &lt;!&ndash; Timeline Item 6&ndash;&gt;-->
+<!--          <div class="timeline-item">-->
+<!--            <div class="timeline-item-marker">-->
+<!--              <div class="timeline-item-marker-text">1 Jour</div>-->
+<!--              <div class="timeline-item-marker-indicator bg-purple"></div>-->
+<!--            </div>-->
+<!--            <div class="timeline-item-content">-->
+<!--              Heure d'été-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          &lt;!&ndash; Timeline Item 7&ndash;&gt;-->
+<!--          <div class="timeline-item">-->
+<!--            <div class="timeline-item-marker">-->
+<!--              <div class="timeline-item-marker-text">1 Jour</div>-->
+<!--              <div class="timeline-item-marker-indicator bg-green"></div>-->
+<!--            </div>-->
+<!--            <div class="timeline-item-content">-->
+<!--              Pâques-->
+<!--            </div>-->
+<!--          </div>-->
+        </div>
+        <div class="card-footer position-relative">
+          <div class="d-flex align-items-center justify-content-between small text-body">
+            <a class="stretched-link text-body" href="#">Visit Task Center →</a>
           </div>
         </div>
       </div>
@@ -177,11 +258,13 @@
         <!-- Card Body -->
         <div class="card-body">
           <div class="chart-area">
-            <canvas id="myAreaChart0"></canvas>
+            <canvas id="myAreaChart"></canvas>
           </div>
         </div>
       </div>
     </div>
+
+
 
   </div>
 
@@ -192,7 +275,7 @@
     <!-- Content Column -->
     <div class="col-lg-4 ">
 
-      <!-- Project Card Example -->
+      <!-- Réservation -->
       <div class="card shadow mb-4">
         <div class="card-header py-3">
           <h6 class="m-0 font-weight-bold text-primary">Données annuelles des réservations</h6>
@@ -208,10 +291,10 @@
 
     <div class="col-lg-8 ">
 
-      <!-- Illustrations -->
+      <!-- Réservation -->
       <div class="card shadow mb-4">
         <div class="card-header py-3">
-          <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
+          <h6 class="m-0 font-weight-bold text-primary">Données annuelles des réservations par mois</h6>
         </div>
         <div class="card-body-reservation">
           <div class="chart-container">
@@ -344,7 +427,7 @@
       <!-- Illustrations -->
       <div class="card shadow mb-4">
         <div class="card-header py-3">
-          <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
+          <h6 class="m-0 font-weight-bold text-primary">Evénement du jour</h6>
         </div>
         <div class="card-body">
           <div class="text-center">

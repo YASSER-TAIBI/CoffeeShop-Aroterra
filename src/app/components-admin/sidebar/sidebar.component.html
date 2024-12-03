@@ -37,7 +37,7 @@
     </a>
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
-<!--        <h6 class="collapse-header">Custom Components:</h6>-->
+        <!--        <h6 class="collapse-header">Custom Components:</h6>-->
         <a class="collapse-item" href="reserver-table">Réserver Table</a>
         <a class="collapse-item" href="consulter-reservations">Consulter Réservations</a>
         <a class="collapse-item" href="calendrier-reservations">Calendrier Réservations</a>
@@ -56,16 +56,40 @@
          data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <!--      <h6 class="collapse-header">Custom Utilities:</h6>-->
-              <a class="collapse-item" href="add-articles">Ajouter Articles</a>
-              <a class="collapse-item" href="breakfast">Petit-déjeuner</a>
-              <a class="collapse-item" href="hot-drinks">Boissons Chaudes</a>
-              <a class="collapse-item" href="cold-drinks">Boissons Froides</a>
-            </div>
-          </div>
-        </li>
+        <a class="collapse-item" href="add-articles">Ajouter Articles</a>
+        <a class="collapse-item" href="breakfast">Petit-déjeuner</a>
+        <a class="collapse-item" href="hot-drinks">Boissons Chaudes</a>
+        <a class="collapse-item" href="cold-drinks">Boissons Froides</a>
+      </div>
+    </div>
+  </li>
 
-  @if (authService.isHasRoles(['Administrateur'])){
-        <!-- Divider -->
+  @if (authService.isHasRoles(['Administrateur'])) {
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+      Addons
+    </div>
+
+    <!-- Nav Item - Testimoniales -->
+    <li class="nav-item">
+      <a class="nav-link" href="testimonial-client">
+        <i class="fas fa-fw fa-star"></i>
+        <span>Testimoniales</span></a>
+    </li>
+
+    <!-- Nav Item - Notifications -->
+    <li class="nav-item">
+      <a class="nav-link" href="notification">
+        <i class="fas fa-fw fa-comment-alt"></i>
+        <span>Notifications</span></a>
+    </li>
+
+  }
+
+  <!-- Divider -->
   <hr class="sidebar-divider">
 
   <!-- Heading -->
@@ -73,21 +97,13 @@
     Addons
   </div>
 
-  <!-- Nav Item - Testimoniales -->
+  <!-- Nav Item - Statistique -->
   <li class="nav-item">
-    <a class="nav-link" href="testimonial-client">
-      <i class="fas fa-fw fa-star"></i>
-      <span>Testimoniales</span></a>
+    <a class="nav-link" href="chart">
+      <i class="fas fa-fw fa-chart-bar"></i>
+      <span>Statistique</span></a>
   </li>
 
-  <!-- Nav Item - Notifications -->
-  <li class="nav-item">
-    <a class="nav-link" href="notification">
-      <i class="fas fa-fw fa-comment-alt"></i>
-      <span>Notifications</span></a>
-  </li>
-
-  }
   <!-- Divider -->
   <hr class="sidebar-divider d-none d-md-block">
 
@@ -96,11 +112,11 @@
     <button class="rounded-circle border-0" id="sidebarToggle"></button>
   </div>
 
-  <!-- Sidebar Message -->
-  <!--  <div class="sidebar-card d-none d-lg-flex">-->
-  <!--    <img class="sidebar-card-illustration mb-2" ngSrc="./assets/img/undraw_rocket.svg" alt="..." height="16" width="16">-->
-  <!--    <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>-->
-  <!--    <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>-->
-  <!--  </div>-->
+  <!--   Sidebar Message-->
+<!--  <div class="sidebar-card d-none d-lg-flex">-->
+<!--    <img class="sidebar-card-illustration mb-2" ngSrc="./assets/img/undraw_rocket.svg" alt="..." height="50" width="50">-->
+<!--    <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>-->
+<!--    <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>-->
+<!--  </div>-->
 
 </ul>
