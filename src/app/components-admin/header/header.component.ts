@@ -35,8 +35,6 @@ export class HeaderComponent {
   }
 
   async onNotifClick(notification: Notification): Promise<void> {
-    console.log('Titre de la notification:', notification.titre);
-
     if (notification.titre){
       // Mettre la notification à lue (isRead = true)
       notification.isRead = true;

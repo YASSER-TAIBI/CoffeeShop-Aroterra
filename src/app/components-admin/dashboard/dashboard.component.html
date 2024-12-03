@@ -164,22 +164,23 @@
             <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 10rem;"
                  src="./assets/img/event.png" alt="..." width="512" height="512">
           </div>
-
-          <!-- No Timeline -->
-          <div class="no-event">
-            <p> Aucun événement pour aujourd'hui.</p>
+          @if (publicHolidays.length > 0){
+            <!-- Timeline Item 1-->
+          <div  *ngFor="let event of publicHolidays" class="timeline-item">
+            <div class="timeline-item-marker">
+              <div class="timeline-item-marker-text">1 Jour</div>
+              <div class="timeline-item-marker-indicator bg-green"></div>
+            </div>
+            <div class="timeline-item-content">
+              {{ event.nom }}
+            </div>
           </div>
-
-          <!-- Timeline Item 1-->
-<!--          <div class="timeline-item">-->
-<!--            <div class="timeline-item-marker">-->
-<!--              <div class="timeline-item-marker-text">1 Jour</div>-->
-<!--              <div class="timeline-item-marker-indicator bg-green"></div>-->
-<!--            </div>-->
-<!--            <div class="timeline-item-content">-->
-<!--              La veille de Noël-->
-<!--            </div>-->
-<!--          </div>-->
+          } @else {
+            <!-- No Timeline -->
+            <div class="no-event">
+              <p> Aucun événement pour aujourd'hui.</p>
+            </div>
+          }
 <!--          &lt;!&ndash; Timeline Item 2&ndash;&gt;-->
 <!--          <div class="timeline-item">-->
 <!--            <div class="timeline-item-marker">-->

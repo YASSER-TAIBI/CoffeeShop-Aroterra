@@ -14,6 +14,8 @@ import {AuthService} from "../../auth/auth.service";
 import {NgxSpinnerComponent, NgxSpinnerService} from "ngx-spinner";
 import { Chart, registerables } from "chart.js";
 import {ChartService} from "../../services/chart.service";
+import {EventService} from "../../services/event.service";
+import {HttpClientModule} from "@angular/common/http";
 Chart.register(...registerables);
 
 @Component({
@@ -41,10 +43,14 @@ export class DashboardComponent implements OnInit, AfterViewInit{
 
   reservationsCount = { valider: 0, enCours: 0, nonValider: 0 };
 
+  publicHolidays: { date: string; nom: string }[] = [];
+  currentDate: string = new Date().toISOString().split('T')[0]; // Date actuelle au format YYYY-MM-DD
+
   authService = inject(AuthService);
   userProfileService = inject(UserProfileService);
   chartService = inject(ChartService);
   private spinner= inject(NgxSpinnerService);
+  private eventService= inject(EventService);
 
   ngAfterViewInit() {
     setTimeout(() => {
@@ -54,6 +60,9 @@ export class DashboardComponent implements OnInit, AfterViewInit{
 
   ngOnInit(): void {
     document.body.style.overflow = 'hidden';
+
+    // Event
+   this.eventPublicHolidays ();
 
     // Chart
     this.initDoughnutChart();
@@ -66,6 +75,17 @@ export class DashboardComponent implements OnInit, AfterViewInit{
       this.spinner.hide();
       document.body.style.overflow = '';
     }, 2000);
+  }
+
+  eventPublicHolidays () {
+    this.eventService.getPublicHolidays().subscribe({
+      next: (data) => {
+        this.publicHolidays = Object.entries(data)
+          .filter(([date, _]) => date === this.currentDate)
+          .map(([date, nom]) => ({ date, nom }));
+      },
+      error: (err) => console.error('Erreur lors de la récupération des jours fériés :', err),
+    });
   }
 
   async initDoughnutChart(): Promise<void> {

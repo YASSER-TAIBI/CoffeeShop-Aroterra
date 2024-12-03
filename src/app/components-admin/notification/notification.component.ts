@@ -5,7 +5,6 @@ import {StartRatingComponent} from "../../shared/components/start-rating/start-r
 import {Notification} from "../../models/notification";
 import {AuthService} from "../../auth/auth.service";
 import {NotificationService} from "../../services/notification.service";
-import {Testimonial} from "../../models/testimonial";
 import {DatePipe} from "@angular/common";
 
 @Component({
@@ -44,7 +43,6 @@ export class NotificationComponent implements OnInit {
           ...notification,
           dateCreation: (notification.dateCreation as any)?.toDate() || new Date()
         }));
-        console.log("this.notificationList", this.notificationList);
       } else {
         console.log("aucun Notification trouvé");
       }
