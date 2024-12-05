@@ -18,7 +18,7 @@ import {DatePipe} from "@angular/common";
     DatePipe
   ],
   templateUrl: './notification.component.html',
-  styleUrl: './notification.component.css'
+  styleUrls: ['./notification.component.css',  '../../../assets/css/admin-styles.css']
 })
 export class NotificationComponent implements OnInit {
 

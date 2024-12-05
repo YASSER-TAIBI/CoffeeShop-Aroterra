@@ -2,3 +2,13 @@
   cursor: pointer;
   color: #5a5c69 !important;
 }
+
+.lift {
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  transition: all .3s ease-in-out;
+}
+
+.lift:hover {
+  box-shadow: rgba(0, 0, 0, 0.22) 0 19px 43px !important;
+  transform: translate3d(0px, -1px, 0px);
+}

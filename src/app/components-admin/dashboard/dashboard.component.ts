@@ -126,7 +126,7 @@ export class DashboardComponent implements OnInit, AfterViewInit{
     if (this.cardElement) {
       const cardRect = this.cardElement.nativeElement.getBoundingClientRect();
       // console.log('Card Width:', cardRect.width);
-      if (cardRect.width <= 290) {
+      if (cardRect.width <= 320) {
         this.faSize = "fa-1x";
         this.widthImag = "40px"
         this.heightImag = "40px"

@@ -3,9 +3,7 @@ import {RouterOutlet} from "@angular/router";
 import {HeaderComponent} from "./header/header.component";
 import {SidebarComponent} from "./sidebar/sidebar.component";
 import {FooterComponent} from "./footer/footer.component";
-import {Auth} from "@angular/fire/auth";
 import {AuthService} from "../auth/auth.service";
-import {UserProfile} from "../models/userProfile";
 
 
 declare const $: any;
@@ -20,14 +18,13 @@ declare const $: any;
     FooterComponent
   ],
   templateUrl: './components-admin.component.html',
-  styleUrls: ['./components-admin.component.css'],
+  styleUrls: ['./components-admin.component.css', '../../assets/css/admin-styles.css'],
 })
 export class ComponentsAdminComponent implements OnInit {
 
   // profilUser: UserProfile | null = null;
 
   authService = inject(AuthService)
-
 
   ngOnInit() {
 

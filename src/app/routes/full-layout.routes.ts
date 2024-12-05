@@ -15,4 +15,5 @@ export const FULL_ROUTES: Routes = [
   { title: "ARÔTERRA | Menu & Tarifs", path: 'breakfast', loadChildren: () => import('../components-admin/menu/breakfast/breakfast.module').then(m => m.BreakfastModule) },
   { title: "ARÔTERRA | Menu & Tarifs", path: 'cold-drinks', loadChildren: () => import('../components-admin/menu/cold-drinks/cold-drinks.module').then(m => m.ColdDrinksModule) },
   { title: "ARÔTERRA | Statistique", path: 'chart', loadChildren: () => import('../components-admin/chart/chart.module').then(m => m.ChartModule) },
+  { title: "ARÔTERRA | Événement", path: 'add-event', loadChildren: () => import('../components-admin/event/add-event/add-event.module').then(m => m.AddEventModule) },
 ]

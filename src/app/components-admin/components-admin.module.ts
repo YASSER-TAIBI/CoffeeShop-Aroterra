@@ -32,6 +32,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {NgxSpinnerModule} from "ngx-spinner";
 import { ChartModule } from './chart/chart.module';
 import { ChartRoutingModule } from './chart/chart-routing.module';
+import { AddEventModule } from './event/add-event/add-event.module';
+import { AddEventRoutingModule } from './event/add-event/add-event-routing.module';
 
 @NgModule({
   declarations: [
@@ -71,7 +73,9 @@ import { ChartRoutingModule } from './chart/chart-routing.module';
     BrowserAnimationsModule,
     NgxSpinnerModule,
     ChartModule,
-    ChartRoutingModule
+    ChartRoutingModule,
+    AddEventModule,
+    AddEventRoutingModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

@@ -8,6 +8,17 @@
   margin: 20px 20px 0 20px;
 }
 
+.lift {
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  transition: all .3s ease-in-out;
+}
+
+.lift:hover {
+  box-shadow: rgba(0, 0, 0, 0.22) 0 19px 43px !important;
+  transform: translate3d(0px, -1px, 0px);
+}
+
+
 .profile-card {
   display: flex;
   flex-direction: row;
@@ -74,11 +85,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
   p {
     font-family: "Montserrat", sans-serif;
     font-size: 1rem;
     font-weight: 500;
-    line-height: 1;
+    line-height: 20px;
   }
 }
 
