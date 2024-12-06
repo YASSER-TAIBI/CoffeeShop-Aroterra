@@ -84,8 +84,6 @@ export class DashboardComponent implements OnInit, AfterViewInit{
       this.allHolidays = [...data.france, ...data.maroc].sort(
         (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
       );
-
-      console.log("this.allHolidays",this.allHolidays);
     });
   }
 
