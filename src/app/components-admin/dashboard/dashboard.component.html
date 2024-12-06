@@ -130,12 +130,14 @@
               <div class="timeline-item">
                 <div class="timeline-item-marker">
                   <div class="timeline-item-marker-text">1 Jour</div>
-                  <div class="timeline-item-marker-indicator"
-                       [ngClass]="event.creator.displayName === 'Holidays in Morocco' ? 'bg-green' : 'bg-red'"
+                  <div
+                    class="timeline-item-marker-indicator"
+                    [class.bg-green]="event.creator.displayName === 'Holidays in Morocco'"
+                    [class.bg-blue]="event.creator.displayName === 'Holidays in France'"
                   ></div>
                 </div>
                 <div class="timeline-item-content lift">
-                  {{ event.summary }}
+                  {{ event.creator.displayName === 'Holidays in Morocco' ? 'MA' : 'FR' }} - {{ event.summary }}
                 </div>
               </div>
             }
