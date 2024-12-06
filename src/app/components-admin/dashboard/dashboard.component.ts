@@ -7,7 +7,7 @@ import {
   OnInit,
   ViewChild
 } from '@angular/core';
-import {NgForOf, NgOptimizedImage, NgStyle} from "@angular/common";
+import {NgClass, NgForOf, NgOptimizedImage, NgStyle} from "@angular/common";
 import {UserProfile} from "../../models/userProfile";
 import {UserProfileService} from "../../services/user-profile.service";
 import {AuthService} from "../../auth/auth.service";
@@ -26,6 +26,7 @@ Chart.register(...registerables);
     NgForOf,
     NgStyle,
     NgxSpinnerComponent,
+    NgClass,
   ],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css', '../../../assets/css/admin-styles.css'],
@@ -43,8 +44,8 @@ export class DashboardComponent implements OnInit, AfterViewInit{
 
   reservationsCount = { valider: 0, enCours: 0, nonValider: 0 };
 
-  publicHolidays: { date: string; nom: string }[] = [];
-  currentDate: string = new Date().toISOString().split('T')[0]; // Date actuelle au format YYYY-MM-DD
+  allHolidays: any[] = [];
+
 
   authService = inject(AuthService);
   userProfileService = inject(UserProfileService);
@@ -78,13 +79,13 @@ export class DashboardComponent implements OnInit, AfterViewInit{
   }
 
   eventPublicHolidays () {
-    this.eventService.getPublicHolidays().subscribe({
-      next: (data) => {
-        this.publicHolidays = Object.entries(data)
-          .filter(([date, _]) => date === this.currentDate)
-          .map(([date, nom]) => ({ date, nom }));
-      },
-      error: (err) => console.error('Erreur lors de la récupération des jours fériés :', err),
+    this.eventService.getTodayHolidays().then((data) => {
+      // Fusionner et trier les jours fériés
+      this.allHolidays = [...data.france, ...data.maroc].sort(
+        (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+      );
+
+      console.log("this.allHolidays",this.allHolidays);
     });
   }
 

@@ -122,18 +122,20 @@
 
           <div class="text-center">
             <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 9rem;"
-                 src="./assets/img/event.png" alt="..." width="512" height="512">
+                 src="./assets/img/event.png" alt="Evenement" width="512" height="512">
           </div>
-          @if (publicHolidays.length > 0) {
+          @if (allHolidays.length > 0) {
             <!-- Timeline Item 1-->
-            @for (event of publicHolidays; track event) {
+            @for (event of allHolidays; track event) {
               <div class="timeline-item">
                 <div class="timeline-item-marker">
                   <div class="timeline-item-marker-text">1 Jour</div>
-                  <div class="timeline-item-marker-indicator bg-green"></div>
+                  <div class="timeline-item-marker-indicator"
+                       [ngClass]="event.creator.displayName === 'Holidays in Morocco' ? 'bg-green' : 'bg-red'"
+                  ></div>
                 </div>
                 <div class="timeline-item-content lift">
-                  {{ event.nom }}
+                  {{ event.summary }}
                 </div>
               </div>
             }
