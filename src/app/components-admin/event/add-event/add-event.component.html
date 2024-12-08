@@ -1,1 +1,84 @@
-<p>event works!</p>
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800">Réserver une Table</h1>
+  <p class="mb-4">Dans cet espace, nous gérons les appels téléphoniques des clients qui souhaitent réserver une table. Nous notons leurs préférences, confirmons la disponibilité, et procédons à la réservation en fonction de leurs besoins spécifiques.</p>
+
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+    <div class="card-header profile py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Données de réservation</h6>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit()" #reservationForm="ngForm" >
+        <div class="row">
+
+          <div class="col-md-6 border-right">
+            <div class="p-3 py-5">
+              <div class="d-flex justify-content-center align-items-center mb-3">
+                <h4 class="title-center">Détails sur le registraire</h4>
+              </div>
+
+              <div class="row mt-2">
+                <div class="col-md-6">
+                  <label class="labels" for="action">Action</label>
+                  <input id="action" type="text" [(ngModel)]="formData.action" name="action" class="form-control" placeholder="saisie l 'action"></div>
+                <div class="col-md-6">
+                  <label class="labels" for="nom">Nom</label>
+                  <input id="nom" type="text" [(ngModel)]="formData.prenom" name="nom" class="form-control" placeholder="saisie le nom"></div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-12">
+                  <label class="labels" for="email">Email</label>
+                  <input id="email" type="text" [(ngModel)]="formData.email" name="email" class="form-control" placeholder="saisie l'Email"></div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-12">
+                  <label class="labels" for="telephone">Numéro de Téléphone</label>
+                  <input id="telephone" type="text" [(ngModel)]="formData.tel" name="telephone" class="form-control" placeholder="saisie le numéro de téléphone"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 ">
+            <div class="p-3 py-5">
+              <div class="d-flex justify-content-center align-items-center mb-3">
+                <h4 class="title-center">Réservation</h4>
+              </div>
+
+              <div class="col-md-12">
+                <label class="labels" >Date</label>
+                <div class="date" id="date" data-target-input="nearest">
+                  <input type="text" name="date" [(ngModel)]="formData.date" class="form-control" (click)="d.toggle()" placeholder="saisie la date de reservation" ngbDatepicker #d="ngbDatepicker">
+                </div>
+              </div>
+
+              <div class="col-md-12">
+                <label class="labels">Heure</label>
+                <div class="time" id="time" data-target-input="nearest">
+                  <ngb-timepicker [(ngModel)]="formData.time" name="time" class="form-control-timepicker"/>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-12">
+                  <label class="labels" for="nb_personne">Nb Personne</label>
+                  <input id="nb_personne" type="text" [(ngModel)]="formData.people" name="nb_personne" class="form-control" placeholder="saisie la région"></div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-12">
+                  <label class="labels" for="designation">Désignation</label>
+                  <textarea id="designation" type="text" [(ngModel)]="formData.designation" name="designation" class="form-control" placeholder="saisie la désignation"></textarea></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-5 text-center">
+          <button class="btn btn-primary profile-button" type="submit">Ajouter la Réservation</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>
+<!-- /.container-fluid -->

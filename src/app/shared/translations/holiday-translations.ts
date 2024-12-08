@@ -1,4 +1,8 @@
 export const HolidayTranslations: { [key: string]: string } = {
+
+  //All
+  "New Year's Day": "Jour de l'An",
+
   //Maroc
   "Eid al-Fitr Holiday": "Eid al-Fitr",
   "Eid al-Fitr": "Eid al-Fitr",
@@ -12,7 +16,6 @@ export const HolidayTranslations: { [key: string]: string } = {
   "Labour Day/May Day": "Fête du Travail",
   "Youth Day": "Journée de la jeunesse",
   "Anniversary of the Green March": "Anniversaire de la Marche Verte",
-  "New Year's Day": "Jour de l'An",
   "Anniversary of the Independence Manifesto": "Anniversaire du Manifeste de l'Indépendance",
   "Feast of the Throne": "Fête du Trône",
   "Anniversary of the Recovery Oued Ed-Dahab": "Anniversaire de la Reconstruction d'Oued Ed-Dahab",
@@ -26,19 +29,15 @@ export const HolidayTranslations: { [key: string]: string } = {
   "The Prophet Muhammad's Birthday Holiday (tentative)": "Anniversaire du prophète mohamed",
 
   //France
-  "halloween": "Halloween",
-  "halloween": "Halloween",
-  "halloween": "Halloween",
-  "halloween": "Halloween",
-  "halloween": "Halloween",
-  "halloween": "Halloween",
-  "halloween": "Halloween",
-  "halloween": "Halloween",
-  "halloween": "Halloween",
-  "halloween": "Halloween",
-  "halloween": "Halloween",
-  "halloween": "Halloween",
-  "halloween": "Halloween"
+  "All Saints' Day": "La Toussaint",
+  "Armistice Day": "Armistice",
+  "Bastille Day": "Prise de la Bastille",
+  "Assumption of Mary": "Assomption de Marie",
+  "Christmas Day": "Noël",
+  "Easter Monday": "Lundi de Pâques",
+  "Ascension Day": "Ascension",
+  "WWII Victory Day": "Victoire WWII",
+  "Labor Day / May Day": "Fête du Travail",
+  "Whit Monday": "Lundi de Pentecôte",
 
-  // Ajoutez toutes les autres traductions ici
 };

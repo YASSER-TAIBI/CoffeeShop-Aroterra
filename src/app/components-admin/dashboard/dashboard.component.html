@@ -137,7 +137,7 @@
                   ></div>
                 </div>
                 <div class="timeline-item-content lift">
-                  {{ event.creator.displayName === 'Holidays in Morocco' ? 'MA' : 'FR' }} - {{ event.summary }}
+                  {{ event.creator.displayName === 'Holidays in Morocco' ? 'MA' : 'FR' }} - {{translateEvent(event.summary) }}
                 </div>
               </div>
             }

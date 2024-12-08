@@ -15,7 +15,8 @@ import {NgxSpinnerComponent, NgxSpinnerService} from "ngx-spinner";
 import { Chart, registerables } from "chart.js";
 import {ChartService} from "../../services/chart.service";
 import {EventService} from "../../services/event.service";
-import {HttpClientModule} from "@angular/common/http";
+import {HolidayTranslations} from "../../shared/translations/holiday-translations";
+
 Chart.register(...registerables);
 
 @Component({
@@ -76,6 +77,11 @@ export class DashboardComponent implements OnInit, AfterViewInit{
       this.spinner.hide();
       document.body.style.overflow = '';
     }, 2000);
+  }
+
+  translateEvent(summary: string): string {
+    // Récupérer la traduction ou retourner l'original si non trouvé
+    return HolidayTranslations[summary];
   }
 
   eventPublicHolidays () {
