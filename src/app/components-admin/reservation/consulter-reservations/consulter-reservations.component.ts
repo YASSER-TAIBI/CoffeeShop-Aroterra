@@ -88,11 +88,17 @@ export class ConsulterReservationsComponent implements OnInit {
     }
   }
 
-  formatDate(date: { year: number, month: number, day: number }): string {
+  formatDate(date: { year?: number, month?: number, day?: number }): string {
+    if (!date || date.year == null || date.month == null || date.day == null) {
+      return 'Date invalide';
+    }
     return `${date.day.toString().padStart(2, '0')}/${date.month.toString().padStart(2, '0')}/${date.year}`;
   }
 
-  formatTime(time: { hour: number, minute: number, second?: number }): string {
+  formatTime(time: { hour?: number, minute?: number, second?: number }): string {
+    if (!time || time.hour == null || time.minute == null) {
+      return 'Heure invalide';
+    }
     return `${time.hour.toString().padStart(2, '0')}:${time.minute.toString().padStart(2, '0')}`;
   }
 

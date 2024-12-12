@@ -69,10 +69,12 @@
                     </select>
                   </td>
                   <td>
+                    <a class="show" (click)="EditReservation(reservation)"><i class="material-icons"
+                                                                              data-toggle="tooltip" title="Show">event_note</i></a>
                     <a class="edit" (click)="EditReservation(reservation)"><i class="material-icons"
-                                                                              data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                                                              data-toggle="tooltip" title="Edit">edit</i></a>
                     <a class="delete" (click)="DeleteReservation(reservation)"><i class="material-icons"
-                                                                                  data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                                                                  data-toggle="tooltip" title="Delete">delete</i></a>
                   </td>
                 </tr>
               }

@@ -10366,13 +10366,14 @@ a:focus {
 
 .sidebar .nav-item .collapse .collapse-inner .collapse-item,
 .sidebar .nav-item .collapsing .collapse-inner .collapse-item {
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0;
   margin: 0 0.5rem;
   display: block;
   color: #da9f5b;
   text-decoration: none;
   border-radius: 0.35rem;
   white-space: nowrap;
+  text-align: center;
 }
 
 .sidebar .nav-item .collapse .collapse-inner .collapse-item:hover,

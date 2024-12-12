@@ -16,6 +16,8 @@ import { Chart, registerables } from "chart.js";
 import {ChartService} from "../../services/chart.service";
 import {EventService} from "../../services/event.service";
 import {HolidayTranslations} from "../../shared/translations/holiday-translations";
+import {Event} from "../../models/event";
+import {NgbDateStruct} from "@ng-bootstrap/ng-bootstrap";
 
 Chart.register(...registerables);
 
@@ -45,8 +47,10 @@ export class DashboardComponent implements OnInit, AfterViewInit{
 
   reservationsCount = { valider: 0, enCours: 0, nonValider: 0 };
 
-  allHolidays: any[] = [];
-
+  franceHolidays: Event[] = [];
+  marocHolidays: Event[] = [];
+  eventCustomer: Event[] = [];
+  allHolidays: Event[] = []; // Pour combiner les événements
 
   authService = inject(AuthService);
   userProfileService = inject(UserProfileService);
@@ -60,11 +64,11 @@ export class DashboardComponent implements OnInit, AfterViewInit{
     }, 0);
   }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     document.body.style.overflow = 'hidden';
 
     // Event
-   this.eventPublicHolidays ();
+    await this.loadTodayEvents ();
 
     // Chart
     this.initDoughnutChart();
@@ -79,18 +83,24 @@ export class DashboardComponent implements OnInit, AfterViewInit{
     }, 2000);
   }
 
-  translateEvent(summary: string): string {
-    // Récupérer la traduction ou retourner l'original si non trouvé
-    return HolidayTranslations[summary];
-  }
+  async loadTodayEvents(){
+    try {
+      const todayEvents = await this.eventService.getTodayEvent();
+      this.franceHolidays = todayEvents.france;
+      this.marocHolidays = todayEvents.maroc;
+      this.eventCustomer = todayEvents.event;
 
-  eventPublicHolidays () {
-    this.eventService.getTodayHolidays().then((data) => {
-      // Fusionner et trier les jours fériés
-      this.allHolidays = [...data.france, ...data.maroc].sort(
-        (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
-      );
-    });
+      // Combinez tous les événements pour les afficher dans une seule liste
+      this.allHolidays = [
+        ...this.franceHolidays,
+        ...this.marocHolidays,
+        ...this.eventCustomer,
+      ];
+
+      console.log('All Holidays:', this.allHolidays);
+    } catch (error) {
+      console.error('Erreur lors du chargement des événements :', error);
+    }
   }
 
   async initDoughnutChart(): Promise<void> {

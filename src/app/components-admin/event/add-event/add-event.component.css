@@ -1,0 +1,24 @@
+.form-control:focus {
+  box-shadow: none;
+  border-color: #da9f5b;
+}
+
+.labels {
+  font-size: 12px
+}
+
+.profile {
+  display: flex;
+  justify-content: space-between;
+}
+
+input[type=radio]{
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+}
+
+.form-check-input {
+  margin-top: 1px !important;
+  margin-left: -28px !important;
+}

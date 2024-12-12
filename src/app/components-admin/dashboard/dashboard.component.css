@@ -168,6 +168,9 @@ canvas {
   border-radius: 10px;
   border: 2px solid #e1af77;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .timeline-item-content a {

@@ -131,13 +131,10 @@
                 <div class="timeline-item-marker">
                   <div class="timeline-item-marker-text">1 Jour</div>
                   <div
-                    class="timeline-item-marker-indicator"
-                    [class.bg-green]="event.creator.displayName === 'Holidays in Morocco'"
-                    [class.bg-blue]="event.creator.displayName === 'Holidays in France'"
-                  ></div>
+                    class="timeline-item-marker-indicator" [style.background-color]="event.colorEvent"></div>
                 </div>
                 <div class="timeline-item-content lift">
-                  {{ event.creator.displayName === 'Holidays in Morocco' ? 'MA' : 'FR' }} - {{translateEvent(event.summary) }}
+                  {{event.action}}
                 </div>
               </div>
             }
