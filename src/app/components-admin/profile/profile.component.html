@@ -1,9 +1,12 @@
 <!-- Begin Page Content -->
-<div class="container-fluid">
+<div class="container-fluid" xmlns="http://www.w3.org/1999/html">
 
   <!-- Page Heading -->
   <h1 class="h3 mb-2 text-gray-800">Profil de l'Utilisateur</h1>
-  <p class="mb-4"> Pour mettre à jour votre adresse ou votre numéro de téléphone, utilisez les champs disponibles ci-dessous. Pour des raisons de sécurité, le changement d'adresse e-mail nécessite l'intervention du responsable technique <a class="font-weight-bold" href="https://yasser-taibi.github.io/responsivePortfolioWebsite/">Yasser TAIBI</a>. Veuillez le contacter directement pour toute modification de votre adresse e-mail.</p>
+  <p class="mb-4"> Pour mettre à jour votre adresse ou votre numéro de téléphone, utilisez les champs disponibles
+    ci-dessous. Pour des raisons de sécurité, le changement d'adresse e-mail nécessite l'intervention du responsable
+    technique <a class="font-weight-bold" href="https://yasser-taibi.github.io/responsivePortfolioWebsite/">Yasser
+      TAIBI</a>. Veuillez le contacter directement pour toute modification de votre adresse e-mail.</p>
 
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
@@ -19,78 +22,103 @@
     </div>
     <div class="card-body">
       <form [formGroup]="profileForm" (ngSubmit)="onSave()">
-      <div class="row">
-        <div class="col-md-3 border-right">
-          <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-            <img [src]="imageSrc || this.authService.getCurrentUser()?.userImage" class="rounded-circle mt-5" width="150px" alt="...">
-            @if (isButtonVisible) {
-            <button type="button" class="select-photo-btn" (click)="onSelectPhoto()">Sélectionner une Photo</button>
-            <input type="file" id="file-input" accept="image/*" (change)="onFileSelected($event)" style="display: none;">
-            }
-            <span class="font-weight-bold">{{this.authService.getCurrentUser()?.userRole}}</span>
-            <span class="text-black-50">{{this.authService.getCurrentUser()?.email}}</span><span> </span></div>
-        </div>
+        <div class="row">
+          <div class="col-md-3 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+              <img [src]="imageSrc || this.authService.getCurrentUser()?.userImage" class="rounded-circle mt-5"
+                   width="150px" alt="...">
+              @if (isButtonVisible) {
+                <button type="button" class="select-photo-btn" (click)="onSelectPhoto()">Sélectionner une Photo</button>
+                <input type="file" id="file-input" accept="image/*" (change)="onFileSelected($event)"
+                       style="display: none;">
+              }
+              <span class="font-weight-bold">{{ this.authService.getCurrentUser()?.userRole }}</span>
+              <div class="badge-user">
+              @for (badge of this.authService.getCurrentUser()?.badges; track badge) {
+                <span id="badge" class="badge badge-pill"
+                      [ngClass]="'badge-' + this.userProfileService.normalizeBadge(badge)">
+                    {{ badge }}
+                  </span>
+              }
+              </div>
+            </div>
+          </div>
 
-        <div class="col-md-5 border-right">
-          <div class="p-3 py-5">
-            <div class="d-flex justify-content-center align-items-center mb-3">
-              <h4 class="title-center">Mon Profil</h4>
-            </div>
-            <div class="row mt-3">
-              <div class="col-md-12">
-                <label class="labels" for="civilite">Civilité</label>
-                <input id="civilite" type="text" class="form-control" value='{{this.authService.getCurrentUser()?.civilite}}' readonly></div>
-            </div>
+          <div class="col-md-5 border-right">
+            <div class="p-3 py-5">
+              <div class="d-flex justify-content-center align-items-center mb-3">
+                <h4 class="title-center">Mon Profil</h4>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-12">
+                  <label class="labels" for="civilite">Civilité</label>
+                  <input id="civilite" type="text" class="form-control"
+                         value='{{this.authService.getCurrentUser()?.civilite}}' readonly></div>
+              </div>
               <div class="row mt-2">
-              <div class="col-md-6">
-                <label class="labels" for="prenom">Prénom</label>
-                <input id="prenom" type="text" class="form-control" [value]="firstName" readonly></div>
-              <div class="col-md-6">
-                <label class="labels" for="nom">Nom</label>
-                <input id="nom" type="text" class="form-control" [value]="lastName" readonly></div>
+                <div class="col-md-6">
+                  <label class="labels" for="prenom">Prénom</label>
+                  <input id="prenom" type="text" class="form-control" [value]="firstName" readonly></div>
+                <div class="col-md-6">
+                  <label class="labels" for="nom">Nom</label>
+                  <input id="nom" type="text" class="form-control" [value]="lastName" readonly></div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-12">
+                  <label class="labels" for="email">Email</label>
+                  <input id="email" type="text" class="form-control"
+                         value='{{this.authService.getCurrentUser()?.email}}' readonly></div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-12">
+                  <label class="labels" for="telephone">Numéro de Téléphone</label>
+                  <input id="telephone" type="text" class="form-control" placeholder="saisie le numéro de téléphone"
+                         formControlName="telephone" value="" [readonly]="!isEditable"></div>
+              </div>
             </div>
-            <div class="row mt-3">
-              <div class="col-md-12">
-                <label class="labels" for="telephone">Numéro de Téléphone</label>
-                <input id="telephone" type="text" class="form-control" placeholder="saisie le numéro de téléphone" formControlName="telephone" value="" [readonly]="!isEditable"></div>
+          </div>
+
+          <div class="col-md-4 ">
+            <div class="p-3 py-5">
+              <div class="d-flex justify-content-center align-items-center mb-3">
+                <h4 class="title-center">Adresse</h4>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-12">
+                  <label class="labels" for="adresse">Adresse ( Numéro et libellé de la voie )</label>
+                  <input id="adresse" type="text" class="form-control" placeholder="saisie l'adresse"
+                         formControlName="adresse" value="" [readonly]="!isEditable"></div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-12">
+                  <label class="labels" for="postal_adresse">Code postal</label>
+                  <input id="postal_adresse" type="text" class="form-control" placeholder="saisie le code postal"
+                         formControlName="postal_adresse" value="" [readonly]="!isEditable"></div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-12">
+                  <label class="labels" for="region_adresse">Région</label>
+                  <input id="region_adresse" type="text" class="form-control" placeholder="saisie la région"
+                         formControlName="region_adresse" value="" [readonly]="!isEditable"></div>
+
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-6">
+                  <label class="labels" for="ville_adresse">Ville</label>
+                  <input id="ville_adresse" type="text" class="form-control" placeholder="saisie la ville"
+                         formControlName="ville_adresse" value="" [readonly]="!isEditable"></div>
+                <div class="col-md-6">
+                  <label class="labels" for="pays_adresse">Pays</label>
+                  <input id="pays_adresse" type="text" class="form-control" placeholder="saisie le pays"
+                         formControlName="pays_adresse" value="" [readonly]="!isEditable"></div>
+              </div>
             </div>
           </div>
         </div>
-
-        <div class="col-md-4 ">
-          <div class="p-3 py-5">
-            <div class="d-flex justify-content-center align-items-center mb-3">
-              <h4 class="title-center">Adresse</h4>
-            </div>
-
-
-            <div class="row mt-3">
-              <div class="col-md-12">
-                <label class="labels" for="adresse">Adresse ( Numéro et libellé de la voie )</label>
-                <input id="adresse" type="text" class="form-control" placeholder="saisie l'adresse" formControlName="adresse" value="" [readonly]="!isEditable"></div>
-              <div class="col-md-12">
-                <label class="labels" for="postal_adresse">Code postal</label>
-                <input id="postal_adresse" type="text" class="form-control" placeholder="saisie le code postal" formControlName="postal_adresse" value="" [readonly]="!isEditable"></div>
-              <div class="col-md-12">
-                <label class="labels" for="region_adresse">Région</label>
-                <input id="region_adresse" type="text" class="form-control" placeholder="saisie la région" formControlName="region_adresse" value="" [readonly]="!isEditable"></div>
-
-            </div>
-            <div class="row mt-3">
-              <div class="col-md-6">
-                <label class="labels" for="ville_adresse">Ville</label>
-                <input id="ville_adresse" type="text" class="form-control" placeholder="saisie la ville" formControlName="ville_adresse" value="" [readonly]="!isEditable"></div>
-              <div class="col-md-6">
-                <label class="labels" for="pays_adresse">Pays</label>
-                <input id="pays_adresse" type="text" class="form-control" placeholder="saisie le pays" formControlName="pays_adresse" value="" [readonly]="!isEditable"></div>
-            </div>
-          </div>
-        </div>
-      </div>
         @if (isButtonVisible) {
-      <div class="mt-5 text-center">
-        <button class="btn btn-primary profile-button" type="submit">Enregistrer</button>
-      </div>
+          <div class="mt-5 text-center">
+            <button class="btn btn-primary profile-button" type="submit">Enregistrer</button>
+          </div>
         }
       </form>
     </div>

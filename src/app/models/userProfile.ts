@@ -1,3 +1,6 @@
+
+import {badgeUser} from "./userConnect";
+
 export interface UserProfile {
   nom: string;
   prenom: string;
@@ -11,4 +14,5 @@ export interface UserProfile {
   ville_adresse: string;
   postal_adresse: number;
   userRole: string;
+  badges: string | badgeUser[];
 }

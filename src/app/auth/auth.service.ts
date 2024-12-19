@@ -2,7 +2,7 @@ import {inject, Injectable} from '@angular/core';
 import {Router} from '@angular/router';
 import {Auth, signInWithEmailAndPassword, signOut, user} from "@angular/fire/auth";
 import {BehaviorSubject, from, Observable} from "rxjs";
-import {UserConnect} from "../models/userConnect";
+import {badgeUser, UserConnect} from "../models/userConnect";
 import {UserProfile} from "../models/userProfile";
 import {UserProfileService} from "../services/user-profile.service";
 
@@ -57,6 +57,7 @@ export class AuthService {
         userRole: 'Administrateur',
         civilite: 'Mr',
         userImage: 'https://www.bhaskaranbrown.com/wp-content/uploads/2023/07/1-2.png',
+        badges: [badgeUser.createur, badgeUser.management, badgeUser.validateur, badgeUser.reservateur, badgeUser.superviseur, badgeUser.developpeur]
       },
       'jalila.aalilou555@gmail.com': {
         email: 'jalila.aalilou555@gmail.com',
@@ -64,6 +65,7 @@ export class AuthService {
         userRole: 'Administrateur',
         civilite: 'Mme',
         userImage: 'https://www.bhaskaranbrown.com/wp-content/uploads/2023/07/2-2.png',
+        badges: [badgeUser.createur, badgeUser.management, badgeUser.validateur, badgeUser.reservateur, badgeUser.superviseur, badgeUser.demandeur, badgeUser.testeur]
       },
       'aroterra.lyon@gmail.com': {
         email: 'aroterra.lyon@gmail.com',
@@ -71,6 +73,7 @@ export class AuthService {
         userRole: 'Utilisateur',
         civilite: 'Mr',
         userImage: 'https://www.bhaskaranbrown.com/wp-content/uploads/2023/07/1-2.png',
+        badges: [badgeUser.consultant, badgeUser.validateur, badgeUser.reservateur, badgeUser.demandeur, badgeUser.testeur]
       },
     };
     const user = userMap[email.toLowerCase()];

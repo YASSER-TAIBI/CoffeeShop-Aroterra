@@ -11277,3 +11277,60 @@ body.sidebar-toggled footer.sticky-footer {
 .ngb-tp-spacer {
   width: 5em !important;
 }
+
+
+.badge-createur {
+  background-color: #e5493b; /* Rouge */
+  color: #fff;
+}
+
+.badge-management {
+  background-color: #007bff; /* Bleu */
+  color: #fff;
+}
+
+.badge-consultant {
+  background-color: #28a745; /* Vert */
+  color: #fff;
+}
+
+.badge-validateur {
+  background-color: #17a2b8; /* Bleu clair */
+  color: #fff;
+}
+
+.badge-superviseur {
+  background-color: #6f42c1; /* Violet */
+  color: #fff;
+}
+
+.badge-developpeur {
+  background-color: #343a40; /* Gris foncé */
+  color: #fff;
+}
+
+.badge-reservateur {
+  background-color: #20c997; /* Vert menthe */
+  color: #fff;
+}
+
+.badge-demandeur {
+  background-color: #e83e8c; /* Rose vif */
+  color: #fff;
+}
+
+.badge-testeur {
+  background-color: #d89e5a; /* Orange */
+  color: #fff;
+}
+
+/* Optionnel : Appliquer des styles généraux à toutes les badges */
+.badge {
+  font-size: 10px;
+  padding: 5px 5px;
+  border-radius: 25px;
+  font-weight: bold;
+  display: inline-block;
+  margin: 2px;
+  text-align: center;
+}

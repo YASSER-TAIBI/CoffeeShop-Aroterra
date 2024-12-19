@@ -12,7 +12,7 @@
 }
 
 .rounded-circle{
-  margin-bottom: 6px;
+  margin-bottom: 15px;
 }
 
 .profile {
@@ -54,11 +54,15 @@
   cursor: pointer;
   color: #da9f5b;
   outline: none;
-  margin-bottom: 12px;
+  margin-bottom: 15px;
 }
 
 .select-photo-btn:hover {
   background-color: #da9f5b;
   color: white;
   border: 2px solid white;
+}
+
+.font-weight-bold{
+  margin-bottom: 15px;
 }

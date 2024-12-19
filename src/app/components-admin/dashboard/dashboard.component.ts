@@ -7,7 +7,7 @@ import {
   OnInit,
   ViewChild
 } from '@angular/core';
-import {NgClass, NgForOf, NgOptimizedImage, NgStyle} from "@angular/common";
+import {DatePipe, LowerCasePipe, NgClass, NgForOf, NgOptimizedImage, NgStyle} from "@angular/common";
 import {UserProfile} from "../../models/userProfile";
 import {UserProfileService} from "../../services/user-profile.service";
 import {AuthService} from "../../auth/auth.service";
@@ -18,19 +18,25 @@ import {EventService} from "../../services/event.service";
 import {HolidayTranslations} from "../../shared/translations/holiday-translations";
 import {Event} from "../../models/event";
 import {NgbDateStruct} from "@ng-bootstrap/ng-bootstrap";
+import {FormsModule} from "@angular/forms";
+import {NgxPaginationModule} from "ngx-pagination";
 
 Chart.register(...registerables);
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [
-    NgOptimizedImage,
-    NgForOf,
-    NgStyle,
-    NgxSpinnerComponent,
-    NgClass,
-  ],
+    imports: [
+        NgOptimizedImage,
+        NgForOf,
+        NgStyle,
+        NgxSpinnerComponent,
+        NgClass,
+        LowerCasePipe,
+        DatePipe,
+        FormsModule,
+        NgxPaginationModule,
+    ],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css', '../../../assets/css/admin-styles.css'],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

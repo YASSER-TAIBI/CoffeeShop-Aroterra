@@ -23,13 +23,15 @@ export class UserProfileService {
   private _firestore=inject(Firestore);
   private  _collection = collection(this._firestore, PATH);
 
+  normalizeBadge(badge: string): string {
+    return badge
+      .toLowerCase()
+      .normalize('NFD') // Décompose les caractères accentués
+      .replace(/[\u0300-\u036f]/g, ''); // Supprime les accents
+  }
 
   getUserProfile() {
     return collectionData(this._collection) as Observable<UserProfile[]>;
-  }
-
-  addUserProfile(userProfile: UserProfile) {
-    return addDoc(this._collection, userProfile);
   }
 
   getUserProfileEmail(email: string): Promise<UserProfile | null> {

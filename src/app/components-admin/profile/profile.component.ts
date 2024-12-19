@@ -2,7 +2,7 @@ import {Component, inject, OnInit, signal} from '@angular/core';
 import {AuthService} from "../../auth/auth.service";
 import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {UserProfile} from "../../models/userProfile";
-import {AsyncPipe, NgFor, NgOptimizedImage} from "@angular/common";
+import {AsyncPipe, NgClass, NgFor, NgOptimizedImage} from "@angular/common";
 import {UserProfileService} from "../../services/user-profile.service";
 import {Subscription} from "rxjs";
 import {getDownloadURL, ref, Storage, uploadBytesResumable} from "@angular/fire/storage";
@@ -14,7 +14,8 @@ import {getDownloadURL, ref, Storage, uploadBytesResumable} from "@angular/fire/
     ReactiveFormsModule,
     NgOptimizedImage,
     AsyncPipe,
-    NgFor
+    NgFor,
+    NgClass
   ],
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css', '../../../assets/css/admin-styles.css']
@@ -185,9 +186,13 @@ export class ProfileComponent implements OnInit {
         const url = await this.uploadFile(this.file); // Attendre que le fichier soit téléchargé et obtenir l'URL
         console.log("url", url);
         this.profileForm.patchValue({ userImage: url });
-
+      }else {
+        const email = this.authService.getCurrentUser()?.email;
+        if (email){
+          const getUser = await  this.userProfileService.getUserProfileEmail(email);
+          this.profileForm.patchValue({ userImage: getUser?.userImage });
       }
-
+    }
         const userProfile: UserProfile = {
           civilite: this.authService.getCurrentUser()?.civilite || '',
           prenom: this.firstName || '',
@@ -200,7 +205,8 @@ export class ProfileComponent implements OnInit {
           pays_adresse: this.profileForm.value.pays_adresse || '',
           userImage: this.profileForm.value.userImage  || '',
           email: this.authService.getCurrentUser()?.email || '',
-          userRole: this.authService.getCurrentUser()?.userRole || ''
+          userRole: this.authService.getCurrentUser()?.userRole || '',
+          badges: this.authService.getCurrentUser()?.badges || ''
         };
 
         console.log("userProfile", userProfile);

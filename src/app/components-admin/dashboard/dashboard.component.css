@@ -4,8 +4,112 @@
   padding-bottom: 20px;
 }
 
-.card-content{
+.card-content {
   margin: 20px 20px 0 20px;
+}
+
+.card-I {
+  background-color: #d89e5a;
+  border-radius: 10px;
+  .text-gray-800 {
+    color: #f8f9fc !important;
+  }
+  .text-gray-300{
+    color: #f8f9fc !important;
+  }
+  .text-primary {
+    color: #f8f9fc !important;
+  }
+  .card-footer{
+    background-color: #bf8c50;
+    border-top: 1px solid #dddfeb;
+    border-radius: 0 0 10px 10px;
+  }
+  .text-body-card {
+    color: #f8f9fc !important;
+  }
+  svg{
+    width: 5px;
+    color: #f8f9fc;
+  }
+}
+
+.card-II {
+  background-color: #e74a3b;
+  border-radius: 10px;
+  .text-gray-800 {
+    color: #f8f9fc !important;
+  }
+  .text-gray-300{
+    color: #f8f9fc !important;
+  }
+  .text-success {
+    color: #f8f9fc !important;
+  }
+  .card-footer{
+    background-color: #cf4133;
+    border-top: 1px solid #dddfeb;
+    border-radius: 0 0 10px 10px;
+  }
+  .text-body-card {
+    color: #f8f9fc !important;
+  }
+  svg{
+    width: 5px;
+    color: #f8f9fc;
+  }
+}
+
+.card-III {
+  background-color: #1cc88a;
+  border-radius: 10px;
+  .text-gray-800 {
+    color: #f8f9fc !important;
+  }
+  .text-gray-300{
+    color: #f8f9fc !important;
+  }
+  .text-info {
+    color: #f8f9fc !important;
+  }
+  .card-footer{
+    background-color: #17a572;
+    border-top: 1px solid #dddfeb;
+    border-radius: 0 0 10px 10px;
+  }
+  .text-body-card {
+    color: #f8f9fc !important;
+  }
+  svg{
+    width: 5px;
+    color: #f8f9fc;
+  }
+}
+
+.card-VI {
+  background-color: #36b9cc;
+  border-radius: 10px;
+  .text-gray-800 {
+    color: #f8f9fc !important;
+  }
+  .text-gray-300{
+    color: #f8f9fc !important;
+  }
+  .text-danger {
+    color: #f8f9fc !important;
+  }
+  .card-footer{
+    background-color: #2fa2b3;
+    border-top: 1px solid #dddfeb;
+    border-radius: 0 0 10px 10px;
+  }
+  .text-body-card {
+    color: #f8f9fc !important;
+  }
+  svg{
+    width: 5px;
+    color: #f8f9fc;
+  }
 }
 
 .lift {
@@ -81,11 +185,38 @@
   scrollbar-width: thin;
 }
 
-.no-event{
+.card-body-table {
+  padding: 0 13px 0 13px;
+  min-height: 40px;
+  max-height: 350px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+
+  .table {
+    margin-bottom: 5px;
+  }
+
+  .table tr {
+    font-size: 13px;
+  }
+
+  .table td {
+    font-size: 12px;
+  }
+
+  .table th, .table td {
+    padding: 8px !important;
+    text-align: center;
+    align-content: center;
+  }
+}
+
+.no-event {
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+
   p {
     font-family: "Montserrat", sans-serif;
     font-size: 1rem;
@@ -108,6 +239,7 @@ canvas {
   display: flex !important;
   padding: 10px;
 }
+
 /*------------------------------------------------------------------------------------------------------------------------*/
 /* Global styles for the timeline */
 
