@@ -34,6 +34,8 @@ import { ChartModule } from './chart/chart.module';
 import { ChartRoutingModule } from './chart/chart-routing.module';
 import { AddEventModule } from './event/add-event/add-event.module';
 import { AddEventRoutingModule } from './event/add-event/add-event-routing.module';
+import { TicketModule } from './ticket/ticket.module';
+import { TicketRoutingModule } from './ticket/ticket-routing.module';
 
 @NgModule({
   declarations: [
@@ -75,7 +77,9 @@ import { AddEventRoutingModule } from './event/add-event/add-event-routing.modul
     ChartModule,
     ChartRoutingModule,
     AddEventModule,
-    AddEventRoutingModule
+    AddEventRoutingModule,
+    TicketModule,
+    TicketRoutingModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
