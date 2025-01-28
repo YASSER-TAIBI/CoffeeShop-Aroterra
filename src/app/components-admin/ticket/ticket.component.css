@@ -1,0 +1,6 @@
+.dash.mb-4, .my-4 {
+  margin: 1.5rem !important;
+}
+.app-container {
+  height: 100vh;
+}

@@ -1,3 +1,6 @@
+.dash.mb-4, .my-4 {
+  margin: 1.5rem !important;
+}
 .profile-content {
   flex: 1 1 auto;
   min-height: 1px;

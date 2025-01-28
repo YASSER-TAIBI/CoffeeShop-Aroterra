@@ -1,3 +1,8 @@
+.mb-2,
+.my-2 {
+  margin: 1.5rem !important;
+}
+
 .input-group label{
   display: flex !important;
   margin-bottom: 0 !important;

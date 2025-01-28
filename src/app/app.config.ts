@@ -8,6 +8,7 @@ import { provideStorage, getStorage} from "@angular/fire/storage";
 import { routes } from './app.routes';
 import {provideAnimations} from "@angular/platform-browser/animations";
 import {provideHttpClient} from "@angular/common/http";
+import {provideClientHydration} from "@angular/platform-browser";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBeWq5wSAO_mCcJNqEuAG72P68w7uxL68k",
@@ -23,6 +24,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideAnimations(),
     provideHttpClient(),
+    provideClientHydration(),
     importProvidersFrom(
       provideFirebaseApp(() => initializeApp(firebaseConfig)),
       provideFirestore(() => getFirestore()),

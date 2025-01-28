@@ -1,0 +1,18 @@
+<div class="list card-shadow"
+     (dragover)="onDragOver($event)"
+     (drop)="onDrop($event)">
+  <div class="list-header">
+    <h2>{{ list.title }}</h2>
+    <div class="list-actions">
+      <span class="card-count">{{ list.cards.length }} cartes</span>
+      <button class="delete-btn" (click)="deleteList()">×</button>
+    </div>
+  </div>
+  <div class="list-content">
+    <app-card *ngFor="let card of list.cards" [card]="card"></app-card>
+  </div>
+  <button class="add-card-btn" (click)="addCard()">
+    <i class="plus-icon">+</i>
+    Ajouter une carte
+  </button>
+</div>

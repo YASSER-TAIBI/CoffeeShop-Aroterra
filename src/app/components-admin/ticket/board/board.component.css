@@ -1,0 +1,112 @@
+.boards-container {
+  overflow-y: auto;
+}
+
+.board {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.board-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.board-header h2 {
+  margin: 0;
+  font-size: 20px;
+  color: #da9f5b;
+  font-weight: 600;
+}
+
+.board-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.lists-container {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  min-height: 100px;
+}
+
+.add-list-placeholder {
+  min-width: 272px;
+  padding: 0.5rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 3px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn i {
+  font-size: 0.875rem;
+}
+
+.btn-success {
+  background-color: #5aac44;
+  color: white;
+}
+
+.btn-success:hover {
+  background-color: #519839;
+}
+
+.btn-danger {
+  background-color: #eb5a46;
+  color: white;
+  padding: 0.5rem 0.75rem;
+}
+
+.btn-danger:hover {
+  background-color: #cf513d;
+}
+
+.btn-outline {
+  background-color: #091e420a;
+  color: #da9f5b;
+  width: 100%;
+  justify-content: center;
+  border: 1px dashed #091e4221;
+}
+
+.btn-outline:hover {
+  background-color: #091e4214;
+}
+
+::-webkit-scrollbar {
+  height: 12px;
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 20px;
+  border: 3px solid #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}

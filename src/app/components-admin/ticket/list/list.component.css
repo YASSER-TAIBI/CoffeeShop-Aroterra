@@ -1,0 +1,99 @@
+.list {
+  background: white;
+  border-radius: 8px;
+  width: 272px;
+  max-height: calc(100vh - 200px);
+  margin: 0;
+  padding: 1rem;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #dfe1e6;
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.8rem;
+  border-bottom: 2px solid #dfe1e6;
+  margin-bottom: 1rem;
+}
+
+.list-header h2 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #5a5c69;
+}
+
+.list-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card-count {
+  font-size: 0.8rem;
+  color: #6B778C;
+  padding: 0.2rem 0.5rem;
+  background: #f0f2f5;
+  border-radius: 10px;
+}
+
+.delete-btn {
+  border: none;
+  background: none;
+  color: #6B778C;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  transition: all 0.2s ease;
+}
+
+.delete-btn:hover {
+  background-color:  rgba(9, 30, 66, 0.08);
+  color: #eb5a46;
+}
+
+.list-content {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 30px;
+  padding: 0.2rem;
+  margin: -0.2rem;
+}
+
+.add-card-btn {
+  width: 100%;
+  padding: 0.4rem;
+  margin-top: 0.5rem;
+  background: none;
+  border: none;
+  color: #da9f5b;
+  cursor: pointer;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: all 0.2s ease;
+  justify-content: center;
+}
+
+.add-card-btn:hover {
+  background-color:  rgba(9, 30, 66, 0.08);
+  color: #da9f5b;
+}
+
+.plus-icon {
+  font-size: 1rem;
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* Style pour l'état de drag & drop */
+.list.drag-over {
+  background-color: #f0f2f5;
+  border: 2px dashed #0079bf;
+}

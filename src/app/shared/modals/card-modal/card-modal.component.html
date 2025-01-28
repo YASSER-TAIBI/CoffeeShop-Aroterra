@@ -1,0 +1,34 @@
+<app-base-modal>
+  <div class="modal-header">
+    <h2>{{ data?.card ? 'Modifier la carte' : 'Nouvelle carte' }}</h2>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="cardTitle">Titre</label>
+      <input
+        type="text"
+        id="cardTitle"
+        [(ngModel)]="title"
+        placeholder="Entrez le titre de la carte"
+        #titleInput
+      >
+    </div>
+    <div class="form-group">
+      <label for="cardDescription">Description</label>
+      <textarea
+        id="cardDescription"
+        [(ngModel)]="description"
+        placeholder="Entrez la description de la carte"
+        rows="4"
+      ></textarea>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="cancel-btn" (click)="onCancel()">Annuler</button>
+    <button class="confirm-btn"
+            (click)="onConfirm()"
+            [disabled]="!title.trim() || !description.trim()">
+      {{ data?.card ? 'Modifier' : 'Créer' }}
+    </button>
+  </div>
+</app-base-modal>

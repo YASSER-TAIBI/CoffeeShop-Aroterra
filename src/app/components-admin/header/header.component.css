@@ -12,3 +12,8 @@
   box-shadow: rgba(0, 0, 0, 0.22) 0 19px 43px !important;
   transform: translate3d(0px, -1px, 0px);
 }
+
+.mb-4,
+.my-4 {
+  margin-bottom: 0 !important;
+}

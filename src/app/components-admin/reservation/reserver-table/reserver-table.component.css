@@ -1,3 +1,7 @@
+.mb-2,
+.my-2 {
+  margin: 1.5rem !important;
+}
 .form-control:focus {
   box-shadow: none;
   border-color: #da9f5b;

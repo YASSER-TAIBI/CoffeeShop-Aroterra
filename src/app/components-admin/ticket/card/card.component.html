@@ -1,0 +1,13 @@
+<div class="card hover-effect"
+     draggable="true"
+     (dragstart)="onDragStart($event)"
+     (click)="editCard()">
+  <div class="card-header">
+    <h3>{{ card.title }}</h3>
+    <button class="delete-btn" (click)="deleteCard($event)">×</button>
+  </div>
+  <p class="card-description">{{ card.description }}</p>
+  <div class="card-footer">
+    <span class="edit-hint">Cliquez pour modifier</span>
+  </div>
+</div>

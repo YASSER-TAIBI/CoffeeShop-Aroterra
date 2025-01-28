@@ -1,0 +1,89 @@
+.card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px  rgba(9, 30, 66, 0.13);
+  padding: 1rem;
+  margin-bottom: 0.8rem;
+  cursor: pointer;
+  border: 1px solid  #dfe1e6;
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 2px 5px  rgba(9, 30, 66, 0.13);
+  transform: translateY(-2px);
+}
+
+.card.dragging {
+  opacity: 0.5;
+  transform: scale(0.95);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  padding: 0 0.5rem;
+  background-color: #ffffff;
+  border-bottom: none;
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 0.96rem;
+  font-weight: 600 !important;
+  color: #da9f5b;
+  word-break: break-word;
+  flex: 1;
+  padding-right: 0.5rem;
+}
+
+.delete-btn {
+  border: none;
+  background: none;
+  color: #6B778C;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  transition: all 0.2s ease;
+  opacity: 0;
+}
+
+.card:hover .delete-btn {
+  opacity: 1;
+}
+
+.delete-btn:hover {
+  background-color:  rgba(9, 30, 66, 0.08);
+  color:  #eb5a46;
+}
+
+.card-description {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #6B778C;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.card-footer {
+  margin-top: 0.8rem;
+  border-top: 1px solid  #dfe1e6;
+  display: flex;
+  justify-content: flex-end;
+  background-color: #ffffff;
+  padding: 0.8rem 0.4rem 0 0.8rem;
+}
+
+.edit-hint {
+  font-size: 0.8rem;
+  color: #6B778C;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.card:hover .edit-hint {
+  opacity: 0.8;
+}
