@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavbarComponent } from './navbar/navbar.component';
 import { BoardComponent } from './board/board.component';
 import {BoardService} from "../../services/board.service";
 import {ModalService} from "../../services/modal.service";
@@ -8,7 +7,7 @@ import {BoardModalComponent} from "../../shared/modals/board-modal/board-modal.c
 @Component({
   selector: 'app-ticket',
   standalone: true,
-  imports: [CommonModule, NavbarComponent, BoardComponent],
+  imports: [CommonModule, BoardComponent],
   templateUrl: './ticket.component.html',
   styleUrl: './ticket.component.css'
 })

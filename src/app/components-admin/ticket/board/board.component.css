@@ -81,7 +81,7 @@
 
 .btn-outline {
   background-color: #091e420a;
-  color: #da9f5b;
+  color: #5a5c69;
   width: 100%;
   justify-content: center;
   border: 1px dashed #091e4221;
@@ -89,6 +89,7 @@
 
 .btn-outline:hover {
   background-color: #091e4214;
+  color: #da9f5b;
 }
 
 ::-webkit-scrollbar {
