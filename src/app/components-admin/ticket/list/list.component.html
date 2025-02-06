@@ -9,7 +9,7 @@
     </div>
   </div>
   <div class="list-content">
-    <app-card *ngFor="let card of list.cards" [card]="card"></app-card>
+    <app-card *ngFor="let card of list.cards" [boardId]="list.IdBoard" [card]="card"></app-card>
   </div>
   <button class="add-card-btn" (click)="addCard()">
     <i class="plus-icon">+</i>

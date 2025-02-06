@@ -36,7 +36,7 @@
   gap: 1rem;
   overflow-x: auto;
   padding-bottom: 1rem;
-  min-height: 100px;
+  /*min-height: 100px;*/
 }
 
 .add-list-placeholder {
@@ -61,22 +61,23 @@
 }
 
 .btn-success {
-  background-color: #5aac44;
+  background-color: #da9f5b;
   color: white;
+  padding: 0.75rem;
 }
 
 .btn-success:hover {
-  background-color: #519839;
+  background-color: #d18731;
 }
 
 .btn-danger {
-  background-color: #eb5a46;
+  background-color: #da9f5b;
   color: white;
-  padding: 0.5rem 0.75rem;
+  padding: 0.75rem;
 }
 
 .btn-danger:hover {
-  background-color: #cf513d;
+  background-color: #d18731;
 }
 
 .btn-outline {

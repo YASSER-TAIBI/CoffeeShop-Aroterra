@@ -1,25 +1,27 @@
 <div class="boards-container">
-  @for (board of boards(); track board.id) {
-    <div class="board">
+
+    <div class="board" *ngFor="let board of boards$ | async">
       <div class="board-header">
         <h2>{{ board.title }}</h2>
         <div class="board-actions">
           <button class="btn btn-success" (click)="addList(board.id)">
-            <i class="fas fa-plus"></i>
+          <i class="fas fa-plus"></i>
           </button>
-          <button class="btn btn-danger" (click)="deleteBoard(board.id)">
+          <button class="btn btn-danger" (click)="deleteBoard(board.id ?? '')">
             <i class="fas fa-trash"></i>
           </button>
         </div>
       </div>
       <div class="lists-container">
-        <app-list *ngFor="let list of board.lists" [list]="list"></app-list>
+        <app-list *ngFor="let list of board.lists" [boardId]="board.id  ?? ''" [list]="list"></app-list>
         <div class="add-list-placeholder">
+
           <button class="btn btn-outline" (click)="addList(board.id)">
             <i class="fas fa-plus"></i> Ajouter une liste
           </button>
+
         </div>
       </div>
     </div>
-  }
+
 </div>

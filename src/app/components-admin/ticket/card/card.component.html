@@ -8,6 +8,14 @@
   </div>
   <p class="card-description">{{ card.description }}</p>
   <div class="card-footer">
-    <span class="edit-hint">Cliquez pour modifier</span>
+    <div class="card-type"
+         [class.bug]="card.type === 'Bug'"
+         [class.evolution]="card.type === 'Evol'">
+      {{ card.type }}
+    </div>
+    <div class="card-priorite">
+    <!-- Image correspondant à la priorité -->
+    <img [src]="getPrioriteImage()" alt="Priorite" class="priorite-image">
+    </div>
   </div>
 </div>
