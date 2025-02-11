@@ -35,6 +35,11 @@ export class ListComponent {
     }
   }
 
+  isDefaultList(title: string): boolean {
+    const defaultTitles = ['À faire', 'En Cours', 'Révision', 'Test', 'Terminé🎉'];
+    return defaultTitles.includes(title);
+  }
+
   addCard() {
     Swal.fire({
       title: "Nouvelle carte",
@@ -68,6 +73,7 @@ export class ListComponent {
       confirmButtonText: "Créer",
       cancelButtonText: "Annuler",
       customClass: {
+        title: "custom-title",
         popup: "custom-swal-popup", // Style du modal
         confirmButton: "custom-confirm-button", // Style du bouton "Créer"
         cancelButton: "custom-cancel-button", // Style du bouton "Annuler"
@@ -82,7 +88,6 @@ export class ListComponent {
           Swal.showValidationMessage("Tous les champs sont obligatoires !");
           return false;
         }
-
         return { title, description, type, priorite };
       },
     }).then((result) => {
@@ -99,8 +104,8 @@ export class ListComponent {
       text: "Voulez-vous supprimer cette liste ?",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
+      confirmButtonColor: "#da9f5b",
+      cancelButtonColor: "#6e7881",
       confirmButtonText: "Oui, supprimez-le !"
     }).then((result) => {
       if (result.isConfirmed) {

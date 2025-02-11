@@ -60,8 +60,8 @@ export class CardComponent implements OnInit {
       text: "Voulez-vous supprimer cette carte ?",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
+      confirmButtonColor: "#da9f5b",
+      cancelButtonColor: "#6e7881",
       confirmButtonText: "Oui, supprimez-le !"
     }).then((result) => {
       if (result.isConfirmed) {
@@ -101,6 +101,7 @@ export class CardComponent implements OnInit {
       confirmButtonText: "Modifier",
       cancelButtonText: "Annuler",
       customClass: {
+        title: "custom-title",
         popup: "custom-swal-popup",
         confirmButton: "custom-confirm-button",
         cancelButton: "custom-cancel-button",

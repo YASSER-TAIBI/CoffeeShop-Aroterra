@@ -49,27 +49,26 @@ export class BoardComponent implements OnInit {
       title: "Nouvelle Liste",
       html: `
       <div class="form-table" >
-        <input id="swal-input-title" class="custom-input" placeholder="Titre">
+          <label for="swal-title" class="form-label">Titre</label>
+          <input type="text" class="form-control" id="swal-title" name="title" placeholder="Entrez un titre"/>
       </div>
         `,
       showCancelButton: true,
       confirmButtonText: "Créer",
       cancelButtonText: "Annuler",
       customClass: {
+        title: "custom-title",
         popup: "custom-swal-popup", // Style du modal
         confirmButton: "custom-confirm-button", // Style du bouton "Créer"
         cancelButton: "custom-cancel-button", // Style du bouton "Annuler"
       },
       preConfirm: () => {
-        const title = (
-          document.getElementById("swal-input-title") as HTMLInputElement
-        ).value;
+        const title = (document.getElementById("swal-title") as HTMLInputElement).value;
 
         if (!title) {
           Swal.showValidationMessage("Le champ et obligatoire !");
           return false;
         }
-
         return { title };
       },
     }).then((result) => {
@@ -88,8 +87,8 @@ export class BoardComponent implements OnInit {
       text: "Voulez-vous supprimer ce Tableau ?",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
+      confirmButtonColor: "#da9f5b",
+      cancelButtonColor: "#6e7881",
       confirmButtonText: "Oui, supprimez-le !"
     }).then((result) => {
       if (result.isConfirmed) {

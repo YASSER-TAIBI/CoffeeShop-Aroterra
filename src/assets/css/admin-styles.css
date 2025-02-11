@@ -6654,9 +6654,6 @@ button.bg-dark:focus {
   .d-sm-inline {
     display: inline !important;
   }
-  .d-sm-inline-block {
-    display: inline-block !important;
-  }
   .d-sm-block {
     display: block !important;
   }
@@ -11333,4 +11330,48 @@ body.sidebar-toggled footer.sticky-footer {
   display: inline-block;
   margin: 2px;
   text-align: center;
+}
+
+::ng-deep .form-table {
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+::ng-deep .form-label {
+  font-weight: 400;
+  margin-top: 1.1rem;
+  margin-bottom: 0.2rem;
+  padding-left: 0.6rem;
+  display: flex;
+  color: #333;
+  flex-direction: row;
+}
+
+::ng-deep .custom-title{
+  color: #da9f5b;
+}
+
+::ng-deep .custom-confirm-button{
+  background-color:  #da9f5b;
+}
+
+::ng-deep .form-control,
+::ng-deep .form-select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+::ng-deep .form-control:focus,
+::ng-deep .form-select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+  outline: none;
+}
+
+::ng-deep textarea.form-control {
+  resize: vertical;
 }

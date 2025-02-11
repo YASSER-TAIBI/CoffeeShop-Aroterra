@@ -30,10 +30,25 @@ export class BoardService {
   // Ajouter un board avec une liste vide
   async addBoard(title: string) {
     const boardRef = doc(this._collection); // ID auto-généré
+    const boardId = boardRef.id; // Récupération de l'ID Firestore généré
+
+    // Définition des 5 listes
+    const listTitles = ['À faire', 'En Cours', 'Révision', 'Test', 'Terminé🎉'];
+    const lists: List[] = listTitles.map(title => {
+      const listRef = doc(collection(this._firestore, `${PATH}/${boardId}/${PATH_LISTS}`)); // Génération d'un ID similaire à Firestore
+      return {
+        id: listRef.id, // ID de la liste généré par Firestore
+        IdBoard: boardId,
+        title: title,
+        cards: []
+      };
+    });
+
+    // Création du board avec les 5 listes
     const board: Board = {
       id: boardRef.id,
       title: title,
-      lists: []
+      lists: lists
     };
 
     await setDoc(boardRef, board);
