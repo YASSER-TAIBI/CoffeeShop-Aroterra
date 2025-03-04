@@ -9,6 +9,7 @@ export enum TypeEvent {
   fete = 'Fête',
   visite = 'Visite',
   dejeunerD = 'Déjeuner d\'affaires',
+  reservation = 'Réservation'
 }
 
 export enum ColorEvent {

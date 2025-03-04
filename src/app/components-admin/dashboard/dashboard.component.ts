@@ -15,9 +15,7 @@ import {NgxSpinnerComponent, NgxSpinnerService} from "ngx-spinner";
 import { Chart, registerables } from "chart.js";
 import {ChartService} from "../../services/chart.service";
 import {EventService} from "../../services/event.service";
-import {HolidayTranslations} from "../../shared/translations/holiday-translations";
 import {Event} from "../../models/event";
-import {NgbDateStruct} from "@ng-bootstrap/ng-bootstrap";
 import {FormsModule} from "@angular/forms";
 import {NgxPaginationModule} from "ngx-pagination";
 
@@ -50,8 +48,12 @@ export class DashboardComponent implements OnInit, AfterViewInit{
 
   doughnutChart: any;
   barChart: any;
+  horizontalBarAdminChart: any;
+  horizontalBarClientChart: any;
 
   reservationsCount = { valider: 0, enCours: 0, nonValider: 0 };
+  totalAdminCards: number = 0;
+  totalClientCards: number = 0;
 
   franceHolidays: Event[] = [];
   marocHolidays: Event[] = [];
@@ -65,12 +67,14 @@ export class DashboardComponent implements OnInit, AfterViewInit{
   private eventService= inject(EventService);
 
   ngAfterViewInit() {
+
     setTimeout(() => {
       this.getCardSize();
     }, 0);
   }
 
   async ngOnInit() {
+
     document.body.style.overflow = 'hidden';
 
     // Event
@@ -79,6 +83,8 @@ export class DashboardComponent implements OnInit, AfterViewInit{
     // Chart
     this.initDoughnutChart();
     this.initBarChart();
+    this.initHorizontalBarAdminChart();
+    this.initHorizontalBarClientChart();
 
     this.spinner.show();
     this.loadProfiles();
@@ -135,6 +141,28 @@ export class DashboardComponent implements OnInit, AfterViewInit{
     barChartConfig.data.datasets[2].data = monthlyData.nonValider;
     // Créer le graphique
     this.barChart = new Chart('barChartId', barChartConfig);
+  }
+
+  async initHorizontalBarAdminChart(): Promise<void> {
+    const boardData = await this.chartService.loadBoardCardsAdminData();
+    this.totalAdminCards = boardData.totalCards; // Stocke le total des cartes
+
+    const horizontalBarChartConfig = this.chartService.getHorizontalBarChartConfig();
+    horizontalBarChartConfig.data.labels = boardData.labels;
+    horizontalBarChartConfig.data.datasets[0].data = boardData.cardCounts;
+
+    this.horizontalBarAdminChart = new Chart('horizontalBarAdminChartId', horizontalBarChartConfig);
+  }
+
+  async initHorizontalBarClientChart(): Promise<void> {
+    const boardData = await this.chartService.loadBoardCardsClientData();
+    this.totalClientCards = boardData.totalCards; // Stocke le total des cartes
+
+    const horizontalBarChartConfig = this.chartService.getHorizontalBarChartConfig();
+    horizontalBarChartConfig.data.labels = boardData.labels;
+    horizontalBarChartConfig.data.datasets[0].data = boardData.cardCounts;
+
+    this.horizontalBarClientChart = new Chart('horizontalBarClientChartId', horizontalBarChartConfig);
   }
 
   @HostListener('window:resize', ['$event'])

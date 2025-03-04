@@ -17,6 +17,7 @@ export interface List {
 export interface Card {
   id: string;
   IdList: string;
+  counter: number;
   title: string;
   description: string;
   priorite: Priorite;

@@ -77,7 +77,7 @@ export class CardComponent implements OnInit {
       html: `
       <div class="form-table">
           <label for="swal-title" class="form-label">Titre</label>
-          <input type="text" class="form-control" id="swal-title" name="title" placeholder="Entrez un titre" value="${this.card.title}"/>
+          <input type="text" class="form-control" id="swal-title" name="title" value="${this.card.title}" readonly/>
 
           <label for="swal-description" class="form-label">Description</label>
           <textarea class="form-control" id="swal-description" name="description" placeholder="Entrez une description" rows="3">${this.card.description}</textarea>

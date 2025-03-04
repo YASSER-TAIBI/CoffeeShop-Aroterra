@@ -78,6 +78,7 @@ export class AddEventComponent {
       [TypeEvent.fete]: ColorEvent.marron,
       [TypeEvent.visite]: ColorEvent.gris,
       [TypeEvent.dejeunerD]: ColorEvent.violet,
+      [TypeEvent.reservation]: ColorEvent.orange,
     };
 
     return typeEvent ? colorMapping[typeEvent] : undefined;

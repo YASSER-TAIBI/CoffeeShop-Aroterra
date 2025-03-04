@@ -3,7 +3,7 @@
 
   <!-- Page Heading -->
   <h1 class="h3 mb-2 text-gray-800">Liste des Réservations</h1>
-  <p class="mb-4">Cette liste répertorie les réservations effectuées par les clients ou par l'administrateur via un
+  <p class="mb-4 info">Cette liste répertorie les réservations effectuées par les clients ou par l'administrateur via un
     appel téléphonique. Dans cet espace, nous examinons chaque demande de réservation pour ensuite décider de la valider
     ou de la refuser, en fonction des critères établis et des disponibilités.</p>
 
@@ -33,13 +33,9 @@
             <tr>
               <th>Nom</th>
               <th>Prénom</th>
-              <th>Email</th>
-              <th>Télephone</th>
               <th>Date</th>
               <th>Heure</th>
               <th>Personne</th>
-              <th>Désignation</th>
-              <th>Admin</th>
               <th>Etat</th>
               <th>Action</th>
             </tr>
@@ -54,13 +50,9 @@
                 <tr>
                   <td>{{ reservation.nom }}</td>
                   <td>{{ reservation.prenom }}</td>
-                  <td>{{ reservation.email }}</td>
-                  <td>{{ reservation.tel }}</td>
-                  <td>{{ reservation.formattedDate }}</td>
+                  <td>{{ reservation.date }}</td>
                   <td>{{ reservation.formattedTime }}</td>
                   <td>{{ reservation.people }}</td>
-                  <td>{{ reservation.designation }}</td>
-                  <td>{{ reservation.adminEmail }}</td>
                   <td>
                     <select [(ngModel)]="reservation.etat" [ngClass]="getEtatClass(reservation.etat)">
                       @for (etat of etatOptions; track etat) {
@@ -69,7 +61,7 @@
                     </select>
                   </td>
                   <td>
-                    <a class="show" (click)="EditReservation(reservation)"><i class="material-icons"
+                    <a class="show" (click)="ViewReservation(reservation)"><i class="material-icons"
                                                                               data-toggle="tooltip" title="Show">event_note</i></a>
                     <a class="edit" (click)="EditReservation(reservation)"><i class="material-icons"
                                                                               data-toggle="tooltip" title="Edit">edit</i></a>

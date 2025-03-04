@@ -3,7 +3,7 @@
 
   <!-- Page Heading -->
   <h1 class="h3 mb-2 text-gray-800">Réserver une Table</h1>
-  <p class="mb-4">Dans cet espace, nous gérons les appels téléphoniques des clients qui souhaitent réserver une table. Nous notons leurs préférences, confirmons la disponibilité, et procédons à la réservation en fonction de leurs besoins spécifiques.</p>
+  <p class="mb-4 info">Dans cet espace, nous gérons les appels téléphoniques des clients qui souhaitent réserver une table. Nous notons leurs préférences, confirmons la disponibilité, et procédons à la réservation en fonction de leurs besoins spécifiques.</p>
 
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
@@ -50,7 +50,7 @@
                 <div class="col-md-12">
                   <label class="labels" >Date</label>
                   <div class="date" id="date" data-target-input="nearest">
-                  <input type="text" name="date" [(ngModel)]="formData.date" class="form-control" (click)="d.toggle()" placeholder="saisie la date de reservation" ngbDatepicker #d="ngbDatepicker">
+                  <input type="date" name="date" [(ngModel)]="formData.date" class="form-control" placeholder="saisie la date de reservation">
                   </div>
               </div>
 

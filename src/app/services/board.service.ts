@@ -78,7 +78,7 @@ export class BoardService {
   }
 
   // Ajouter une carte avec position automatique
-  async addCard(boardId: string, listId: string, cardTitle: string, cardDescription: string, cardType: CardType, priorite: Priorite) {
+  async addCard(boardId: string, listId: string, cardTitle: string, cardCounter: number, cardDescription: string, cardType: CardType, priorite: Priorite) {
     try {
       // Récupérer le document du board
       const boardRef = doc(this._firestore, PATH, boardId);
@@ -109,6 +109,7 @@ export class BoardService {
       const newCard: Card = {
         id: newCardRef.id, // Génère un ID unique pour la carte
         title: cardTitle,
+        counter: cardCounter,
         description: cardDescription,
         type: cardType,
         priorite: priorite,

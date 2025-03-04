@@ -41,17 +41,53 @@ export class ListComponent {
   }
 
   addCard() {
-    Swal.fire({
-      title: "Nouvelle carte",
-      html: `
-      <div class="form-table" >
-          <label for="swal-title" class="form-label">Titre</label>
-          <input type="text" class="form-control" id="swal-title" name="title" placeholder="Entrez un titre"/>
+    // Fonction pour générer le titre automatiquement
+    const generateTitle = (counter: number) => {
+      const now = new Date();
+      const day = String(now.getDate()).padStart(2, '0'); // Jour (dd)
+      const month = String(now.getMonth() + 1).padStart(2, '0'); // Mois (MM)
+      const year = String(now.getFullYear()).slice(-2); // Année (YY)
 
+      const counterStr = String(counter).padStart(3, '0'); // Formatage du compteur (001)
+      return `CSA${day}${month}${year}-${counterStr}`; // Retourner le titre généré
+    };
+
+    // Récupérer le dernier counter utilisé dans la liste de cartes
+    const getLastCounter = (): Promise<number> => {
+      return new Promise<number>((resolve) => {
+        this.boardService.getBoards().subscribe((boards) => {
+          if (boards.length > 0) {
+            // Récupérer tous les counters de toutes les cartes dans tous les boards
+            const allCounters = boards.flatMap(board =>
+              board.lists.flatMap(list => list.cards.map(card => card.counter))
+            );
+
+            if (allCounters.length > 0) {
+              resolve(Math.max(...allCounters) + 1); // Incrémenter le dernier counter global
+              return;
+            }
+          }
+          resolve(1); // Si aucune carte n'existe, initialiser à 1
+        });
+      });
+    };
+
+    // Attendre que le dernier counter soit récupéré
+    getLastCounter().then((counter) => {
+      const title = generateTitle(counter); // Générer le titre avec le bon counter
+
+      console.log("counter", counter);
+      console.log("title", title);
+
+      Swal.fire({
+        title: "Nouvelle carte",
+        html: `
+      <div class="form-table">
+          <label for="swal-title" class="form-label">Titre</label>
+          <input type="text" class="form-control" id="swal-title" name="title" value="${title}" readonly />
 
           <label for="swal-description" class="form-label">Description</label>
           <textarea class="form-control" id="swal-description" name="description" placeholder="Entrez une description" rows="3"></textarea>
-
 
           <label for="swal-type" class="form-label">Type de carte</label>
           <select class="form-select" id="swal-type" name="type">
@@ -66,35 +102,37 @@ export class ListComponent {
             <option value="Court-terme">Court-terme</option>
             <option value="Long-terme">Long-terme</option>
           </select>
-
       </div>
         `,
-      showCancelButton: true,
-      confirmButtonText: "Créer",
-      cancelButtonText: "Annuler",
-      customClass: {
-        title: "custom-title",
-        popup: "custom-swal-popup", // Style du modal
-        confirmButton: "custom-confirm-button", // Style du bouton "Créer"
-        cancelButton: "custom-cancel-button", // Style du bouton "Annuler"
-      },
-      preConfirm: () => {
-        const title = (document.getElementById("swal-title") as HTMLInputElement).value;
-        const description = (document.getElementById("swal-description") as HTMLTextAreaElement).value;
-        const type = (document.getElementById("swal-type") as HTMLSelectElement).value;
-        const priorite = (document.getElementById("swal-priorite") as HTMLSelectElement).value;
+        showCancelButton: true,
+        confirmButtonText: "Créer",
+        cancelButtonText: "Annuler",
+        preConfirm: () => {
+          const title = (document.getElementById("swal-title") as HTMLInputElement).value;
+          const description = (document.getElementById("swal-description") as HTMLTextAreaElement).value;
+          const type = (document.getElementById("swal-type") as HTMLSelectElement).value;
+          const priorite = (document.getElementById("swal-priorite") as HTMLSelectElement).value;
 
-        if (!title || !description || !type || !priorite) {
-          Swal.showValidationMessage("Tous les champs sont obligatoires !");
-          return false;
+          if (!title || !description || !type || !priorite) {
+            Swal.showValidationMessage("Tous les champs sont obligatoires !");
+            return false;
+          }
+          return { title, description, type, priorite, counter };
+        },
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.boardService.addCard(
+            this.boardId,
+            this.list.id,
+            result.value.title,
+            result.value.counter, // Utiliser le bon counter
+            result.value.description,
+            result.value.type,
+            result.value.priorite
+          );
+          Swal.fire("Succès", "Une nouvelle carte a été créée !", "success");
         }
-        return { title, description, type, priorite };
-      },
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.boardService.addCard(this.boardId, this.list.id, result.value.title, result.value.description, result.value.type, result.value.priorite);
-        Swal.fire("Succès", "Un nouveau carte a été créé !", "success");
-      }
+      });
     });
   }
 

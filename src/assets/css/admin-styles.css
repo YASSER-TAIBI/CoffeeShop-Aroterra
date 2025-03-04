@@ -11375,3 +11375,7 @@ body.sidebar-toggled footer.sticky-footer {
 ::ng-deep textarea.form-control {
   resize: vertical;
 }
+
+.info{
+  padding: 0px 15px 0px 20px;
+}

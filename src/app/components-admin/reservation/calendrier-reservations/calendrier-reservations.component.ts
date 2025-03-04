@@ -37,8 +37,8 @@ export class CalendrierReservationsComponent implements OnInit {
       // Mapper les réservations au format d'événements FullCalendar
       const events = reservations.map(reservation => ({
         title: `${reservation.nom} ${reservation.prenom}`,
-        start: reservation.date && reservation.time ? this.formatDateTime(reservation.date, reservation.time) : '',
-        end: reservation.date && reservation.time ? this.formatEndDateTime(reservation.date, reservation.time) : '',
+        start: reservation.time ? `${reservation.date}T${this.formatTime(reservation.time)}` : '',
+        end: reservation.time ? `${reservation.date}T${this.formatEndTime(reservation.time)}` : '',
         description: `Reservation de ${reservation.nom} ${reservation.prenom}, ${reservation.people} personne(s).`
       }));
 
@@ -47,41 +47,22 @@ export class CalendrierReservationsComponent implements OnInit {
     });
   }
 
-  // Méthode pour formater la date et l'heure en 'YYYY-MM-DDTHH:mm:ss'
-  formatDateTime(date: { year: number, month: number, day: number }, time: { hour: number; minute: number }): string {
-    const formattedDate = this.formatDate(date);
-    const formattedTime = this.formatTime(time);
-    return `${formattedDate}T${formattedTime}`;
-  }
-
-// Méthode pour formater la date en 'YYYY-MM-DD'
-  formatDate(date: { year: number, month: number, day: number }): string {
-    const year = date.year.toString();
-    const month = date.month.toString().padStart(2, '0');
-    const day = date.day.toString().padStart(2, '0');
-    return `${year}-${month}-${day}`;
-  }
-
-// Méthode pour formater l'heure en 'HH:mm:ss'
+  // Formater l'heure en 'HH:mm:ss'
   formatTime(time: { hour: number; minute: number }): string {
-    const hour = time.hour.toString().padStart(2, '0');
-    const minute = time.minute.toString().padStart(2, '0');
-    return `${hour}:${minute}:00`; // FullCalendar attend le format 'HH:mm:ss'
+    const hour = String(time.hour).padStart(2, '0');
+    const minute = String(time.minute).padStart(2, '0');
+    return `${hour}:${minute}:00`; // Format attendu par FullCalendar
   }
 
-// Si vous avez une heure de fin, vous pouvez aussi avoir une méthode pour calculer l'heure de fin
-  formatEndDateTime(date: { year: number, month: number, day: number }, time: { hour: number; minute: number }): string {
-    // Pour cet exemple, ajoutons 1 heure à l'heure de début
+  // Calcul de l'heure de fin (ajout d'une heure)
+  formatEndTime(time: { hour: number; minute: number }): string {
     let endHour = time.hour + 1;
     let endMinute = time.minute;
 
-    // Si l'heure dépasse 24h, ajustez l'heure et la date (vous pouvez implémenter cette logique selon vos besoins)
     if (endHour >= 24) {
-      endHour = 0;
+      endHour = 0; // Réinitialisation si on dépasse minuit
     }
 
-    const formattedEndTime = this.formatTime({ hour: endHour, minute: endMinute });
-    const formattedDate = this.formatDate(date);
-    return `${formattedDate}T${formattedEndTime}`;
+    return `${String(endHour).padStart(2, '0')}:${String(endMinute).padStart(2, '0')}:00`;
   }
 }

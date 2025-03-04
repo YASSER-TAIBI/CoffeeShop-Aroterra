@@ -87,9 +87,6 @@ table.table tr th, table.table tr td {
 table.table tr th:first-child {
   width: 60px;
 }
-table.table tr th:last-child {
-  width: 100px;
-}
 table.table-striped tbody tr:nth-of-type(odd) {
   background-color: #fcfcfc;
 }
@@ -154,4 +151,62 @@ table.table .avatar {
   float: left;
   margin-top: 10px;
   font-size: 13px;
+}
+
+/*------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+/* Style général pour la boîte de dialogue SweetAlert2 */
+::ng-deep .custom-swal-popup {
+  width: 650px;
+}
+
+/* Style pour le titre de la boîte de dialogue */
+::ng-deep .custom-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Style pour le conteneur du formulaire */
+::ng-deep .form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Style pour chaque ligne du formulaire */
+::ng-deep .form-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 5px 15px 5px;
+  border-bottom: 1px solid #eee;
+}
+
+/* Style pour les labels des titres (Nom, Prénom, etc.) */
+::ng-deep .form-label-row {
+  font-weight: bold;
+  color: #555;
+  width: 30%;
+  text-align: left;
+  margin-bottom: 0;
+  padding-left: 10px;
+}
+
+/* Style pour les labels du contenu (les valeurs de la réservation) */
+::ng-deep .form-label-content {
+  color: #333;
+  width: 70%;
+  text-align: left;
+  margin-bottom: 0;
+  padding-left: 25px;
+}
+
+::ng-deep .swal2-styled {
+  background-color: #da9f5b;
+}
+::ng-deep .swal2-styled:focus-visible {
+  box-shadow: 0 0 0 3px #da9f5b61;
 }
